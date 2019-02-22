@@ -16,11 +16,11 @@ class PropertyType extends Model
 
     public function properties()
     {
-        return $this->hasMany('App\Model\Property', 'property_type_id');
+        return $this->hasMany('App\Models\Property', 'property_type_id');
     }
 
     public function propertyCategory()
     {
-        return $this->belongsTo('App\Model\Property');
+        return $this->belongsTo('App\Models\Property');
     }
 }

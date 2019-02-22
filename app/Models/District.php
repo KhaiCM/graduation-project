@@ -14,11 +14,11 @@ class District extends Model
 
     public function provinces()
     {
-        return $this->belongsTo('App\Model\Province');
+        return $this->belongsTo('App\Models\Province');
     }
     
     public function properties()
     {
-        return $this->hasMany('App\Model\Property', 'district_id');
+        return $this->hasMany('App\Models\Property', 'district_id');
     }
 }

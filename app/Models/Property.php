@@ -28,31 +28,31 @@ class Property extends Model
 
     public function setCalendar()
     {
-        return $this->hasMany('App\Model\SetCalendar', 'property_id');
+        return $this->hasMany('App\Models\SetCalendar', 'property_id');
     }
 
     public function propertyImage()
     {
-        return $this->hasMany('App\Model\PropertyImage', 'property_id');
+        return $this->hasMany('App\Models\PropertyImage', 'property_id');
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Model\Comment', 'property_id');
+        return $this->hasMany('App\Models\Comment', 'property_id');
     }
 
     public function rentContract()
     {
-        return $this->hasMany('App\Model\RentContract', 'property_id');
+        return $this->hasMany('App\Models\RentContract', 'property_id');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function propertyType()
     {
-        return $this->belongsTo('App\Model\PropertyType');
+        return $this->belongsTo('App\Models\PropertyType');
     }
 }

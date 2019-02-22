@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -18,7 +18,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'address',
+        'phone',
         'password',
+        'avatar',
     ];
 
     /**
@@ -33,26 +36,26 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany('App\Model\Post', 'user_id');
+        return $this->hasMany('App\Models\Post', 'user_id');
     }
 
     public function properties()
     {
-        return $this->hasMany('App\Model\Property', 'user_id');
+        return $this->hasMany('App\Models\Property', 'user_id');
     }
 
     public function rentContract()
     {
-        return $this->hasMany('App\Model\rentContract', 'lessee_id');
+        return $this->hasMany('App\Models\RentContract', 'lessee_id');
     }
 
     public function roleUser()
     {
-        return $this->hasMany('App\Model\roleUser', 'user_id');
+        return $this->hasMany('App\Models\RoleUser', 'user_id');
     }
     
     public function comments()
     {
-        return $this->hasMany('App\Model\Comment', 'user_id');
+        return $this->hasMany('App\Models\Comment', 'user_id');
     }
 }
