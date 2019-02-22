@@ -17,6 +17,6 @@ class PropertyImage extends Model
 
     public function properties()
     {
-        return $this->belongsTo('App\Model\Property');
+        return $this->belongsTo('App\Models\Property');
     }
 }

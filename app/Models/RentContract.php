@@ -20,11 +20,11 @@ class RentContract extends Model
 
     public function properties()
     {
-        return $this->belongsTo('App\Model\Property');
+        return $this->belongsTo('App\Models\Property');
     }
 
     public function users()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

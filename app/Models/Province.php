@@ -14,11 +14,11 @@ class Province extends Model
 
     public function districts()
     {
-        return $this->hasMany('App\Model\District', 'provinces_id');
+        return $this->hasMany('App\Models\District', 'provinces_id');
     }
     
     public function properties()
     {
-        return $this->hasManyThrough('App\Model\Property', 'App\model\District', 'provinces_id', 'district_id');
+        return $this->hasManyThrough('App\Models\Property', 'App\models\District', 'provinces_id', 'district_id');
     }
 }

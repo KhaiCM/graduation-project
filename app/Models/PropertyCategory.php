@@ -14,11 +14,11 @@ class PropertyCategory extends Model
 
     public function propertyCategory()
     {
-        return $this->hasMany('App\Model\PropertyType', 'property_category_id');
+        return $this->hasMany('App\Models\PropertyType', 'property_category_id');
     }
 
     public function properties()
     {
-        return $this->hasManyThrough('App\Model\Property', 'App\Model\PropertyType', 'property_category_id', 'property_type_id');
+        return $this->hasManyThrough('App\Models\Property', 'App\Models\PropertyType', 'property_category_id', 'property_type_id');
     }
 }
