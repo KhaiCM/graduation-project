@@ -1,0 +1,21 @@
+{
+  "name": "real_estate",
+  "description": "",
+  "main": "",
+  "authors": [
+    "khaiCM <minhkhai97dbp@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/KhaiCM/real_estate",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lib_bower": "https://github.com/KhaiCM/lib_bower.git"
+  }
+}
