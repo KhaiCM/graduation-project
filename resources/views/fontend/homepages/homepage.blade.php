@@ -113,17 +113,17 @@
                                         <i class="fa fa-star-o"></i>
                                     </div>
                                 </div>
-                                <img src="{{ asset(config('fontend.fontend_image.logo')) }}/property-7.jpg" alt="property-7" class="img-fluid">
+                                <img src="{{ asset(config('fontend.fontend_image.property7')) }}" alt="property-7" class="img-fluid">
                             </a>
                             <div class="property-overlay">
                                 <a href="properties-details.html" class="overlay-link">
                                     <i class="fa fa-link"></i>
                                 </a>
                                 <div class="property-magnify-gallery">
-                                    <img src="{{ asset(config('fontend.fontend_image.logo')) }}/property-7.jpg" class="overlay-link">
+                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="overlay-link">
                                     <i class="fa fa-expand"></i>
-                                    <img src="{{ asset(config('fontend.fontend_image.logo')) }}/property-7.jpg" class="hidden">
-                                    <img src="{{ asset(config('fontend.fontend_image.logo')) }}/property-7.jpg" class="hidden">
+                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="hidden">
+                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="hidden">
                                 </div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 wow fadeInLeft delay-04s">
                     <div class="blog-grid-box">
-                        <img class="blog-theme img-fluid" src="{{ asset(config('fontend.fontend_image.logo')) }}/property-10.jpg" alt="property-10">
+                        <img class="blog-theme img-fluid" src="{{ asset(config('fontend.fontend_image.property10')) }}" alt="property-10">
                         <div class="detail">
                             <div class="date-box">
                                 <h5>03</h5>

@@ -38,4 +38,17 @@ return [
     'apartments_clean' => 'Apartments Clean',
     'houses' => 'Houses',
     'support_24/7' => 'Support 24/7',
+    //login
+    'login' => 'LOGIN',
+    'enter_pass' => 'Please enter your user name and password to login',
+    'email_address' => 'Email Address',
+    'password' => 'Password',
+    'keep_me_signed_in' => 'Keep Me Signed In',
+    'do_not_have_an_account' => 'Do not have an account ? ',
+    'sign_up' => 'Sign Up',
+    //register
+    'create_your_account' => 'Create Your account',
+    'name' => 'Name',
+    'confirm_password' => 'Confirm Password',
+    'create_new_account' => 'Create New Account',
 ];
