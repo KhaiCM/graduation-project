@@ -11,11 +11,14 @@
         <tr>
             <th>#</th>
             <th>{{ trans('province.name') }}</th>
+            <th colspan="2">{{ trans('province.action') }}</th>
         </tr>
         @foreach ($provinces as $province)
             <tr>
-            <td>{{ $province->id }}</td>
+                <td>{{ $province->id }}</td>
                 <td>{{ $province->name }}</td>
+                <td><a href="{{ route('province.edit', $province->id) }}">Edit</a></td>
+                <td>Delete</td>
             </tr>
         @endforeach
     </table> 

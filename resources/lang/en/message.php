@@ -16,5 +16,6 @@ return [
     'Home' => 'Home',
     'edit' => 'edit',
     'delete' => 'delete',
-    'Firstname' => 'Firstname'
+    'Firstname' => 'Firstname',
+    'add_success' => 'Add province success',
 ];

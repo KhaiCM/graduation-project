@@ -21,5 +21,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/index', 'ProvinceController@index')->name('province.index');
         Route::get('/create', 'ProvinceController@create')->name('province.create');
         Route::post('/create', 'ProvinceController@store');
+        Route::get('/edit/{id}', 'ProvinceController@edit')->name('province.edit');
+        Route::post('/edit/{id}', 'ProvinceController@update');
     });
 });

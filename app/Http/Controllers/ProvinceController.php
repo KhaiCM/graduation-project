@@ -55,9 +55,9 @@ class ProvinceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        
     }
 
     /**
@@ -68,7 +68,16 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        //
+        try 
+        {
+            $province = $this->province->findOrFail($id);
+            
+            return view('backend.admin.address.edit', compact('province'));
+        } 
+        catch (ModelNotFoundException $ex) 
+        {
+            echo $ex->getMessage();
+        }
     }
 
     /**
@@ -78,9 +87,18 @@ class ProvinceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProvinceRequest $request, $id)
     {
-        //
+        try
+        {
+            $province = $this->province->update($request, $id);
+
+            return redirect(route('province.index'))->with('message', trans('province.edit_success'));
+        }
+        catch (ModelNotFoundException $ex) 
+        {
+            echo $ex->getMessage();
+        }
     }
 
     /**
