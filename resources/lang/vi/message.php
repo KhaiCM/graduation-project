@@ -14,4 +14,5 @@ return [
     'Password' => 'Mật khẩu',
     'Reset' => 'làm lại',
     'Home' => 'Trang chủ',
+    'add_success' => 'Thêm thành công',
 ];

@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home">{{ trans('message.Home') }}</a>
+    <a class="active" href="{{ route('adminHome') }}">{{ trans('message.Home') }}</a>
         <a href="#news">{{ trans('message.New') }}</a>
         <a href="#contact">{{ trans('message.Contact') }}</a>
         <a href="#about">{{ trans('message.About') }}</a>
