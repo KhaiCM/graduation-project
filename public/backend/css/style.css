@@ -121,7 +121,7 @@
     text-decoration: none;
     font-size: 18px;
     color: black;
-    display: block
+    display: block;
 }
 #myMenu li a:hover {
     background-color: #eee;
@@ -135,6 +135,7 @@ input[type=text], select, textarea {
     margin-top: 6px; 
     margin-bottom: 16px;
     resize: vertical;
+    margin-left: 5%;
 }
 input[type=submit] {
     background-color: #C0392B;
@@ -166,22 +167,21 @@ input[type=reset]:hover {
     background-color: #008C5E;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 10px;
-    float: right;
+    margin: 4px 2px;
     cursor: pointer;
-
+    float: right;
 }
 .container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
 }
-form{
+form {
     margin-top: 30px;
 }
 table {
@@ -196,25 +196,25 @@ td, th {
     padding: 8px;
 }
 tr:nth-child(even) {
-      background-color:#cccccc;
+    background-color:#cccccc;
 }
 .footer {
     padding: 20px; 
     text-align: center; 
     background: #ddd; 
     margin-left: 160px;
-    margin-top: 50px
+    margin-top: 50px;
 }
 .high {
     font-size: 30px;
-    margin-top: 20px;
 }
-.label{
+.label {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
+    margin-left: 5%;
 }
-.bntshow{
-    background-color: #c14545;
+.bntshow {
+    background-color: #008C5E;
     border: none;
     color: white;
     padding: 5px 10px;
@@ -222,9 +222,33 @@ tr:nth-child(even) {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
-    margin-left: 8%;
+    margin: 4px 2px 0px 8%;
 }
-.tdshow{
+.bntshowdl {
+    background-color: #af1623;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px 0px 8%;
+}
+.tdshow {
     width: 15%;
+}
+.pagination {
+    display: inline-block; 
+}
+.pagination li a:visited, .pagination li {
+    list-style: none;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination li.active {
+    background-color: #4CAF50;
+    color: white;
 }

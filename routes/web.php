@@ -23,3 +23,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/create', 'ProvinceController@store');
     });
 });
+
+Route::get('blogcatlist', 'BlogCatController@getList');
+
+Route::get('addblogcat', 'BlogCatController@addblogcat');
+Route::post('addblogcat', 'BlogCatController@postblogcat');
