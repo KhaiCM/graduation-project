@@ -15,3 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('home', 'HomeController@getHome');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('', 'ProvinceController@index')->name('adminHome');
+    Route::group(['prefix' => 'province'], function () {
+        Route::get('/index', 'ProvinceController@index')->name('province.index');
+        Route::get('/create', 'ProvinceController@create')->name('province.create');
+        Route::post('/create', 'ProvinceController@store');
+    });
+});
