@@ -127,7 +127,7 @@
     background-color: #eee;
 }
 input[type=text], select, textarea {
-    width: 100%;
+    width: 60%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px; 
@@ -166,14 +166,15 @@ input[type=reset]:hover {
     background-color: #008C5E;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    margin: 10px;
     float: right;
+    cursor: pointer;
+
 }
 .container {
     border-radius: 5px;
@@ -195,7 +196,7 @@ td, th {
     padding: 8px;
 }
 tr:nth-child(even) {
-      background-color: #008C5E;
+      background-color:#cccccc;
 }
 .footer {
     padding: 20px; 
@@ -206,8 +207,24 @@ tr:nth-child(even) {
 }
 .high {
     font-size: 30px;
+    margin-top: 20px;
 }
 .label{
     font-family: "Roboto", sans-serif;
     font-size: 15px;
+}
+.bntshow{
+    background-color: #c14545;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-left: 8%;
+}
+.tdshow{
+    width: 15%;
 }
