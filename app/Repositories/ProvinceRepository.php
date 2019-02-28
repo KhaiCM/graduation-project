@@ -18,4 +18,16 @@ class ProvinceRepository
             'name' => $request->get('name'),
         ]);
     }
+    public function findOrFail($id)
+    {
+        return Province::findOrFail($id);
+    }
+    public function update(ProvinceRequest $request, $id)
+    {
+        $province = Province::findOrFail($id);
+        $validated = $request->validated();
+        $province->update([
+            'name' => $request->get('name'),
+        ]);
+    }
 }
