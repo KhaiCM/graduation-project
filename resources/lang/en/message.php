@@ -14,4 +14,7 @@ return [
     'Password' => 'Password',
     'Reset' => 'Reset',
     'Home' => 'Home',
+    'edit' => 'edit',
+    'delete' => 'delete',
+    'Firstname' => 'Firstname'
 ];
