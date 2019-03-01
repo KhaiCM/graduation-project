@@ -4,7 +4,7 @@
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg navbar-light rounded">
                     <a class="navbar-brand logo navbar-brand d-flex mr-auto" href="index.html">
-                        <img src="{{ asset(config('fontend.fontend_image.logo')) }}/black-logo.png" alt="logo">
+                        <img src="{{ asset(config('fontend.fontend_image.logo')) }}" alt="logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fa fa-bars"></span>
@@ -43,8 +43,20 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
+                            @guest
+
                                 <a class="btn btn-sm btn-white-sm-outline btn-round signup-link" href="register.html">{!! __('label.login')!!}</a>
                                 <a class="btn btn-sm btn-white-sm-outline btn-round signup-link" href="register.html">{!! __('label.sign_up')!!}</a>
+                                @else
+                                <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} 
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('logout') }}">{{ __('Logout') }}</a>
+                                    {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'style' => 'display: none;']) !!}
+                                </div>
+                            @endguest
                             </li>
                         </ul>
                     </div>

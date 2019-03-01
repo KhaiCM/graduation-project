@@ -26,11 +26,8 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('bower_components/lib_bower/assets/css/skins/default.css') }}">
 <link type="text/css" rel="stylesheet" href="{{ asset('bower_components/lib_bower/assets/css/style.css') }}">
 
-
 </head>
 <body id="top">
-      <div class="page_loader"></div>
-
       @include('fontend.layouts.header')
 
       @yield('content')
@@ -60,5 +57,7 @@
     <script src="{{ asset('bower_components/lib_bower/assets/js/ie-emulation-modes-warning.js') }}"></script>
     <!-- Custom JS Script -->
     <script  src="{{ asset('bower_components/lib_bower/assets/js/app.js') }}"></script>
+    
 </body>
+
 </html>

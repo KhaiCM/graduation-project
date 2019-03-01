@@ -2,7 +2,7 @@
 return [
     'title' => 'Bất động sản',
     'properties_sold' => 'Tài sản bán',
-    'about_us'=> 'Giới thiệu',
+    'about_us' => 'Giới thiệu',
     'rental_property' => 'Tài sản cho thuê',
     'news' => 'Tin tức',
     'contact_us' => 'Liên hệ chúng tôi',
@@ -33,8 +33,19 @@ return [
     'apartment' => 'Căn hộ, chung cư',
     'house' => 'Nhà',
     'office' => 'Văn phòng',
-    'looking_for' =>'Bạn đang tìm kiếm gì?',
+    'looking_for' => 'Bạn đang tìm kiếm gì?',
     'apartments_clean' => 'Căn hộ sạch sẽ',
     'houses' => 'Nhà',
     'support_24/7' => 'Hỗ trợ 24/7',
+    //login
+    'enter_pass' => 'Vui lòng nhập Email và mật khẩu để đăng nhập',
+    'email_address' => 'Địa chỉ Email',
+    'password' => 'Mật khẩu',
+    'keep_me_signed_in' => 'Duy trì đăng nhập',
+    'do_not_have_an_account' => 'Bạn chưa có tài khoản ? ',
+    //register
+    'create_your_account' => 'Tạo mới tài khoản',
+    'name' => 'Tên',
+    'confirm_password' => 'Xác nhận mật khẩu',
+    'create_new_account' => 'Tạo tài khoản',
 ];

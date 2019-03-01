@@ -46,7 +46,7 @@
                     <h4>{!! __('label.rental_property')!!}</h4>
                     <div class="media mb-4">
                         <a class="pr-4" href="#">
-                            <img src="{{ asset(config('fontend.fontend_image.sub_property')) }}/sub-property.jpg" alt="sub-property">
+                            <img src="{{ asset(config('fontend.fontend_image.sub_property')) }}" alt="sub-property">
                         </a>
                         <div class="media-body align-self-center">
                             <h5>
