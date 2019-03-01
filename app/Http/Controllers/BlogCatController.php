@@ -27,6 +27,14 @@ class BlogCatController extends Controller
         ],
         [
             'name.required' => trans('message.cannotblank'),
+            'name.min' => trans('message.tooshort'),
+            'name.max' => trans('message.toolong'),
         ]);
+
+        $cat = new CategoryPost;
+        $cat -> name = $request -> name;
+        $cat -> save();
+
+        return redirect('addblogcat') -> with('noti', 'success');
     }
 }
