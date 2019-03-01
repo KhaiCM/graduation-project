@@ -25,3 +25,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{id}', 'ProvinceController@update');
     });
 });
+
+Route::get('blogcatlist', 'BlogCatController@getList');
+
+Route::get('addblogcat', 'BlogCatController@addblogcat');
+Route::post('addblogcat', 'BlogCatController@postblogcat');
