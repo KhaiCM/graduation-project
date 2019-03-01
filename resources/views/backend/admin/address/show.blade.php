@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="container">
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="high">
         <a>{{ trans('province.listProvince') }}</a>
     <a href="{{ route('province.create') }}"><button class="button">{{ trans('province.addProvince') }}</button></a>
@@ -17,8 +22,8 @@
             <tr>
                 <td>{{ $province->id }}</td>
                 <td>{{ $province->name }}</td>
-                <td><a href="{{ route('province.edit', $province->id) }}">Edit</a></td>
-                <td>Delete</td>
+                <td><a href="{{ route('province.edit', $province->id) }}">{{ trans('province.edit') }}</a></td>
+                <td><a href="{{ route('province.destroy', $province->id) }}">{{ trans('province.delete') }}</a></td>
             </tr>
         @endforeach
     </table> 

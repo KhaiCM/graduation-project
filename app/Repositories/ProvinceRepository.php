@@ -30,4 +30,10 @@ class ProvinceRepository
             'name' => $request->get('name'),
         ]);
     }
+    public function destroy($id)
+    {
+        $this->findOrFail($id)->delete();
+        
+        return true;
+    }
 }

@@ -5,5 +5,8 @@
         'name' => 'Name',
         'action' => 'Action',
         'edit_success' => 'Edit success',
+        'delete_success' => 'Delete success',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
     ]
 ?>
