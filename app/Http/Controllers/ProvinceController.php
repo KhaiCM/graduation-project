@@ -109,6 +109,15 @@ class ProvinceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try 
+        {
+            $province = $this->province->destroy($id);
+            
+            return redirect(route('province.index'))->with('message', trans('province.delete_success'));
+        } 
+        catch (ModelNotFoundException $ex) 
+        {
+            echo $ex->getMessage();
+        }
     }
 }
