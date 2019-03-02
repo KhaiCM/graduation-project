@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProvinceRequest;
 use App\Repositories\ProvinceRepository;
+use App\Http\Controllers\Controller;
 
 class ProvinceController extends Controller
 {
@@ -23,7 +24,7 @@ class ProvinceController extends Controller
     {
         $provinces = $this->province->all();
 
-    	return view('backend.admin.address.show', compact('provinces'));
+    	return view('backend.province.show', compact('provinces'));
     }
 
     /**
@@ -33,7 +34,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.address.create');
+        return view('backend.province.create');
     }
 
     /**
@@ -45,7 +46,7 @@ class ProvinceController extends Controller
     public function store(ProvinceRequest $request)
     {
         $provinces = $this->province->add($request);
-        
+
         return redirect(route('province.create'))->with('message', trans('message.add_success'));;
     }
 
@@ -57,7 +58,7 @@ class ProvinceController extends Controller
      */
     public function show()
     {
-        
+
     }
 
     /**
@@ -68,13 +69,13 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        try 
+        try
         {
             $province = $this->province->findOrFail($id);
-            
-            return view('backend.admin.address.edit', compact('province'));
-        } 
-        catch (ModelNotFoundException $ex) 
+
+            return view('backend.province.edit', compact('province'));
+        }
+        catch (ModelNotFoundException $ex)
         {
             echo $ex->getMessage();
         }
@@ -95,7 +96,7 @@ class ProvinceController extends Controller
 
             return redirect(route('province.index'))->with('message', trans('province.edit_success'));
         }
-        catch (ModelNotFoundException $ex) 
+        catch (ModelNotFoundException $ex)
         {
             echo $ex->getMessage();
         }
@@ -109,13 +110,13 @@ class ProvinceController extends Controller
      */
     public function destroy($id)
     {
-        try 
+        try
         {
             $province = $this->province->destroy($id);
-            
+
             return redirect(route('province.index'))->with('message', trans('province.delete_success'));
-        } 
-        catch (ModelNotFoundException $ex) 
+        }
+        catch (ModelNotFoundException $ex)
         {
             echo $ex->getMessage();
         }

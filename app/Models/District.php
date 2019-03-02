@@ -10,13 +10,14 @@ class District extends Model
 
     protected $fillable = [
         'name',
+        'provinces_id',
     ];
 
     public function provinces()
     {
         return $this->belongsTo('App\Models\Province');
     }
-    
+
     public function properties()
     {
         return $this->hasMany('App\Models\Property', 'district_id');
