@@ -36,5 +36,12 @@ class DistrictRepository
             'provinces_id' => $request->get('provinces_id'),
         ]);
     }
+
+    public function destroy($id)
+    {
+        $this->findOrFail($id)->delete();
+
+        return true;
+    }
 }
 
