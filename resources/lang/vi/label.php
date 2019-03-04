@@ -39,7 +39,7 @@ return [
     'support_24/7' => 'Hỗ trợ 24/7',
     //login
     'enter_pass' => 'Vui lòng nhập Email và mật khẩu để đăng nhập',
-    'email_address' => 'Địa chỉ Email',
+    'email' => 'Email',
     'password' => 'Mật khẩu',
     'keep_me_signed_in' => 'Duy trì đăng nhập',
     'do_not_have_an_account' => 'Bạn chưa có tài khoản ? ',

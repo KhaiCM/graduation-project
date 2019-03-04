@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPageRequest;
 use App\Repositories\UserPageRepository;
 
-class UserPageController extends Controller
+class UserController extends Controller
 {
     protected $user;
 
@@ -68,12 +69,14 @@ class UserPageController extends Controller
         {
             $user = $this->user->findOrFail($id);
             
-            return view('fontend.userpages.user_profile', compact('user'));
+            return view('backend.users.detail', compact('user'));
         } 
         catch (ModelNotFoundException $ex) 
         {
             echo $ex->getMessage();
         }
+        // $user = User:: findOrFail($id);
+        // return view('backend.users.detail', compact('user'));
     }
 
     /**
@@ -88,9 +91,8 @@ class UserPageController extends Controller
         try
         {
             $user = $this->user->update($request, $id);
-            // dd($request);
 
-            return redirect(route('user_page.edit',$id))->with('message', __('label.edit_sussess'));
+            return redirect(route('user.detail', $id))->with('message', __('label.edit_sussess'));
         }
         catch (ModelNotFoundException $ex) 
         {
