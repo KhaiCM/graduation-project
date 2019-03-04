@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Province;
 use App\Http\Requests\DistrictRequest;
 use App\Repositories\DistrictRepository;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class DistrictController extends Controller
 {
@@ -72,7 +73,17 @@ class DistrictController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $district = $this->district->findOrFail($id);
+            $provinces = Province::all();
+
+            return view('backend.district.edit', compact([
+                'district',
+                'provinces',
+            ]));
+        } catch (ModelNotFoundException $ex) {
+            return $ex->getMessage();
+        }
     }
 
     /**
@@ -82,9 +93,17 @@ class DistrictController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DistrictRequest $request, $id)
     {
-        //
+        try
+        {
+            $district = $this->district->update($request, $id);
+
+            return redirect(route('district.index'))->with('message', trans('province.edit_success'));
+        } catch (ModelNotFoundException $ex)
+        {
+            return $ex->getMessage();
+        }
     }
 
     /**

@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ $district->id }}</td>
                 <td>{{ $district->name }}</td>
-                <td><a href="#">{{ trans('province.edit') }}</a></td>
+                <td><a href="{{ route('district.edit', $district->id) }}">{{ trans('province.edit') }}</a></td>
                 <td><a href="#">{{ trans('province.delete') }}</a></td>
             </tr>
         @endforeach
