@@ -48,4 +48,17 @@ return [
     'name' => 'Tên',
     'confirm_password' => 'Xác nhận mật khẩu',
     'create_new_account' => 'Tạo tài khoản',
+    //user page
+    'my_profile' => 'Tài khoản cá nhân',
+    'my_property' => 'Tài sản của tôi',
+    'submit_new_property' => 'Tạo tài sản mới',
+    'change_password' => 'Đổi mật khẩu',
+    'user_page' => 'Tài khoản',
+    'name_required' => 'Vui lòng nhập tên!',
+    'name_length' => 'Tên có độ dài từ 5 đến 255 ký tự',
+    'changes' => 'Thay đổi',
+    'address' => 'Địa chỉ',
+    'phone' => 'Điện thoại',
+    //message
+    'edit_sussess' => 'Sửa thành công',
 ];

@@ -2,7 +2,7 @@
 return [
     //header
     'title' => 'Real estate',
-	'properties_sold' => 'Properties Sold',
+    'properties_sold' => 'Properties Sold',
     'about_us' => 'About us',
     'rental_property' => 'Rental Property',
     'news' => 'News',
@@ -51,4 +51,17 @@ return [
     'name' => 'Name',
     'confirm_password' => 'Confirm Password',
     'create_new_account' => 'Create New Account',
+    //user_page
+    'my_profile' => 'My Profile',
+    'my_property' => 'My Property',
+    'submit_new_property' => 'Submit New Property',
+    'change_password' => 'Change Password',
+    'user_page' => 'User Page',
+    'name_required' => 'Please enter a name!',
+    'name_length' => 'The name is between 5 characters and 255 characters long',
+    'changes' => 'Changes',
+    'address' => 'Address',
+    'phone' => 'Phone',
+    //message
+    'edit_sussess' => 'Edit Success'
 ];

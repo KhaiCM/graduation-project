@@ -46,9 +46,6 @@ Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('de
 
 Auth::routes();
 
-Route::get('/', 'HomeController@getHome');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register')->name('register');
-Route::get('logout', 'Auth\LoginController@logout');
-Route::get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('/', 'HomeController@getHome')->name('home');
+Route::get('user_page/{id}', 'UserPageController@edit')->name('user_page.edit');
+Route::put('user_page/{id}', 'UserPageController@update')->name('user_page.update');
