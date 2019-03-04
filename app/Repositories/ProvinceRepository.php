@@ -24,7 +24,7 @@ class ProvinceRepository
     }
     public function update(ProvinceRequest $request, $id)
     {
-        $province = Province::findOrFail($id);
+        $province = $this->findOrFail($id);
         $validated = $request->validated();
         $province->update([
             'name' => $request->get('name'),
