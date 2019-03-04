@@ -114,6 +114,12 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->district->destroy($id);
+
+            return redirect(route('district.index'))->with('message', trans('province.delete_success'));
+        } catch (ModelNotFoundException $ex) {
+            return $ex->getMessage();
+        }
     }
 }

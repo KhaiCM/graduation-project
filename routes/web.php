@@ -12,6 +12,7 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'Admin\ProvinceController@index');
     Route::get('/province', 'Admin\ProvinceController@index')->name('adminHome');
     Route::group(['prefix' => 'province'], function () {
         Route::get('/index', 'Admin\ProvinceController@index')->name('province.index');
@@ -21,13 +22,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{id}', 'Admin\ProvinceController@update');
         Route::get('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
     });
-    Route::get('district', 'Admin\DistrictController@index');
+    Route::get('/district', 'Admin\DistrictController@index');
     Route::group(['prefix' => 'district'], function () {
         Route::get('/index', 'Admin\DistrictController@index')->name('district.index');
         Route::get('/create', 'Admin\DistrictController@create')->name('district.create');
         Route::post('/create', 'Admin\DistrictController@store');
         Route::get('/edit/{id}', 'Admin\DistrictController@edit')->name('district.edit');
         Route::post('/edit/{id}', 'Admin\DistrictController@update');
+        Route::get('/destroy/{id}', 'Admin\DistrictController@destroy')->name('district.destroy');
     });
 });
 
