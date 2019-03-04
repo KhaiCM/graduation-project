@@ -202,7 +202,6 @@ tr:nth-child(even) {
     padding: 20px; 
     text-align: center; 
     background: #ddd; 
-    margin-left: 160px;
     margin-top: 50px;
 }
 .high {
@@ -222,7 +221,7 @@ tr:nth-child(even) {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px 0px 8%;
+    margin: 4px 2px 0px 5%;
 }
 .bntshowdl {
     background-color: #af1623;
@@ -233,7 +232,7 @@ tr:nth-child(even) {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px 0px 8%;
+    margin: 4px 2px 0px 5%;
 }
 .tdshow {
     width: 15%;

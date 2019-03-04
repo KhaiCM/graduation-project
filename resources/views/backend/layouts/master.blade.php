@@ -27,13 +27,24 @@
     </div>
 
     <div class="main">
+    @if (count($errors) > 0)
+        <div>
+        @foreach ($errors->all() as $err)
+        {{ $err }}
+        @endforeach
+        <div>
+        @endif
+
+        @if (session('noti'))
+            <div>
+                {{ session('noti') }}
+            <div>
+        @endif
         @yield('content')
+        <div class="footer">
+            <h2>{{ trans('message.Footer') }}</h2>
+        </div> 
     </div>
 
 </body>
-<footer>
-    <div class="footer">
-        <h2>{{ trans('message.Footer') }}</h2>
-    </div> 
-</footer>
 </html>

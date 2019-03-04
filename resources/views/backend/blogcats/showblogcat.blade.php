@@ -5,7 +5,7 @@
 <div class="container">
     <div class="high">
         <a>{{ trans('message.bloglist') }}</a>
-        <button class="button">{{ trans('message.add') }}</button>
+        <a href="{{ route('addblogcat') }}"><button class="button">{{ trans('message.add') }}</button></a>
     </div>
     <table>
         <thead>
@@ -18,9 +18,10 @@
         <tbody>
         @foreach($cat as $cb)
             <tr>
-                <td>{{ $cb -> id }}</td>
-                <td>{{ $cb -> name }}</td>
-                <td class="tdshow"><button class="bntshow">{{ trans('message.edit') }}</button><button class="bntshowdl">{{ trans('message.delete') }}</button></td>
+                <td>{{ $cb->id }}</td>
+                <td>{{ $cb->name }}</td>
+                <td class="tdshow"><a href="{{ route('editblogcat',$cb->id )}}"><button class="bntshow">{{ trans('message.edit') }}</button></a>
+                <a href="{{ route('deleteblogcat',$cb->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
             </tr>
             @endforeach
         </tbody>
