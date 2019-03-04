@@ -14,12 +14,12 @@ class BlogCatController extends Controller
         return view('backend.blogcats.showblogcat', ['cat' => $cat]);
     }
 
-    public function addblogcat()
+    public function addBlogCat()
     {
         return view('backend.blogcats.addblogcat');
     }
 
-    public function postblogcat(Request $request)
+    public function postAddBlogCat(Request $request)
     {
         $this->validate($request,
         [
@@ -32,9 +32,58 @@ class BlogCatController extends Controller
         ]);
 
         $cat = new CategoryPost;
-        $cat -> name = $request -> name;
-        $cat -> save();
+        $cat->name = $request->name;
+        $cat->save();
 
-        return redirect('addblogcat') -> with('noti', 'success');
+        return redirect('addblogcat')->with('noti', 'success');
+    }
+
+    public function getEditBlogCat($id)
+    {
+        try 
+        {
+            $cat = CategoryPost::findOrFail($id);
+        } 
+        catch (ModelNotFoundException $e) 
+        {
+            echo $e->getMessage();
+        }
+
+        return view('backend.blogcats.editblogcat', ['cat' => $cat]);
+    }
+
+    public function postEditBlogCat(Request $request, $id)
+    {
+        try 
+        {
+            $cat = CategoryPost::findOrFail($id);
+        } 
+        catch (ModelNotFoundException $e) 
+        {
+            echo $e->getMessage();
+        }
+
+        $this->validate($request,
+        [
+            'name' => '|required|min:3|max:100'
+        ],
+        [   
+            'name.required' => trans('message.cannotblank'),
+            'name.min' => trans('message.tooshort'),
+            'name.max' => trans('message.toolong'),
+        ]);
+
+        $cat->name = $request->name;
+        $cat->save();
+
+        return redirect('blogcatlist')->with('noti', 'success');
+    }
+
+    public function getDeleteBlogCat($id)
+    {
+        $cat = CategoryPost::find($id);
+        $cat->delete();
+
+        return redirect('blogcatlist')->with('noti', 'success');
     }
 }

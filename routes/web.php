@@ -33,18 +33,20 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('blogcatlist', 'BlogCatController@getList');
 
-Route::get('addblogcat', 'BlogCatController@addblogcat');
-Route::post('addblogcat', 'BlogCatController@postblogcat');
+Route::get('addblogcat', 'BlogCatController@addBlogCat')->name('addblogcat');
+Route::post('addblogcat', 'BlogCatController@postAddBlogCat');
 
 
-Route::get('editblogcat/{id}', 'BlogCatController@geteditlogcat');
-Route::post('editblogcat/{id}', 'BlogCatController@posteditblogcat');
+Route::get('editblogcat/{id}', 'BlogCatController@getEditBlogCat')->name('editblogcat');
+Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
+
+Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
 
 Auth::routes();
 
 Route::get('/', 'HomeController@getHome');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register') ->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 Route::get('logout', 'Auth\LoginController@logout');
 Route::get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
