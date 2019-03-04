@@ -12,14 +12,19 @@
 */
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('', 'ProvinceController@index')->name('adminHome');
+    Route::get('', 'Admin\ProvinceController@index')->name('adminHome');
     Route::group(['prefix' => 'province'], function () {
-        Route::get('/index', 'ProvinceController@index')->name('province.index');
-        Route::get('/create', 'ProvinceController@create')->name('province.create');
-        Route::post('/create', 'ProvinceController@store');
-        Route::get('/edit/{id}', 'ProvinceController@edit')->name('province.edit');
-        Route::post('/edit/{id}', 'ProvinceController@update');
-        Route::get('/destroy/{id}', 'ProvinceController@destroy')->name('province.destroy');
+        Route::get('/index', 'Admin\ProvinceController@index')->name('province.index');
+        Route::get('/create', 'Admin\ProvinceController@create')->name('province.create');
+        Route::post('/create', 'Admin\ProvinceController@store');
+        Route::get('/edit/{id}', 'Admin\ProvinceController@edit')->name('province.edit');
+        Route::post('/edit/{id}', 'Admin\ProvinceController@update');
+        Route::get('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
+    });
+    Route::group(['prefix' => 'district'], function () {
+        Route::get('/index', 'Admin\DistrictController@index')->name('district.index');
+        Route::get('/create', 'Admin\DistrictController@create')->name('district.create');
+        Route::post('/create', 'Admin\DistrictController@store');
     });
 });
 

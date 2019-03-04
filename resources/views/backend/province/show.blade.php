@@ -26,7 +26,7 @@
                 <td><a href="{{ route('province.destroy', $province->id) }}">{{ trans('province.delete') }}</a></td>
             </tr>
         @endforeach
-    </table> 
+    </table>
     {!! $provinces -> links() !!}
 </div>
 @endsection
