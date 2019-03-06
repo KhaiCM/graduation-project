@@ -41,7 +41,7 @@ return [
     //login
     'login' => 'LOGIN',
     'enter_pass' => 'Please enter your user name and password to login',
-    'email_address' => 'Email Address',
+    'email' => 'Email',
     'password' => 'Password',
     'keep_me_signed_in' => 'Keep Me Signed In',
     'do_not_have_an_account' => 'Do not have an account ? ',
