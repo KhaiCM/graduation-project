@@ -69,3 +69,8 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::get('province/{province_id}', 'AjaxController@getDistrict');
     Route::get('property_category{property_category_id}', 'AjaxController@getPropertyType');
 });
+Route::get('contractlist', 'ContractController@getlist');
+
+Route::get('contactlist', 'ContactController@getlist');
+Route::get('deletecontact/{id}', 'ContactController@getDeleteContact')->name('deletecontact');
+
