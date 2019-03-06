@@ -42,6 +42,17 @@ Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
 
 Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
 
+Route::get('bloglist', 'BlogController@getList');
+
+Route::get('addblog', 'BlogController@addBlog')->name('addblog');
+Route::post('addblog', 'BlogController@postAddBlog');
+
+
+Route::get('editblog/{id}', 'BlogController@getEditBlog')->name('editblog');
+Route::post('editblog{id}', 'BlogController@postEditBlog');
+
+Route::get('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
+
 Auth::routes();
 
 Route::get('/', 'HomeController@getHome');
