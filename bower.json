@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "lib_bower": "https://github.com/KhaiCM/lib_bower.git"
+    "lib_bower": "https://github.com/KhaiCM/lib_bower.git",
+    "ckeditor": "^4.11.3"
   }
 }

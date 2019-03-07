@@ -36,8 +36,8 @@
                                         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('label.name')]) !!}
                                     </div>
                                     <div class="form-group">
-                                        {!! Form::label('email', __('label.email_address')) !!}
-                                        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('label.email_address')]) !!}
+                                        {!! Form::label('email', __('label.email')) !!}
+                                        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('label.email')]) !!}
                                     </div>
                                     <div class="form-group">
                                         {!! Form::label('password', __('label.password')) !!}
