@@ -23,7 +23,7 @@ class Property extends Model
 
     public function districts()
     {
-        return $this->belongsTo('App\Models\District');
+        return $this->belongsTo('App\Models\District', 'district_id');
     }
 
     public function setCalendar()
@@ -48,7 +48,7 @@ class Property extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function propertyType()

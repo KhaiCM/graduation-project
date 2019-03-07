@@ -1,5 +1,5 @@
 <?php
-    return [
-        'all' => '10',
-    ]
-?>
+return [
+    'all' => '10',
+    'home' => '24',
+];

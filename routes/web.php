@@ -34,6 +34,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 		Route::get('/destroy/{id}', 'Admin\DistrictController@destroy')->name('district.destroy');
 	});
 });
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', 'Product\HomeController@index')->name('home');
+    Route::get('/prosold', 'Product\HomeController@getProSold')->name('home.sold');
+    Route::get('/property/view/{id}', 'Product\HomeController@getProSold')->name('property.view');
+    Route::get('/prorent', 'Product\HomeController@getProRent')->name('home.rent');
+});
 
 Route::get('blogcatlist', 'BlogCatController@getList');
 Route::get('addblogcat', 'BlogCatController@addBlogCat')->name('addblogcat');
@@ -44,6 +50,5 @@ Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('de
 
 Auth::routes();
 
-Route::get('/', 'HomeController@getHome')->name('home');
 Route::get('user_page/{id}', 'UserPageController@edit')->name('user_page.edit');
 Route::put('user_page/{id}', 'UserPageController@update')->name('user_page.update');
