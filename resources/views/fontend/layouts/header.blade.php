@@ -12,8 +12,8 @@
                     <div class="navbar-collapse collapse w-100" id="navbar">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown active">
-                                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {!! __('label.about_us')!!}
+                                <a class="nav-link" href="{{ route('home') }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {!! __('province.home')!!}
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -21,7 +21,7 @@
                                     {!! __('label.properties_sold')!!}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li class="dropdown-submenu"><a class="dropdown-item" href="#">{!! __('label.properties_sold')!!}</a></li>
+                                    <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('home.sold') }}">{!! __('label.properties_sold')!!}</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -29,7 +29,7 @@
                                     {!! __('label.rental_property')!!}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li class="dropdown-submenu"><a class="dropdown-item" href="#">{!! __('label.rental_property')!!}</a></li>
+                                    <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('home.rent') }}">{!! __('label.rental_property')!!}</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -46,7 +46,7 @@
                                 @if (Auth::check())
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} 
+                                        {{ Auth::user()->name }}
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('user_page.edit', Auth::user()->id) }}">{!! __('label.user_page')!!}</a></li>

@@ -14,8 +14,7 @@
                     <div class="carousel-content container">
                         <div class="text-center">
                             <h3 data-animation="animated fadeInDown delay-05s">{!! __('label.slider1')!!}<br/>{!! __('label.slider2')!!}</h3>
-                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-round btn-theme">Get Started Now</a>
-                            <a data-animation="animated fadeInUp delay-12s" href="#" class="btn btn-lg btn-round btn-white-lg-outline">Free Download</a>
+                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-round btn-theme">{{ trans('province.start') }}</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +57,7 @@
                         </div>
                         <div class="col-6 col-lg-3 col-md-3">
                             <div class="form-group">
-                            {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                                {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
                             </div>
                         </div>
                         <div class="col-6 col-lg-3 col-md-3">
@@ -84,87 +83,96 @@
 </div>
 <!-- banner end -->
 <!-- Featured properties start -->
+@if (count($properties) > 0)
+    <div class="featured-properties content-area-2">
+        <div class="container">
+            <div class="main-title">
+                <h1>{!! __('label.featured_properties')!!}</h1>
+            </div>
+            <ul class="list-inline-listing filters filteriz-navigation">
+                <li class="active btn filtr-button filtr" data-filter="all">{!! __('label.all')!!}</li>
+                <li data-filter="1" class="btn btn-inline filtr-button filtr">{!! __('label.apartment')!!}</li>
+                <li data-filter="2" class="btn btn-inline filtr-button filtr">{!! __('label.house')!!}</li>
+                <li data-filter="3" class="btn btn-inline filtr-button filtr">{!! __('label.office')!!}</li>
+            </ul>
+            <div class="row filter-portfolio">
+                <div class="cars">
+                    @foreach ($properties as $property)
+                    <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
+                        <div class="property-box">
+                            <div class="property-thumbnail">
+                                <a href="#" class="property-img">
+                                    <div class="price-ratings-box">
+                                        <p class="price">
+                                            {{ $property->price }}$
+                                        </p>
+                                        <div class="ratings">
+                                            <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" alt="{{ $property->name }}" class="img-fluid">
+                                </a>
+                                <div class="property-overlay">
+                                    <a href="#" class="overlay-link">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                    <div class="property-magnify-gallery">
+                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" class="overlay-link">
+                                        <i class="fa fa-expand"></i>
+                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->district_id.'.jpg') }}" class="hidden">
+                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->property_type_id.'.jpg') }}" class="hidden">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <h1 class="title">
+                                    <a href="#">{{ $property->name }}</a>
+                                </h1>
+                                <div class="location">
+                                    <a href="#">
+                                        <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name }}
+                                    </a>
+                                </div>
+                                <ul class="facilities-list clearfix">
+                                    <li>
+                                        <i class="flaticon-bed"></i> {{ $property->district_id }} {{trans('province.bedroom')}}
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-bath"></i> {{ $property->user_id }} {{ trans('province.bathroom') }}
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> {{ trans('province.acreage') }}: &nbsp; {{ $property->acreage }}
+                                    </li>
+                                    <li>
+                                        <i class="flaticon-car-repair"></i> {{ rand(1, 2) }} {{ trans('province.garage') }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="footer">
+                                <a href="#">
+                                    <i class="fa fa-user"></i> {{ $property->users->name }}
+                                </a>
+                                <span>
+                                    <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+    {!! $properties->links() !!}
+        </div>
+    </div>
+@else
 <div class="featured-properties content-area-2">
     <div class="container">
         <div class="main-title">
-            <h1>{!! __('label.featured_properties')!!}</h1>
-        </div>
-        <ul class="list-inline-listing filters filteriz-navigation">
-            <li class="active btn filtr-button filtr" data-filter="all">{!! __('label.all')!!}</li>
-            <li data-filter="1" class="btn btn-inline filtr-button filtr">{!! __('label.apartment')!!}</li>
-            <li data-filter="2" class="btn btn-inline filtr-button filtr">{!! __('label.house')!!}</li>
-            <li data-filter="3" class="btn btn-inline filtr-button filtr">{!! __('label.office')!!}</li>
-        </ul>
-        <div class="row filter-portfolio">
-            <div class="cars">
-                <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
-                    <div class="property-box">
-                        <div class="property-thumbnail">
-                            <a href="properties-details.html" class="property-img">
-                                <div class="price-ratings-box">
-                                    <p class="price">
-                                        $178,000
-                                    </p>
-                                    <div class="ratings">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                </div>
-                                <img src="{{ asset(config('fontend.fontend_image.property7')) }}" alt="property-7" class="img-fluid">
-                            </a>
-                            <div class="property-overlay">
-                                <a href="properties-details.html" class="overlay-link">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <div class="property-magnify-gallery">
-                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="overlay-link">
-                                    <i class="fa fa-expand"></i>
-                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="hidden">
-                                    <img src="{{ asset(config('fontend.fontend_image.property7')) }}" class="hidden">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <h1 class="title">
-                                <a href="properties-details.html">Relaxing Apartment</a>
-                            </h1>
-                            <div class="location">
-                                <a href="properties-details.html">
-                                    <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>123 Kathal St. Tampa City,
-                                </a>
-                            </div>
-                            <ul class="facilities-list clearfix">
-                                <li>
-                                    <i class="flaticon-bed"></i> 3 Bedrooms
-                                </li>
-                                <li>
-                                    <i class="flaticon-bath"></i> 2 Bathrooms
-                                </li>
-                                <li>
-                                    <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> Sq Ft:3400
-                                </li>
-                                <li>
-                                    <i class="flaticon-car-repair"></i> 1 Garage
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="footer">
-                            <a href="#">
-                                <i class="fa fa-user"></i> Jhon Doe
-                            </a>
-                            <span>
-                                <i class="fa fa-calendar-o"></i> 2 years ago
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h1>{{ trans('province.none') }}</h1>
         </div>
     </div>
 </div>
+@endif
 <!-- Featured properties end
     <!-- services start -->
     <div class="services content-area-5">
@@ -176,22 +184,22 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInLeft delay-04s">
                     <i class="flaticon-hotel-building"></i>
                     <h5>{!! __('label.apartments_clean')!!}</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    <p>{{ trans('province.content') }}</p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInUp delay-04s">
                     <i class="flaticon-house"></i>
                     <h5>{!! __('label.houses')!!}</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    <p>{{ trans('province.content') }}</p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInDown delay-04s">
                     <i class="flaticon-call-center-agent"></i>
                     <h5>{!! __('label.support_24')!!}</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    <p>{{ trans('province.content') }}</p>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInRight delay-04s">
                     <i class="flaticon-office-block"></i>
                     <h5>{!! __('label.commercial')!!}</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+                    <p>{{ trans('province.content') }}</p>
                 </div>
             </div>
         </div>
@@ -209,18 +217,18 @@
                         <img class="blog-theme img-fluid" src="{{ asset(config('fontend.fontend_image.property10')) }}" alt="property-10">
                         <div class="detail">
                             <div class="date-box">
-                                <h5>03</h5>
-                                <h5>May</h5>
+                                <h5>{{ trans('province.month') }}</h5>
+                                <h5>{{ trans('province.day') }}</h5>
                             </div>
                             <h3>
-                                <a href="blog-single-sidebar-right.html">Buying a Home</a>
+                                <a href="blog-single-sidebar-right.html">{{ trans('province.name') }}</a>
                             </h3>
                             <div class="post-meta">
-                                <span><a href="#"><i class="fa fa-user"></i>John Antony</a></span>
-                                <span><a href="#"><i class="fa fa-commenting-o"></i>24 Comment</a></span>
+                                <span><a href="#"><i class="fa fa-user"></i>{{ trans('province.name') }}</a></span>
+                                <span><a href="#"><i class="fa fa-commenting-o"></i>{{ trans('province.comment') }}</a></span>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
-                            <a href="blog-single-sidebar-right.html" class="btn-read-more">Read more</a>
+                            <p>{{ trans('province.content') }}</p>
+                            <a href="blog-single-sidebar-right.html" class="btn-read-more">{{ trans('province.readmore') }}</a>
                         </div>
                     </div>
                 </div>
