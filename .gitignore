@@ -3,6 +3,7 @@
 /public/bower_components
 /public/editor
 /public/storage
+/public/public
 /storage/*.key
 /vendor
 .env

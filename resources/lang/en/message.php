@@ -32,4 +32,18 @@ return [
     'add' => 'Add',
     'Footer' => 'Footer',
     'bloglist' => 'Blog list',
+    'id' => 'Id',
+    'title' => 'Title',
+    'email' => 'Email',
+    'task' => 'Task',
+    'lessee_id' => 'Renter',
+    'property_id' => 'property',
+    'rent_time' => 'rent time',
+    'start_date' => 'start date',
+    'end_date' => 'end date',
+    'content' => 'content',
+    'total_money' => 'total money',
+    'contract' => 'contract',
+    'contact' => 'contact',
+
 ];
