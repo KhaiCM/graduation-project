@@ -2,7 +2,9 @@
 
 return [
 
+    'blog_image' => 'public/upload/blog/',
     'blog_cat_page' => 5,
+    'blog_page' => 5,
     /*
     |--------------------------------------------------------------------------
     | Application Name
