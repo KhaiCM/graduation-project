@@ -7,6 +7,7 @@ $factory->define(App\Models\Property::class, function (Faker $faker) {
         'user_id' => rand(1, 10),
         'property_type_id' => rand(1, 10),
         'district_id' => rand(1, 10),
+        'unit_id' => rand(1, 9),
         'name' => $faker->name,
         'address' => $faker->address,
         'describe' => str_random(100),

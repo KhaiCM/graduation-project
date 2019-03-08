@@ -130,7 +130,7 @@
                                 </h1>
                                 <div class="location">
                                     <a href="#">
-                                        <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name }}
+                                        <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
                                     </a>
                                 </div>
                                 <ul class="facilities-list clearfix">
@@ -150,7 +150,7 @@
                             </div>
                             <div class="footer">
                                 <a href="#">
-                                    <i class="fa fa-user"></i> {{ $property->users->name }}
+                                    <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
                                 </a>
                                 <span>
                                     <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
