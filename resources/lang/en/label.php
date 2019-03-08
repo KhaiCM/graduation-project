@@ -63,5 +63,24 @@ return [
     'address' => 'Address',
     'phone' => 'Phone',
     //message
-    'edit_sussess' => 'Edit Success'
+    'edit_sussess' => 'Edit Success',
+    //property submit
+    'basic_information' => 'Basic Information',
+    'property_title' => 'Property Title',
+    'property_category' => 'Property Category',
+    'form' => 'Form',
+    'property_type' => 'Property Type',
+    'price' => 'Price',
+    'province' => 'Province',
+    'district' => 'District',
+    'describe' => 'Describe',
+    'property_image' => 'Property Image',
+    'acreage' => 'Acreage',
+    'contact_detail' => 'Contact Details',
+    'home' => 'Home',
+    'submit_property' => 'Submit Property',
+    'unit' => 'Unit',
+    'detailed_nformation' => 'Detailed Information',
+    'drop_files_here_to_upload' => 'Drop files here to upload',
+    'create' => 'Create',
 ];

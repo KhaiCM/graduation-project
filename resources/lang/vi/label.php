@@ -61,4 +61,23 @@ return [
     'phone' => 'Điện thoại',
     //message
     'edit_sussess' => 'Sửa thành công',
+        //property submit
+    'basic_information' => 'THÔNG TIN CƠ BẢN',
+    'property_title' => 'Tiêu đề tài sản',
+    'property_category' => 'Thể loại tài sản',
+    'form' => 'Hình thức',
+    'property_type' => 'Loại tài sản',
+    'price' => 'Gía',
+    'province' => 'Tỉnh',
+    'district' => 'Huyện',
+    'describe' => 'Miêu Tả',
+    'property_image' => 'Hình Tài sản',
+    'acreage' => 'Diện tích',
+    'contact_detail' => 'Chi tiết liên hệ',
+    'home' => 'Trang chủ',
+    'submit_property' => 'Đăng tài sản',
+    'unit' => 'Đơn vị',
+    'detailed_nformation' => 'Thông tin chi tiết',
+    'drop_files_here_to_upload' => 'Thả file vào đây',
+    'create' => 'Thêm mới',
 ];
