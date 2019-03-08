@@ -4,6 +4,7 @@ return [
     'addProvince' => 'Add Province',
     'listDistrict' => 'List District',
     'addDistrict' => 'Add District',
+    'district' => 'District',
     'name' => 'Name',
     'action' => 'Action',
     'edit_success' => 'Edit success',
@@ -31,4 +32,5 @@ return [
     'feature' => 'Features',
     'recentcategory' => 'RECENT PROPERTIES',
     'by' => 'By',
+    'for' => 'Belong',
 ];

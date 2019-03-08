@@ -30,4 +30,5 @@ return [
     'feature' => 'Tính năng',
     'recentcategory' => 'Tương tự',
     'by' => 'Bởi',
+    'district' => 'Huyện',
 ];

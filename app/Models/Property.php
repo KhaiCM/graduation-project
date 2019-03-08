@@ -10,6 +10,7 @@ class Property extends Model
 
     protected $fillable = [
         'user_id',
+        'unit_id',
         'property_type_id',
         'district_id',
         'name',
@@ -54,5 +55,10 @@ class Property extends Model
     public function propertyType()
     {
         return $this->belongsTo('App\Models\PropertyType');
+    }
+
+    public function unit()
+    {
+        return $this->hasOne('App\Models\Property', 'unit_id');
     }
 }

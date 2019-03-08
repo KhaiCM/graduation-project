@@ -27,6 +27,8 @@
         <a href="#services">{{ trans('message.Services') }}</a>
         <a href="#clients">{{ trans('message.Clients') }}</a>
         <a href="#contact">{{ trans('message.Contact') }}</a>
+        <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
+        <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
     </div>
     <div class="main">
         @if (count($errors) > 0)
@@ -44,7 +46,7 @@
                         @yield('content')
                         <div class="footer">
                             <h2>{{ trans('message.Footer') }}</h2>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
