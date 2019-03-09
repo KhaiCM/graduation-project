@@ -10,9 +10,7 @@ class PropertyImage extends Model
 
     protected $fillable = [
         'property_id',
-        'name',
         'link',
-        'status',
     ];
 
     public function properties()

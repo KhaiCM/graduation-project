@@ -4,6 +4,7 @@
 /public/editor
 /public/storage
 /public/public
+/public/upload
 /storage/*.key
 /vendor
 .env

@@ -8,6 +8,7 @@ return [
     'contact_us' => 'Liên hệ chúng tôi',
     'login' => 'Đăng nhập',
     'sign_up' => 'Đăng kí',
+    'property' => 'Tài sản',
     //footer
     'useful_links' => 'Liên kết hữu ích',
     'subscribe' => 'Theo dõi',
@@ -80,4 +81,7 @@ return [
     'detailed_nformation' => 'Thông tin chi tiết',
     'drop_files_here_to_upload' => 'Thả file vào đây',
     'create' => 'Thêm mới',
+    //my_property
+    'date_added' => 'Ngày thêm',
+    'actions' => 'Hành động',
 ];

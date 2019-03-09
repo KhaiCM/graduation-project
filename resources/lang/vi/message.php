@@ -15,4 +15,8 @@ return [
     'Reset' => 'làm lại',
     'Home' => 'Trang chủ',
     'add_success' => 'Thêm thành công',
+    //property
+    'add_property' => 'Thêm tài sản thành công',
+    'mimes' => 'File chọn phải có đạnh dạng jpg, png, jpeg',
+    'max' => 'Kích thước file tải lên chỉ được nhỏ hơn 2048kb',
 ];
