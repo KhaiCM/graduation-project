@@ -84,4 +84,6 @@ return [
     //my_property
     'date_added' => 'Ngày thêm',
     'actions' => 'Hành động',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
 ];

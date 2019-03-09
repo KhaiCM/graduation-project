@@ -63,14 +63,14 @@ abstract class EloquentRepository implements RepositoryInterface
     public function whereNull($id)
     {
         $result = $this->model->whereNull($id)->get();
-        
+
         return $result;
     }
 
     public function whereNotNull($id)
     {
         $result = $this->model->whereNotNull($id)->get();
-        
+
         return $result;
     }
 
@@ -98,10 +98,10 @@ abstract class EloquentRepository implements RepositoryInterface
         if ($result)
         {
             $result->delete();
-            
+
             return true;
         }
-        
+
         return false;
     }
 }

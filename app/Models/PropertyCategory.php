@@ -12,7 +12,7 @@ class PropertyCategory extends Model
         'name',
     ];
 
-    public function propertyCategory()
+    public function propertyType()
     {
         return $this->hasMany('App\Models\PropertyType', 'property_category_id');
     }
