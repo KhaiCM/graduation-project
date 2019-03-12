@@ -9,6 +9,7 @@ return [
     'contact_us' => 'Contact us',
     'login' => 'Login',
     'sign_up' => 'Sign up',
+    'property' => 'Property',
     //footer
     'useful_links' => 'Useful Links',
     'subscribe' => 'Subscribe',
@@ -83,4 +84,7 @@ return [
     'detailed_nformation' => 'Detailed Information',
     'drop_files_here_to_upload' => 'Drop files here to upload',
     'create' => 'Create',
+    //my_property
+    'date_added' => 'Date Added',
+    'actions' => 'Actions',
 ];
