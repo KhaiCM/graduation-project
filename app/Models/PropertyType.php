@@ -21,6 +21,6 @@ class PropertyType extends Model
 
     public function propertyCategory()
     {
-        return $this->belongsTo('App\Models\Property');
+        return $this->belongsTo('App\Models\PropertyCategory');
     }
 }

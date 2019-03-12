@@ -60,7 +60,7 @@
                             @foreach ($properties as $property)
                             <tr>
                                 <td class="image">
-                                    <a href="properties-details.html"><img alt="my-properties-3" src="{{ asset(config('app.property_path') . $property->propertyImage()->value('link')) }}" class="img-fluid"></a>
+                                    <a href="#"><img alt="my-properties-3" src="{{ asset(config('app.property_path') . $property->propertyImage()->value('link')) }}" class="img-fluid"></a>
                                 </td>
                                 <td>
                                     <div class="inner">
@@ -72,8 +72,8 @@
                                 <td>{{ $property->created_at }}</td>
                                 <!-- <td>421</td> -->
                                 <td class="actions">
-                                    <a href="#" class="edit"><i class="fa fa-pencil"></i>Edit</a>
-                                    <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                    <a href="{{ route('property.edit', $property->id) }}" class="edit"><i class="fa fa-pencil"></i>{{ __('label.edit') }}</a>
+                                    <a href="{{ route('property.delete', $property->id) }}"><i class="delete fa fa-trash-o"></i>{{ __('label.delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -87,3 +87,4 @@
 </div>
 <!-- User page end -->
 @endsection
+

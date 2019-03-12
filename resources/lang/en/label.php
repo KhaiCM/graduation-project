@@ -87,4 +87,6 @@ return [
     //my_property
     'date_added' => 'Date Added',
     'actions' => 'Actions',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
 ];

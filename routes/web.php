@@ -104,8 +104,11 @@ Route::get('property', 'PropertyController@create')->name('property');
 
 Route::post('property', 'PropertyController@store')->name('property.create');
 
-Route::get('editproperty/{id}', 'PropertyController@edit');
-Route::put('editproperty/{id}', 'PropertyController@update');
+Route::get('editproperty/{id}', 'PropertyController@edit')->name('property.edit');
+
+Route::put('editproperty/{id}', 'PropertyController@update')-> name('property.update');
+
+Route::get('destroy/{id}', 'PropertyController@destroy')-> name('property.delete');
 
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('province/{province_id}', 'AjaxController@getDistrict');

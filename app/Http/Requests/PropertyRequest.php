@@ -25,21 +25,25 @@ class PropertyRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:255',
+            'district_id' => 'required',
+            'property_type_id' => 'required',
             'address' => 'required|min:|max:255',
             'price' => 'required',
             'acreage' => 'required',
-            'describe' => 'required|min:5|max:300',
+            'describe' => 'required|min:5',
             'file' => 'required',
-            'file.*' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'file.*' => 'image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => __('validate.name_required'),
+            'name.required' => __('label.name_required'),
             'name.min' => __('validate.name_length'),
             'name.max' => __('validate.name_length'),
+            'property_type_id.required' => 'message.propertytype_id',
+            'district_id.required' => 'message.property_district_id',
             'address.required' => __('validate.name_required'),
             'address.min' => __('validate.name_length'),
             'address.max' => __('validate.name_length'),
@@ -47,8 +51,7 @@ class PropertyRequest extends FormRequest
             'acreage.required' => __('validate.name_required'),
             'describe.required' => __('validate.name_required'),
             'describe.min' => __('validate.name_length'),
-            'describe.max' => __('validate.name_length'),
-            'file.required' => __('validate.name_required'),
+            'file.required' => __('label.file_required'),
             'file.max' => __('message.max'),
         ];
     }

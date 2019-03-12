@@ -32,25 +32,25 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.province')) !!}
-                                        {!! Form::select('province', $province->pluck('name'), '', ['class' => 'selectpicker search-fields', 'id' => 'province']) !!}
+                                        {!! Form::select('province_id', $province->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields', 'id' => 'province']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.property_category')) !!}
-                                        {!! Form::select('form', $propertyCategory->pluck('name'), '', ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
+                                        {!! Form::select('property_category_id', $propertyCategory->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.district')) !!}
-                                        {!! Form::select('district_id', $district->pluck('name'), '', ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
+                                        {!! Form::select('district_id', $district->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.property_type')) !!}
-                                        {!! Form::select('property_type_id', $propertyType->pluck('name'), '', ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
+                                        {!! Form::select('property_type_id', $propertyType->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -74,7 +74,7 @@
                                 <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.unit')) !!}
-                                        {!! Form::select('unit_id', $unit->pluck('name'), '', ['class' => 'selectpicker search-fields']) !!}
+                                        {!! Form::select('unit_id', $unit->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
@@ -100,7 +100,7 @@
                                 <div class="col-lg-4 col-md-4">
                                     <div class="form-group">
                                         {!! Form::label(__('label.name')) !!}
-                                        {!! Form::text('name', $user->name, ['class' => 'form-control', 'readonly' => 'readonly', 'placeholder' => __('label.name')]) !!}
+                                        {!! Form::text('name_user', $user->name, ['class' => 'form-control', 'readonly' => 'readonly', 'placeholder' => __('label.name')]) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4">

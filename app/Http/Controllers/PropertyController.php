@@ -9,6 +9,7 @@ use App\Models\Province;
 use App\Models\PropertyCategory;
 use App\Models\Unit;
 use App\Models\Property;
+use App\Models\PropertyImage;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\PropertyRepository;
 use App\Repositories\PropertyImageRepository;
@@ -68,6 +69,7 @@ class PropertyController extends Controller
             'user_id' => $request->user()->id,
         ]);
         $properties = $this->property->create($request->all());
+
         if ($request->hasFile('file')) {
             foreach ($request->file('file') as $item) {
                 $name = $item->getClientOriginalName();
@@ -116,7 +118,21 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $properties = $this->property->findOrFail($id);
+
+        $user = Auth::user();
+
+        $unit = Unit::all();
+
+        $province = Province::all();
+
+        $district = District::all();
+
+        $propertyCategory = PropertyCategory:: all();
+
+        $propertyType = PropertyType::all();
+
+        return view('fontend.properties.edit_property', compact('properties', 'user', 'unit', 'province', 'district', 'propertyCategory', 'propertyType'));
     }
 
     /**
@@ -126,9 +142,47 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PropertyRequest $request, $id)
     {
-        //
+        try
+        {
+            $request->merge([
+                'status' => 0,
+                'user_id' => $request->user()->id,
+            ]);
+            $properties = $this->property->update($id, $request->all());
+            $file = [];
+            if ($request->hasFile('file')) {
+                foreach ($request->file('file') as $item) {
+                    $name = $item->getClientOriginalName();
+                    $image = str_random(5) . $name;
+                    while (file_exists('upload/property' . $image ))
+                    {
+                        $image = str_random(5) . '.' . $name;
+                    }
+                    $item->move(config('app.property_path'), $image);
+                    $propertyImage = PropertyImage::where('property_id', $id)->get();
+                    foreach($propertyImage as $item) {
+                        if (file_exists(config('app.property_path') . $item->link))
+                        {
+                            unlink(config('app.property_path') . $item->link);
+                        }
+                    }
+                    $file[] = new PropertyImage([
+                        'link' => $image,
+                    ]);
+                }
+                $property = $this->property->findOrFail($id);
+                $property->propertyImage()->delete();
+                $property->propertyImage()->saveMany($file);
+
+                return redirect(route('property.show', $request->user()->id))->with('message', __('label.edit_sussess'));
+            }
+        }
+        catch (ModelNotFoundException $ex)
+        {
+            echo $ex->getMessage();
+        }
     }
 
     /**
@@ -139,6 +193,27 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try
+        {
+            $property = $this->property->findOrFail($id);
+
+            $propertyImage = PropertyImage::where('property_id', $id)->get();
+
+            foreach($propertyImage as $item) {
+                if (file_exists(config('app.property_path') . $item->link))
+                {
+                    unlink(config('app.property_path') . $item->link);
+                }
+            }
+            $property->propertyImage()->delete();
+
+            $properties = $this->property->delete($id);
+
+            return redirect(route('property.show', Auth::user()->id));
+        }
+        catch (ModelNotFoundException $ex)
+        {
+            echo $ex->getMessage();
+        }
     }
 }
