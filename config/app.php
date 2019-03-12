@@ -6,6 +6,7 @@ return [
     'blog_cat_page' => 5,
     'blog_page' => 5,
     'contract_page' => 5,
+    'property_path' => 'upload/property/',
     /*
     |--------------------------------------------------------------------------
     | Application Name

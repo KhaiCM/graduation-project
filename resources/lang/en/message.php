@@ -45,5 +45,8 @@ return [
     'total_money' => 'total money',
     'contract' => 'contract',
     'contact' => 'contact',
-
+    //property
+    'add_property' => 'Add property success',
+    'mimes' => 'The selected file must be in png, jpg, jpeg format',
+    'max' => 'Upload file size has exceeded the limit',
 ];
