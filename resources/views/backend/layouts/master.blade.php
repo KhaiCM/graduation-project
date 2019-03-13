@@ -12,8 +12,9 @@
         <a href="#news">{{ trans('message.New') }}</a>
         <a href="#contact">{{ trans('message.Contact') }}</a>
         <a href="#about">{{ trans('message.About') }}</a>
+        <img src="{{ asset(config('app.avatar_path') . Auth::user()->avatar) }}" alt="avatar" class="img-avatar">
         <div class="dropdown">
-            <button class="dropbtn">{{ trans('message.Account') }}</button>
+            <button class="dropbtn">{{ Auth::user()->name }}</button>
             <div class="dropdown-content">
                 <a href="{{ route('user.detail', Auth::user()->id) }}">{{ trans('message.Detail') }}</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>

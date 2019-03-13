@@ -10,34 +10,34 @@
                     <!--header -->
                     <div class="header clearfix">
                         <h2>{!! $user->name !!}</h2>
-                        <img src="{{ asset(config('fontend.fontend_image.sub_property')) }}" alt="avatar" class="img-fluid profile-img">
+                        <img src="{{ asset(config('app.avatar_path') . $user->avatar) }}" alt="avatar" class="img-fluid profile-img">
                     </div>
                     <!-- Detail -->
                     <div class="detail clearfix">
                         <ul>
                             <li>
                                 <a href="#" class="active">
-                                    <i class="flaticon-user"></i>{!!__('label.my_profile') !!}
+                                    <i class="flaticon-user"></i>{!! __('label.my_profile') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="flaticon-house"></i>{!!__('label.my_property') !!}
+                                <a href="{{ route('property.show', Auth::user()->id) }}">
+                                    <i class="flaticon-house"></i>{!! __('label.my_property') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
-                                    <i class="flaticon-add"></i>{!!__('label.submit_new_property') !!}
+                                <a href="{{ route('property') }}">
+                                    <i class="flaticon-add"></i>{!! __('label.submit_new_property') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="change-password.html">
-                                    <i class="flaticon-locked-padlock"></i>{!!__('label.change_password') !!}
+                                <a href="{{ route('user.change_pass', Auth::user()->id) }}">
+                                    <i class="flaticon-locked-padlock"></i>{!! __('label.change_password') !!}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}">
-                                    <i class="flaticon-logout"></i>{!!__('Logout') !!}
+                                    <i class="flaticon-logout"></i>{!! __('Logout') !!}
                                 </a>
                             </li>
                         </ul>
@@ -59,7 +59,7 @@
                         {{ session('message') }}
                     </div>
                     @endif
-                    {{ Form::open(['route' => ['user_page.update', $user->id], 'method' => 'PUT']) }}
+                    {{ Form::open(['route' => ['user_page.update', $user->id], 'method' => 'PUT', 'files' => true]) }}
                     <div class="row">
                         <div class="col-lg-12 ">
                             <div class="form-group name">
@@ -83,6 +83,12 @@
                             <div class="form-group number">
                                 {!! Form::label('address', __('label.address')) !!}
                                 {!! Form::text('address', $user->address, ['class' => 'form-control', 'placeholder' =>  __('label.address')]) !!}
+                            </div>
+                        </div>
+                        <div class="col-lg-12 ">
+                            <div class="form-group number">
+                                {!! Form::label('avatar', __('label.avatar')) !!}
+                                {{ Form::file('file', ['class' => 'form-control']) }}
                             </div>
                         </div>
                         <div class="col-lg-12">

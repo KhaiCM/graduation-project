@@ -3,23 +3,20 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Repositories\EloquentRepository;
 use App\Http\Requests\UserPageRequest;
+use App\Http\Requests\ChangePassRequest;
 
-class UserPageRepository
+class UserPageRepository extends EloquentRepository
 {
+    function model()
+    {
+        return 'App\Models\User';
+    }
+
     public function findOrFail($id)
     {
         return User::findOrFail($id);
     }
-    public function update(UserPageRequest $request, $id)
-    {
-        $user = User::findOrFail($id);
-        $validated = $request->validated();
-        $user->update([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'phone' => $request->get('phone'),
-            'address' => $request->get('address'),
-        ]);
-    }
 }
+
