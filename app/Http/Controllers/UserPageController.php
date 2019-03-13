@@ -37,6 +37,7 @@ class UserPageController extends Controller
     public function getChangePass($id)
     {
         $user = $this->user->findOrFail($id);
+        
         return view('fontend.userpages.change_pass', compact('user'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CategoryPost;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -48,7 +49,7 @@ class BlogController extends Controller
             'category_post_id.required' => trans('message.cannotblank'),
         ]);
         
-        $user = Auth::id();
+        $user = Auth::user()->id;
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $file->move(config('app.blog_image'),$file->getClientOriginalName());
@@ -65,7 +66,7 @@ class BlogController extends Controller
         $bl->user_id = $user;
         $bl->save();
 
-        return redirect('addblog')->with('noti', 'success');
+        return redirect('admin/blog/addblog')->with('noti', 'success');
     }
 
     public function getEditBlog($id)
@@ -118,7 +119,7 @@ class BlogController extends Controller
             'category_post_id.required' => trans('message.cannotblank'),
         ]);
 
-        $user = Auth::id();
+        $user = Auth::user()->id;
         if ($request->hasFile('file')) 
         {
             $file = $request->file('file');
@@ -135,7 +136,7 @@ class BlogController extends Controller
         $bl->user_id = $user;
         $bl->save();
 
-        return redirect('bloglist')->with('noti', 'success');
+        return redirect('admin/blog/bloglist')->with('noti', 'success');
     }
 
     public function getDeleteBlog($id)
@@ -143,6 +144,7 @@ class BlogController extends Controller
         $bl = Post::find($id);
         $bl->delete();
 
-        return redirect('bloglist')->with('noti', 'success');
+        return redirect('admin/blog/bloglist')->with('noti', 'success');
     }
 }
+

@@ -14,7 +14,7 @@
         {!! Form::textarea('describe', "$bl->describe") !!}<br>
 
         {!! Form::label('content', trans('message.content'), ['class' => 'label']) !!}<br>
-        {!! Form::textarea('content', "$bl->content") !!}<br>
+        {!! Form::textarea('content', "$bl->content", ['id' => 'editor1']) !!}<br>
         
         {!! Form::label('slug', trans('message.slug') , ['class' => 'label']) !!}<br>
         {!! Form::text('slug', "$bl->slug", ['class' => 'input', 'placeholder' => trans('message.name')]) !!}<br>
@@ -29,3 +29,4 @@
         {!! Form::reset(trans('message.Reset')) !!}
     {!! Form::close() !!}
 @endsection
+

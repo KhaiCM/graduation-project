@@ -24,10 +24,10 @@
         </div>
     </div>
     <div class="sidenav">
-        <a href="#about">{{ trans('message.About') }}</a>
-        <a href="#services">{{ trans('message.Services') }}</a>
-        <a href="#clients">{{ trans('message.Clients') }}</a>
-        <a href="#contact">{{ trans('message.Contact') }}</a>
+        <a href="{{ route('blog.index') }}">{{ trans('message.blog') }}</a>
+        <a href="{{ route('blogcat.index') }}">{{ trans('message.blogcat') }}</a>
+        <a href="{{ route('contact.index') }}">{{ trans('message.contact') }}</a>
+        <a href="{{ route('contract.index') }}">{{ trans('message.contract') }}</a>
         <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
         <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
     </div>
@@ -54,4 +54,7 @@
         </div>
     </div>
 </body>
+    <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+    <script> CKEDITOR.replace('editor1'); </script>
 </html>
+
