@@ -19,7 +19,7 @@ return [
     'add_property' => 'Thêm tài sản thành công',
     'mimes' => 'File chọn phải có đạnh dạng jpg, png, jpeg',
     'max' => 'Kích thước file tải lên chỉ được nhỏ hơn 2048kb',
-    'file_required' => 'file không thể trống';
+    'file_required' => 'file không thể trống',
     'propertytype_id' => 'Kiểu tầi sản không thể trống',
     'property_district_id' => 'Địa chỉ huyện không thể trống', 
 ];

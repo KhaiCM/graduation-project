@@ -60,9 +60,10 @@ return [
     'changes' => 'Thay đổi',
     'address' => 'Địa chỉ',
     'phone' => 'Điện thoại',
+    'avatar' => 'Ảnh đại diện',
     //message
     'edit_sussess' => 'Sửa thành công',
-        //property submit
+    //property submit
     'basic_information' => 'THÔNG TIN CƠ BẢN',
     'property_title' => 'Tiêu đề tài sản',
     'property_category' => 'Thể loại tài sản',
@@ -86,4 +87,10 @@ return [
     'actions' => 'Hành động',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
+    //change pass
+    'current_password' => 'Mật khẩu hiện tại',
+    'new_password' => 'Mật khẩu mới',
+    'confirm_new_password' => 'Nhập lại mật khẩu',
+    'pass_required' => 'Vui lòng nhập vào mật khẩu',
+    'newpass_required' => 'VUi lòng nhập vào mật khẩu mới',
 ];

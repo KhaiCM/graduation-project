@@ -83,12 +83,16 @@ Route::post('editblog{id}', 'BlogController@postEditBlog');
 
 Route::get('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
 
-//login
+//user page
 Auth::routes();
 
 Route::get('user-page/{id}', 'UserPageController@edit')->name('user_page.edit');
 
-Route::put('user_page/{id}', 'UserPageController@update')->name('user_page.update');
+Route::put('user-page/{id}', 'UserPageController@update')->name('user_page.update');
+
+Route::get('change-pass/{id}', 'UserPageController@getChangePass')->name('user.change_pass');
+
+Route::put('change-pass/{id}', 'UserPageController@postChangePass')->name('user.post_change');
 
 //contract
 Route::get('contractlist', 'ContractController@getlist');

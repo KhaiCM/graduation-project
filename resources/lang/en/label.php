@@ -63,8 +63,10 @@ return [
     'changes' => 'Changes',
     'address' => 'Address',
     'phone' => 'Phone',
+    'avatar' => 'Avatar',
     //message
     'edit_sussess' => 'Edit Success',
+    'changePass_success' => 'Change Password Success',
     //property submit
     'basic_information' => 'Basic Information',
     'property_title' => 'Property Title',
@@ -89,4 +91,11 @@ return [
     'actions' => 'Actions',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    //change pass
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
+    'pass_required' => 'Please enter a password!',
+    'newpass_required' => 'Please enter a password new!',
+    'pass_min' => 'Password must be at least 6 characters long',
 ];

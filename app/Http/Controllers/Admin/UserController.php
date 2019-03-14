@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPageRequest;
 use App\Repositories\UserPageRepository;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -65,14 +65,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        try 
+        try
         {
             $user = $this->user->findOrFail($id);
-            
+
             return view('backend.users.detail', compact('user'));
-        } 
-        catch (ModelNotFoundException $ex) 
-        {
+        } catch (ModelNotFoundException $ex) {
             echo $ex->getMessage();
         }
         // $user = User:: findOrFail($id);
@@ -88,16 +86,29 @@ class UserController extends Controller
      */
     public function update(UserPageRequest $request, $id)
     {
-        try
-        {
-            $user = $this->user->update($request, $id);
+        $user = $this->user->findOrFail($id);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $name = $file->getClientOriginalName();
+            $image = str_random(5) . $name;
+            while (file_exists('upload/avatar' . $image)) {
+                $image = str_random(5) . '.' . $image;
+            }
+            $file->move(config('app.avatar_path'), $image);
 
-            return redirect(route('user.detail', $id))->with('message', __('label.edit_sussess'));
+            if (file_exists($user->avatar)) {
+                unlink(config('app.avatar_path') . $user->avatar);
+            }
+            if ($user->link != null) {
+                $user->avatar = null;
+            }
+            $request->merge([
+                'avatar' => $image,
+            ]);
         }
-        catch (ModelNotFoundException $ex) 
-        {
-            echo $ex->getMessage();
-        }
+        $user = $this->user->update($request, $id);
+
+        return redirect(route('user.detail', $id))->with('message', __('label.edit_sussess'));
     }
 
     /**

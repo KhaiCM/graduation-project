@@ -21,17 +21,17 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('property.show', Auth::user()->id) }}">
                                     <i class="flaticon-house"></i>{!! __('label.my_property') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="submit-property.html">
+                                <a href="{{ route('property') }}">
                                     <i class="flaticon-add"></i>{!! __('label.submit_new_property') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="change-password.html">
+                                <a href="{{ route('user.change_pass', Auth::user()->id) }}">
                                     <i class="flaticon-locked-padlock"></i>{!! __('label.change_password') !!}
                                 </a>
                             </li>
