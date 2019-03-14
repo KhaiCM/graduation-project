@@ -47,7 +47,31 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 
         Route::get('/destroy/{id}', 'Admin\DistrictController@destroy')->name('district.destroy');
     });
+    Route::group(['prefix' => 'blogcat'], function () {
+        Route::get('blogcatlist', 'BlogCatController@getList')->name('blogcat.index');
+        Route::get('addblogcat', 'BlogCatController@addBlogCat')->name('addblogcat');
+        Route::post('addblogcat', 'BlogCatController@postAddBlogCat');
+        Route::get('editblogcat/{id}', 'BlogCatController@getEditBlogCat')->name('editblogcat');
+        Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
+        Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
+    });
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('bloglist', 'BlogController@getList')->name('blog.index');
+        Route::get('addblog', 'BlogController@addBlog')->name('addblog');
+        Route::post('addblog', 'BlogController@postAddBlog');
+        Route::get('editblog/{id}', 'BlogController@getEditBlog')->name('editblog');
+        Route::post('editblog/{id}', 'BlogController@postEditBlog');
+        Route::get('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
+    });
+    Route::group(['prefix' => 'contract'], function () {
+        Route::get('contractlist', 'ContractController@getlist')->name('contract.index');
+    });
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('contactlist', 'ContactController@getlist')->name('contact.index');
+        Route::get('deletecontact/{id}', 'ContactController@getDeleteContact')->name('deletecontact');
+    });
 });
+
 Route::group(['prefix' => '/'], function () {
     Route::get('/', 'Product\HomeController@index')->name('home');
 
@@ -57,31 +81,6 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('/prorent', 'Product\HomeController@getProRent')->name('home.rent');
 });
-//catblog
-Route::get('blogcatlist', 'BlogCatController@getList');
-
-Route::get('addblogcat', 'BlogCatController@addBlogCat')->name('addblogcat');
-
-Route::post('addblogcat', 'BlogCatController@postAddBlogCat');
-
-Route::get('editblogcat/{id}', 'BlogCatController@getEditBlogCat')->name('editblogcat');
-
-Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
-
-Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
-
-//blog
-Route::get('bloglist', 'BlogController@getList');
-
-Route::get('addblog', 'BlogController@addBlog')->name('addblog');
-
-Route::post('addblog', 'BlogController@postAddBlog');
-
-Route::get('editblog/{id}', 'BlogController@getEditBlog')->name('editblog');
-
-Route::post('editblog{id}', 'BlogController@postEditBlog');
-
-Route::get('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
 
 //user page
 Auth::routes();
@@ -93,13 +92,6 @@ Route::put('user-page/{id}', 'UserPageController@update')->name('user_page.updat
 Route::get('change-pass/{id}', 'UserPageController@getChangePass')->name('user.change_pass');
 
 Route::put('change-pass/{id}', 'UserPageController@postChangePass')->name('user.post_change');
-
-//contract
-Route::get('contractlist', 'ContractController@getlist');
-
-Route::get('contactlist', 'ContactController@getlist');
-
-Route::get('deletecontact/{id}', 'ContactController@getDeleteContact')->name('deletecontact');
 
 //property
 Route::get('myproperty/{id}', 'PropertyController@show')->name('property.show');
@@ -117,5 +109,7 @@ Route::get('destroy/{id}', 'PropertyController@destroy')->name('property.delete'
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('province/{province_id}', 'AjaxController@getDistrict');
 
-    Route::get('property_category{property_category_id}', 'AjaxController@getPropertyType');
+    Route::get('property_category/{property_category_id}', 'AjaxController@getPropertyType');
 });
+
+
