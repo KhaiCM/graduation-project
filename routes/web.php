@@ -53,7 +53,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('/prosold', 'Product\HomeController@getProSold')->name('home.sold');
 
-    Route::get('/property/view/{id}', 'Product\HomeController@getProSold')->name('property.view');
+    Route::get('/property/view/{id}', 'Product\HomeController@find')->name('property.view');
 
     Route::get('/prorent', 'Product\HomeController@getProRent')->name('home.rent');
 });
@@ -110,9 +110,9 @@ Route::post('property', 'PropertyController@store')->name('property.create');
 
 Route::get('editproperty/{id}', 'PropertyController@edit')->name('property.edit');
 
-Route::put('editproperty/{id}', 'PropertyController@update')-> name('property.update');
+Route::put('editproperty/{id}', 'PropertyController@update')->name('property.update');
 
-Route::get('destroy/{id}', 'PropertyController@destroy')-> name('property.delete');
+Route::get('destroy/{id}', 'PropertyController@destroy')->name('property.delete');
 
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('province/{province_id}', 'AjaxController@getDistrict');

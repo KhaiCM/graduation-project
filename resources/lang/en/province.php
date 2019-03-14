@@ -33,4 +33,12 @@ return [
     'recentcategory' => 'RECENT PROPERTIES',
     'by' => 'By',
     'for' => 'Belong',
+    'description' => 'description',
+    'floorplan' => 'floorplan',
+    'detail' => 'detail',
+    'video' => 'video',
+    'location' => 'location',
+    'leavecomment' => 'leave comment',
+    'email' => 'email',
+    'time' => 'time',
 ];

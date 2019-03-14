@@ -31,4 +31,12 @@ return [
     'recentcategory' => 'Tương tự',
     'by' => 'Bởi',
     'district' => 'Huyện',
+    'description' => 'Mô tả',
+    'floorplan' => 'Sơ đồ',
+    'detail' => 'Chi tiết',
+    'video' => 'video',
+    'location' => 'Vị trí',
+    'leavecomment' => 'Để lại bình luận',
+    'email' => 'email',
+    'time' => 'time',
 ];

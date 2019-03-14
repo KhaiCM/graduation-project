@@ -31,13 +31,16 @@
                                         <div class="tag button alt featured">{{ trans('province.highlight') }}</div>
                                         <div class="price-ratings-box">
                                             <p class="price">
-                                                {{ $property->price }}$
+                                                {{ $property->price }} {{ $property->unit->name ?? '' }}
                                             </p>
                                             <div class="ratings">
                                                 <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
                                             </div>
                                         </div>
-                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" alt="{{ $property->name }}" class="img-fluid">
+                                        @foreach ($property->propertyImage as $image)
+                                            <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                            @break
+                                        @endforeach
                                     </a>
                                     <div class="property-overlay">
                                         <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
@@ -47,17 +50,16 @@
                                             <i class="fa fa-video-camera"></i>
                                         </a>
                                         <div class="property-magnify-gallery">
-                                            <a href="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" class="overlay-link">
-                                                <i class="fa fa-expand"></i>
-                                            </a>
-                                            <a href="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->district_id.'.jpg') }}" class="hidden"></a>
-                                            <a href="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->property_type_id.'.jpg') }}" class="hidden"></a>
+                                            @foreach ($property->propertyImage as $image)
+                                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                                @break
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                                 <div class="detail">
                                     <h1 class="title">
-                                        <a href="#">{{ $property->name }}</a>
+                                        <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
                                     </h1>
                                     <div class="location">
                                         <a href="#">
@@ -155,14 +157,14 @@
                         <h5 class="sidebar-title">{{ trans('province.recentcategory') }}</h5>
                         <div class="media mb-4">
                             <a class="pr-4" href="properties-details.html">
-                                <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" alt="sub-property">
+                                <img src="#" alt="sub-property">
                             </a>
                             <div class="media-body align-self-center">
                                 <h5>
                                     <a href="#">{{ $property->name }}</a>
                                 </h5>
                                 <p>{{ $property->created_at }}</p>
-                                <p> <strong> $ {{ $property->price }}</strong></p>
+                                <p><strong>{{ $property->price }} {{ $property->unit->name ?? '' }}</strong></p>
                             </div>
                         </div>
                     </div>
@@ -172,7 +174,7 @@
                         <h5 class="sidebar-title">{{ trans('province.comment') }}</h5>
                         <div class="media mb-4">
                             <a class="pr-4" href="#">
-                                <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" class="rounded-circle" alt="avatar">
+                                <img src="#" class="rounded-circle" alt="avatar">
                             </a>
                             <div class="media-body">
                                 <p>{{ trans('province.content') }}</p>
