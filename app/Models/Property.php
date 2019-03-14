@@ -59,6 +59,6 @@ class Property extends Model
 
     public function unit()
     {
-        return $this->hasOne('App\Models\Property', 'unit_id');
+        return $this->belongsTo('App\Models\Unit', 'unit_id');
     }
 }

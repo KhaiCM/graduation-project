@@ -3,83 +3,83 @@
 <!-- Banner start -->
 <!-- start avatar -->
 <div class="banner banner-bg" id="particles-banner-wrapper">
-    <!-- end avatar -->
-    <!-- hieu ung ngoi sao -->
-    <div id="particles-banner"></div>
-    <!-- ket thuc hieu ung -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item item-bg active">
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-left">
-                    <div class="carousel-content container">
-                        <div class="text-center">
-                            <h3 data-animation="animated fadeInDown delay-05s">{!! __('label.slider1')!!}<br/>{!! __('label.slider2')!!}</h3>
-                            <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-round btn-theme">{{ trans('province.start') }}</a>
-                        </div>
+<!-- end avatar -->
+<!-- hieu ung ngoi sao -->
+<div id="particles-banner"></div>
+<!-- ket thuc hieu ung -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item item-bg active">
+            <div class="carousel-caption banner-slider-inner d-flex h-100 text-left">
+                <div class="carousel-content container">
+                    <div class="text-center">
+                        <h3 data-animation="animated fadeInDown delay-05s">{!! __('label.slider1')!!}<br/>{!! __('label.slider2')!!}</h3>
+                        <a data-animation="animated fadeInUp delay-10s" href="#" class="btn btn-lg btn-round btn-theme">{{ trans('province.start') }}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Search area start -->
-    <div class="search-area" id="search-area-1">
-        <div class="container">
-            <div class="search-area-inner">
-                <div class="search-contents ">
-                    {!! Form::open(['method' => 'POST']) !!}
-                    <div class="row">
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('area', [1 => __('label.area_from')], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('property-status', [1 => __('label.property_status'), 2=> __('label.for_sale'), 3=> __('label.for_rent')], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('location', [1 => __('label.location'), 2 => __('label.ha_noi')], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('category', [1 => __('label.property_types'), 2 => __('label.commercial')], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
+</div>
+<!-- Search area start -->
+<div class="search-area" id="search-area-1">
+    <div class="container">
+        <div class="search-area-inner">
+            <div class="search-contents ">
+                {!! Form::open(['method' => 'POST']) !!}
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('area', [1 => __('label.area_from')], null, ['class' => 'selectpicker search-fields']) !!}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('bedrooms', [1 => __('label.bedrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                <div class="range-slider">
-                                    <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-3">
-                            <div class="form-group">
-                                <button class="search-button btn-md btn-color" type="submit">{!! __('label.search')!!}</button>
-                            </div>
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('property-status', [1 => __('label.property_status'), 2=> __('label.for_sale'), 3=> __('label.for_rent')], null, ['class' => 'selectpicker search-fields']) !!}
                         </div>
                     </div>
-                    {!! Form::close() !!}
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('location', [1 => __('label.location'), 2 => __('label.ha_noi')], null, ['class' => 'selectpicker search-fields']) !!}
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('category', [1 => __('label.property_types'), 2 => __('label.commercial')], null, ['class' => 'selectpicker search-fields']) !!}
+                        </div>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('bedrooms', [1 => __('label.bedrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            <div class="range-slider">
+                                <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-3">
+                        <div class="form-group">
+                            <button class="search-button btn-md btn-color" type="submit">{!! __('label.search')!!}</button>
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
-    <!-- Search area start -->
+</div>
+<!-- Search area start -->
 </div>
 <!-- banner end -->
 <!-- Featured properties start -->
@@ -98,142 +98,134 @@
             <div class="row filter-portfolio">
                 <div class="cars">
                     @foreach ($properties as $property)
-                    <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
-                        <div class="property-box">
-                            <div class="property-thumbnail">
-                                <a href="#" class="property-img">
-                                    <div class="price-ratings-box">
-                                        <p class="price">
-                                            {{ $property->price }}$
-                                        </p>
-                                        <div class="ratings">
-                                            <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
+                        <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
+                            <div class="property-box">
+                                <div class="property-thumbnail">
+                                    <a href="#" class="property-img">
+                                        <div class="price-ratings-box">
+                                            <p class="price">
+                                                {{ $property->price }} {{ $property->unit->name ?? '' }}
+                                            </p>
+                                            <div class="ratings">
+                                                <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        @foreach ($property->propertyImage as $image)
+                                            <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                            @break
+                                        @endforeach
+                                    </a>
+                                    <div class="property-overlay">
+                                        <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                        <div class="property-magnify-gallery">
+                                            @foreach ($property->propertyImage as $image)
+                                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                                @break
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" alt="{{ $property->name }}" class="img-fluid">
-                                </a>
-                                <div class="property-overlay">
-                                    <a href="#" class="overlay-link">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <div class="property-magnify-gallery">
-                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->user_id.'.jpg') }}" class="overlay-link">
-                                        <i class="fa fa-expand"></i>
-                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->district_id.'.jpg') }}" class="hidden">
-                                        <img src="{{ asset('bower_components/lib_bower/assets/img/property-'.$property->property_type_id.'.jpg') }}" class="hidden">
+                                </div>
+                                <div class="detail">
+                                    <h1 class="title">
+                                        <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
+                                    </h1>
+                                    <div class="location">
+                                        <a href="#">
+                                            <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
+                                        </a>
                                     </div>
+                                    <ul class="facilities-list clearfix">
+                                        {!! $property->describe !!}
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="#">{{ $property->name }}</a>
-                                </h1>
-                                <div class="location">
+                                <div class="footer">
                                     <a href="#">
-                                        <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
+                                        <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
                                     </a>
+                                    <span>
+                                        <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
+                                    </span>
                                 </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-bed"></i> {{ $property->district_id }} {{trans('province.bedroom')}}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bath"></i> {{ $property->user_id }} {{ trans('province.bathroom') }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> {{ trans('province.acreage') }}: &nbsp; {{ $property->acreage }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car-repair"></i> {{ rand(1, 2) }} {{ trans('province.garage') }}
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="footer">
-                                <a href="#">
-                                    <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
-                                </a>
-                                <span>
-                                    <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
-                                </span>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
-    {!! $properties->links() !!}
+            {!! $properties->links() !!}
         </div>
     </div>
 @else
-<div class="featured-properties content-area-2">
+    <div class="featured-properties content-area-2">
     <div class="container">
         <div class="main-title">
             <h1>{{ trans('province.none') }}</h1>
         </div>
     </div>
-</div>
+    </div>
 @endif
 <!-- Featured properties end
-    <!-- services start -->
-    <div class="services content-area-5">
-        <div class="container">
-            <div class="main-title">
-                <h1>{!! __('label.looking_for')!!}</h1>
+<!-- services start -->
+<div class="services content-area-5">
+    <div class="container">
+        <div class="main-title">
+            <h1>{!! __('label.looking_for')!!}</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInLeft delay-04s">
+                <i class="flaticon-hotel-building"></i>
+                <h5>{!! __('label.apartments_clean')!!}</h5>
+                <p>{{ trans('province.content') }}</p>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInLeft delay-04s">
-                    <i class="flaticon-hotel-building"></i>
-                    <h5>{!! __('label.apartments_clean')!!}</h5>
-                    <p>{{ trans('province.content') }}</p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInUp delay-04s">
-                    <i class="flaticon-house"></i>
-                    <h5>{!! __('label.houses')!!}</h5>
-                    <p>{{ trans('province.content') }}</p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInDown delay-04s">
-                    <i class="flaticon-call-center-agent"></i>
-                    <h5>{!! __('label.support_24')!!}</h5>
-                    <p>{{ trans('province.content') }}</p>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInRight delay-04s">
-                    <i class="flaticon-office-block"></i>
-                    <h5>{!! __('label.commercial')!!}</h5>
-                    <p>{{ trans('province.content') }}</p>
-                </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInUp delay-04s">
+                <i class="flaticon-house"></i>
+                <h5>{!! __('label.houses')!!}</h5>
+                <p>{{ trans('province.content') }}</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInDown delay-04s">
+                <i class="flaticon-call-center-agent"></i>
+                <h5>{!! __('label.support_24')!!}</h5>
+                <p>{{ trans('province.content') }}</p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInRight delay-04s">
+                <i class="flaticon-office-block"></i>
+                <h5>{!! __('label.commercial')!!}</h5>
+                <p>{{ trans('province.content') }}</p>
             </div>
         </div>
     </div>
-    <!-- services end -->
-    <!-- Blog start -->
-    <div class="blog content-area-2">
-        <div class="container">
-            <div class="main-title">
-                <h1>{!! __('label.news')!!}</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 wow fadeInLeft delay-04s">
-                    <div class="blog-grid-box">
-                        <img class="blog-theme img-fluid" src="{{ asset(config('fontend.fontend_image.property10')) }}" alt="property-10">
-                        <div class="detail">
-                            <div class="date-box">
-                                <h5>{{ trans('province.month') }}</h5>
-                                <h5>{{ trans('province.day') }}</h5>
-                            </div>
-                            <h3>
-                                <a href="blog-single-sidebar-right.html">{{ trans('province.name') }}</a>
-                            </h3>
-                            <div class="post-meta">
-                                <span><a href="#"><i class="fa fa-user"></i>{{ trans('province.name') }}</a></span>
-                                <span><a href="#"><i class="fa fa-commenting-o"></i>{{ trans('province.comment') }}</a></span>
-                            </div>
-                            <p>{{ trans('province.content') }}</p>
-                            <a href="blog-single-sidebar-right.html" class="btn-read-more">{{ trans('province.readmore') }}</a>
+</div>
+<!-- services end -->
+<!-- Blog start -->
+<div class="blog content-area-2">
+    <div class="container">
+        <div class="main-title">
+            <h1>{!! __('label.news')!!}</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 wow fadeInLeft delay-04s">
+                <div class="blog-grid-box">
+                    <img class="blog-theme img-fluid" src="{{ asset(config('fontend.fontend_image.property10')) }}" alt="property-10">
+                    <div class="detail">
+                        <div class="date-box">
+                            <h5>{{ trans('province.month') }}</h5>
+                            <h5>{{ trans('province.day') }}</h5>
                         </div>
+                        <h3>
+                            <a href="blog-single-sidebar-right.html">{{ trans('province.name') }}</a>
+                        </h3>
+                        <div class="post-meta">
+                            <span><a href="#"><i class="fa fa-user"></i>{{ trans('province.name') }}</a></span>
+                            <span><a href="#"><i class="fa fa-commenting-o"></i>{{ trans('province.comment') }}</a></span>
+                        </div>
+                        <p>{{ trans('province.content') }}</p>
+                        <a href="blog-single-sidebar-right.html" class="btn-read-more">{{ trans('province.readmore') }}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Blog end -->
-    @endsection
+</div>
+<!-- Blog end -->
+@endsection

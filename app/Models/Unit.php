@@ -12,7 +12,7 @@ class Unit extends Model
         'name',
     ];
 
-    public function properties()
+    public function property()
     {
         return $this->hasOne('App\Models\Property');
     }

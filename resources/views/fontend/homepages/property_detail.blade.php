@@ -5,8 +5,6 @@
         <div class="breadcrumb-area">
             <h1>{{ $property->name }}</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">{{ $property->propertyType->name ?? '' }}</a></li>
-                <li class="active">{{ $property->name }}</li>
             </ul>
         </div>
     </div>
@@ -23,10 +21,10 @@
                             <div class="col-md-12">
                                 <div class="pull-left">
                                     <h3>{{ $property->name }}</h3>
-                                    <p><i class="fa fa-map-marker"></i> {{ $property->districts->name ?? '' }}</p>
+                                    <p><i class="fa fa-map-marker"></i>{{ $property->districts->name ?? '' }}</p>
                                 </div>
                                 <div class="p-r">
-                                    <h3>{{ $property->price }}  {{ config('image.currency') }}</h3>
+                                    <h3>{{ $property->price }} {{ $property->unit->name ?? '' }}</h3>
                                     <p>{{ rand(1, 5) }} <i class="fa fa-star"></i></p>
                                 </div>
                             </div>
@@ -181,7 +179,7 @@
                 <div class="sidebar mbl">
                     <!-- Search area start -->
                     <div class="widget search-area d-none d-xl-block d-lg-block">
-                        <h5 class="sidebar-title">{{ trans('province.search') }}</h5>
+                        <h5 class="sidebar-title">{{ trans('province.seach') }}</h5>
                         <div class="search-area-inner">
                             <div class="search-contents ">
                                 {!! Form::open(['method' => 'GET']) !!}
@@ -237,7 +235,7 @@
                                 <a href="#">{{ $property->name }}</a>
                             </h5>
                                 <p>{{ $property->created_at }}</p>
-                                <p> <strong>  {{ config('image.currency') }} {{ $property->price }}</strong></p>
+                                <p> <strong>{{ $property->price }} {{ $property->unit->name}}</strong></p>
                             </div>
                         </div>
                     </div>
