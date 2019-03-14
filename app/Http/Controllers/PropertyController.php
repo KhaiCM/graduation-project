@@ -118,6 +118,7 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
+        
         $properties = $this->property->findOrFail($id);
 
         $user = Auth::user();
@@ -217,3 +218,4 @@ class PropertyController extends Controller
         }
     }
 }
+

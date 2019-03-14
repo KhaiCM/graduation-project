@@ -93,4 +93,10 @@ return [
     'confirm_new_password' => 'Nhập lại mật khẩu',
     'pass_required' => 'Vui lòng nhập vào mật khẩu',
     'newpass_required' => 'VUi lòng nhập vào mật khẩu mới',
+    //filter
+    'search_province' => '--Lựa chọn tỉnh--',
+    'search_district' => '--Lựa chọn huyện--',
+    'search_propertyCategory' => '--Lựa chọn thể loại tài sản--',
+    'search_propertyType' => '--Lựa chọn kiểu tài sản--',
+    'notification' => 'Không có kết quả bạn yêu cầu',
 ];

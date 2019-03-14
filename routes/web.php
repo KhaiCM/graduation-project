@@ -112,6 +112,10 @@ Route::put('editproperty/{id}', 'PropertyController@update')->name('property.upd
 
 Route::get('destroy/{id}', 'PropertyController@destroy')->name('property.delete');
 
+//filter
+Route::get('filter', 'FilterController@filter')->name('filter.property');
+
+//ajax
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('province/{province_id}', 'AjaxController@getDistrict');
 
@@ -124,3 +128,4 @@ Route::post('calendar/{id}', 'SetCalenderController@postcreate')->name('postcrea
 
 Route::get('setcalendarlist', 'SetCalenderController@getlist')->name('setcalendar.index');
 Route::get('deletecalendar/{id}', 'SetCalenderController@getDelete')->name('deletecalendar');
+
