@@ -51,7 +51,6 @@ class PropertyRequest extends FormRequest
             'acreage.required' => __('validate.name_required'),
             'describe.required' => __('validate.name_required'),
             'describe.min' => __('validate.name_length'),
-            'file.required' => __('label.file_required'),
             'file.max' => __('message.max'),
         ];
     }

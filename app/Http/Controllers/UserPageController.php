@@ -123,7 +123,7 @@ class UserPageController extends Controller
                 'avatar' => $image,
             ]);
         }
-        $user = $this->user->update($request, $id);
+        $user = $this->user->update($id, $request->all());
 
         return redirect(route('user_page.edit', $id))->with('message', __('label.edit_sussess'));
     }

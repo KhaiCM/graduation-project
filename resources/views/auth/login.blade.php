@@ -46,7 +46,7 @@
                         <p class="alert alert-danger">{{ $error }}</p>
                         @endforeach
                         <div class="form-group">
-                            {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('label.email_address')]) !!}
+                            {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => __('label.email')]) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::password('password', ['class' => 'form-control', 'placeholder' => __('label.password')]) !!}

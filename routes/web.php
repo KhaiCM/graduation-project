@@ -112,4 +112,3 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::get('property_category/{property_category_id}', 'AjaxController@getPropertyType');
 });
 
-
