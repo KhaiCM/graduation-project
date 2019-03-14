@@ -32,25 +32,25 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.province')) !!}
-                                        {!! Form::select('province_id', $province->pluck('name'), $properties->districts->provinces->id, ['class' => 'selectpicker search-fields', 'id' => 'province']) !!}
+                                        {!! Form::select('province_id', $province->pluck('name', 'id'), $properties->districts->provinces->id, ['class' => 'selectpicker search-fields', 'id' => 'province']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.property_category')) !!}
-                                        {!! Form::select('property_category_id', $propertyCategory->pluck('name'), $properties->propertyType->propertyCategory->id, ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
+                                        {!! Form::select('property_category_id', $propertyCategory->pluck('name', 'id'), $properties->propertyType->propertyCategory->id, ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.district')) !!}
-                                        {!! Form::select('district_id', $district->pluck('name'), $properties->districts->id, ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
+                                        {!! Form::select('district_id', $district->pluck('name', 'id'), $properties->districts->id, ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.property_type')) !!}
-                                        {!! Form::select('property_type_id', $propertyType->pluck('name'), $properties->propertyType->id, ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
+                                        {!! Form::select('property_type_id', $propertyType->pluck('name', 'id'), $properties->propertyType->id, ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -62,7 +62,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.form')) !!}
-                                        {!! Form::select('form', [1 => 'sale', 2 => 'rent'], $properties->form, ['class' => 'selectpicker search-fields']) !!}
+                                        {!! Form::select('form', [0 => 'sale', 1 => 'rent'], $properties->form, ['class' => 'selectpicker search-fields']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
@@ -74,7 +74,7 @@
                                 <div class="col-lg-3 col-md-6">
                                     <div class="form-group">
                                        {!! Form::label(__('label.unit')) !!}
-                                       {!! Form::select('unit_id', $unit->pluck('name'), $properties->unit_id, ['class' => 'selectpicker search-fields']) !!}
+                                       {!! Form::select('unit_id', $unit->pluck('name', 'id'), $properties->unit_id, ['class' => 'selectpicker search-fields']) !!}
                                    </div>
                                </div>
                                <div class="col-lg-3 col-md-6">
@@ -95,10 +95,12 @@
                         <div class="form-group">
                             {{ Form::file('file[]', ['multiple' => true, 'id' => 'exampleInputFile']) }}
                         </div>
-                        <div class="form-group">
-                            @foreach($properties->propertyImage as $item)
-                            <img src="{{ asset(config('app.property_path') . $item->link) }}" id="image-upload">
-                            @endforeach
+                        <div class="form-group" id="image">
+                            <div class="col-md-12">
+                                @foreach($properties->propertyImage as $item)
+                                <img src="{{ asset(config('app.property_path') . $item->link) }}" id="image-upload">
+                                @endforeach
+                            </div>
                         </div>
                         <h3 class="heading">{!! Form::label(__('label.contact_detail')) !!}</h3>
                         <div class="row">

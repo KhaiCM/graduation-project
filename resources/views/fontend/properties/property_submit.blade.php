@@ -62,7 +62,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {!! Form::label(__('label.form')) !!}
-                                        {!! Form::select('form', [1 => 'sale', 2 => 'rent'], '', ['class' => 'selectpicker search-fields']) !!}
+                                        {!! Form::select('form', [1 => 'sale', 1 => 'rent'], '', ['class' => 'selectpicker search-fields']) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">
@@ -94,6 +94,10 @@
                             <h3 class="heading">{!! Form::label('name', __('label.property_image')) !!}</h3>
                             <div class="form-group">
                                 {{ Form::file('file[]', ['multiple' => true, 'id' => 'exampleInputFile']) }}
+                            </div>
+                            <div class="form-group" id="image">
+                                <div class="col-md-12">
+                                </div>
                             </div>
                             <h3 class="heading">{!! Form::label(__('label.contact_detail')) !!}</h3>
                             <div class="row">
@@ -131,4 +135,3 @@
 </div>
 <!-- User page end -->
 @endsection
-

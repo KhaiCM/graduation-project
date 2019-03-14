@@ -49,7 +49,6 @@ return [
     'add_property' => 'Add property success',
     'mimes' => 'The selected file must be in png, jpg, jpeg format',
     'max' => 'Upload file size has exceeded the limit',
-    'file_required' => 'file cannot be empty',
     'propertytype_id' => 'property type cannot be empty',
     'property_district_id' => 'cannot empty the district',
 ];
