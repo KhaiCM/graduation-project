@@ -17,14 +17,14 @@ class Post extends Model
         'status',
         'category_post_id',
     ];
-    
+
     public function categoryPost()
     {
         return $this->belongsTo('App\Models\CategoryPost');
     }
 
-    public function users()
+    public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }
