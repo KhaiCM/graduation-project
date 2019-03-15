@@ -1,4 +1,4 @@
-@extends('fontend.master')
+@extends('fontend.layouts.master')
 @section('content')
 <!-- Sub banner 2 start -->
 <div class="sub-banner-2">
@@ -21,49 +21,19 @@
 			<div class="col-lg-8 col-md-12">
 				<!-- Blog grid box start -->
 				<div class="blog-grid-box">
-					<img class="blog-theme img-fluid" src="assets/img/blog/blog-3.jpg" alt="blog-3">
+					<img class="blog-theme img-fluid" src="{{ asset(config('app.blog_image')) }}/{{ $post->image }}" alt="blog-3">
 					<div class="detail">
-						<div class="date-box">
-							<h5>03</h5>
-							<h5>May</h5>
-						</div>
 						<h2>
-							<a href="blog-single-sidebar-right.html">Selling Your Home</a>
+							<a href="blog-single-sidebar-right.html">{{ $post->title }}</a>
 						</h2>
 						<div class="post-meta">
-							<span><a href="#"><i class="fa fa-user"></i>John Antony</a></span>
-							<span><a><i class="fa fa-clock-o"></i>July 20</a></span>
-							<span><a href="#"><i class="fa fa-commenting-o"></i>24 Comment</a></span>
+							<span><a href="#"><i class="fa fa-user"></i>{{ $post->user['name'] }}</a></span>
+							<span><a><i class="fa fa-clock-o"></i>{{ $post->created_at->toFormattedDateString() }}</a></span>
+							<span><a href="#"><i class="fa fa-commenting-o"></i></a></span>
 						</div>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting,
-						remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.But also the leap into electronic typesetting,</p>
-						<P>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.</P>
-						<br>
-						<blockquote class="blockquote">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-							<footer>
-								Someone famous in
-								<cite>
-									Source Title
-								</cite>
-							</footer>
-						</blockquote>
-						<p>Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut dignissim consectetur, nulla erat ultrices purus, ut consequat sem elit non sem. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa. Fusce non ante sed lorem rutrum feugiat.</p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.But also the leap into electronic typesetting,
-						remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.But also the leap into electronic typesetting,</p>
+						<p>{{ $post->content }}</p>
 						<br>
 						<div class="row clearfix tags-socal-box">
-							<div class="col-lg-7 col-md-7 col-sm-7">
-								<div class="tags">
-									<h2>Tags</h2>
-									<ul>
-										<li><a href="#">Image</a></li>
-										<li><a href="#">Features</a></li>
-										<li><a href="#">Gallery</a></li>
-										<li><a href="#">News</a></li>
-									</ul>
-								</div>
-							</div>
 							<div class="col-lg-5 col-md-5 col-sm-5">
 								<div class="social-list">
 									<h2>Share</h2>
@@ -103,7 +73,7 @@
 
 				<!-- Comments section start -->
 				<div class="comments-section cmn-mrg-btm">
-					<h2 class="comments-title">Comments Section</h2>
+					<h2 class="comments-title">{{ trans('province.comment') }}</h2>
 					<ul class="comments">
 						<li>
 							<div class="comment">

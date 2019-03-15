@@ -29,7 +29,7 @@
                 <td>{{ $a->phone }}</td>
                 <td>{{ $a->email }}</td>
                 <td>{{ $a->note }}</td>
-                <td class="tdshow"><a href="{{ route('deletecalendar', $a->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
+                <td class="tdshow"><a href="{{ route('deletecalendars', $a->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
             </tr>
             @endforeach
         </tbody>

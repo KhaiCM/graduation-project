@@ -54,4 +54,11 @@ return [
     'max' => 'Upload file size has exceeded the limit',
     'propertytype_id' => 'property type cannot be empty',
     'property_district_id' => 'cannot empty the district',
+    'note' => 'Note',
+    'time' => 'Time',
+    'day' => 'Day',
+    'phone' => 'Phone',
+    'totalmoney' => 'Total Money',
+    'comment' => 'Comments Section',
+    'startday' => 'Startday',
 ];

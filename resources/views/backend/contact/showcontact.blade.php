@@ -21,7 +21,7 @@
                 <td>{{ $cts->id }}</td>
                 <td>{{ $cts->title }}</td>
                 <td>{{ $cts->email }}</td>
-                <td class="tdshow"><a href="{{ route('deletecontact',$cts->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
+                <td class="tdshow"><a href="{{ route('deletecontact', $cts->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
             </tr>
             @endforeach
         </tbody>

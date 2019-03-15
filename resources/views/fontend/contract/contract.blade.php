@@ -20,14 +20,14 @@
                                 {{ session('message') }}
                             </div>
                             @endif
-                            <h3>{{ $sc->name }}</h3>
-                            <p>{{ $sc->describe }}</p>
-                            {{ Form::open(['method' => 'POST', route('postcreatecalendars', $sc->id )]) }}
-                            <h3 class="heading">{{ __('label.setcalendar') }}</h3>
+                            <h3>{{ $ct->name }}</h3>
+                            <p>{{ $ct->describe }}</p>
+                            {{ Form::open(['method' => 'POST', route('contracts', $ct->id )]) }}
+                            <h3 class="heading">{{ __('label.contract') }}</h3>
                             <div class="row">
                                 <div class="col-lg-12 ">
                                     <div class="form-group name">
-                                        {{ Form::label('content', trans('message.day')) }}<br>
+                                        {{ Form::label('time', trans('message.startday')) }}<br>
                                         {{ Form::date('date') }}
                                     </div>
                                     <div class="form-group name">
@@ -35,12 +35,8 @@
                                         {{ Form::text('time', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
                                     </div>
                                     <div class="form-group name">
-                                        {{ Form::label('content', trans('message.phone')) }}
-                                        {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
-                                    </div>
-                                    <div class="form-group name">
-                                        {{ Form::label('content', trans('message.email')) }}
-                                        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
+                                        {{ Form::label('content', trans('message.totalmoney')) }}
+                                        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) !!}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.note')) }}<br>
