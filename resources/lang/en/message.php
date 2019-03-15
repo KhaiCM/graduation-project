@@ -43,8 +43,11 @@ return [
     'end_date' => 'end date',
     'content' => 'content',
     'total_money' => 'total money',
-    'contract' => 'contract',
-    'contact' => 'contact',
+    'contract' => 'Contract',
+    'contact' => 'Contact',
+    'blog' => 'Blog',
+    'blogcat' => 'Blog Category',
+    'setcalendar' => 'appointment schedule',
     //property
     'add_property' => 'Add property success',
     'mimes' => 'The selected file must be in png, jpg, jpeg format',
