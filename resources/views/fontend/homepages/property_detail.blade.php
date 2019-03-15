@@ -171,6 +171,11 @@
                                 </div>
                             </div>
                             {!! form::close() !!}
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="send-btn">
+                                    <a href="{{ route('createcalendar',['id' => $property->id]) }}"><button class="bntshowdl">{{ trans('message.setcalendar') }}</button></a>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>

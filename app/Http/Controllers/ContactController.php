@@ -19,6 +19,6 @@ class ContactController extends Controller
         $ct = Contact::find($id);
         $ct->delete();
 
-        return redirect('contactlist')->with('noti', 'success');
+        return redirect('/')->with('noti', 'success');
     }
 }

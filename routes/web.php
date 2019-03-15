@@ -112,3 +112,9 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::get('property_category/{property_category_id}', 'AjaxController@getPropertyType');
 });
 
+//set_calendar
+Route::get('calendar/{id}', 'SetCalenderController@create')->name('createcalendar');
+Route::post('calendar/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendar');
+
+Route::get('setcalendarlist', 'SetCalenderController@getlist')->name('setcalendar.index');
+Route::get('deletecalendar/{id}', 'SetCalenderController@getDelete')->name('deletecalendar');

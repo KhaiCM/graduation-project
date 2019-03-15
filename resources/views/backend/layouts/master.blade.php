@@ -30,6 +30,7 @@
         <a href="{{ route('contract.index') }}">{{ trans('message.contract') }}</a>
         <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
         <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
+        <a href="{{ route('setcalendar.index') }}">{{ trans('message.setcalendar') }}</a>
     </div>
     <div class="main">
         @if (count($errors) > 0)
