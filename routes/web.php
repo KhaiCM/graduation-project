@@ -80,6 +80,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/property/view/{id}', 'Product\HomeController@find')->name('property.view');
 
     Route::get('/prorent', 'Product\HomeController@getProRent')->name('home.rent');
+
+    Route::get('/news', 'PostController@getPost')->name('post.index');
+
+    Route::get('/news/{id}', 'PostController@getPostById')->name('post.view');
 });
 
 //user page

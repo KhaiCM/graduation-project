@@ -121,7 +121,7 @@
                                         </a>
                                         <div class="property-magnify-gallery">
                                             @foreach ($property->propertyImage as $image)
-                                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="overlay-link">
                                                 @break
                                             @endforeach
                                         </div>
