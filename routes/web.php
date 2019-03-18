@@ -84,6 +84,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/news', 'PostController@getPost')->name('post.index');
 
     Route::get('/news/{id}', 'PostController@getPostById')->name('post.view');
+
+    Route::post('/news/{id}/comment', 'Product\HomeController@comment')->name('property.comment');
 });
 
 //user page

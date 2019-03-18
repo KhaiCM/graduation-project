@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Product;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Unit;
+use App\Models\Comment;
+use App\Models\PropertyCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\CommentRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -47,11 +52,34 @@ class HomeController extends Controller
     {
         try {
             $property = Property::findOrFail($id);
+            $comments = Property::where('property_id', $id);
+            $categories = PropertyCategory::all();
 
-            return view('fontend.homepages.property_detail', compact('property'));
+            return view('fontend.homepages.property_detail', compact([
+                'property',
+                'comments',
+                'categories',
+            ]));
         } catch (ModelNotFoundException $ex) {
             $ex->getMessage();
         }
     }
-}
 
+    public function comment(CommentRequest $request, $id)
+    {
+        try
+        {
+            $property = Property::findOrFail($id);
+            $comment = Comment::create([
+                'user_id' => Auth::user()->id,
+                'property_id' => $id,
+                'content' => $request->input('content'),
+            ]);
+
+            return Redirect::back();
+        } catch (ModelNotFoundException $ex)
+        {
+            $ex->getMessage();
+        }
+    }
+}

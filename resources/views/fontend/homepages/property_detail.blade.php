@@ -1,4 +1,5 @@
-@extends('fontend.layouts.master') @section('content')
+@extends('fontend.layouts.master')
+@section('content')
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container">
@@ -113,50 +114,53 @@
                     </div>
                 </div>
                 <!-- Comments section start -->
-                <div class="comments-section">
-                    <h3 class="heading">{{ trans('province.comment') }}</h3>
-                    <ul class="comments">
-                        <li>
-                            <div class="comment">
-                                <div class="comment-author">
-                                    <a href="#"><img src="#" class="rounded-circle" alt="avatar-13"></a>
-                                </div>
-                                <div class="comment-content">
-                                    <div class="comment-meta">
-                                        <div class="comment-meta-author">
-                                            {{ trans('province.name') }}
+                    <div class="comments-section">
+                        <h3 class="heading">{{ trans('province.comment') }}</h3>
+                        <ul class="comments">
+                            @foreach ($property->comments as $comment)
+                                <li>
+                                    <div class="comment">
+                                        <div class="comment-author">
+                                            <a href="#"><img src="{{ asset(config('app.avatar_path')) }}/{{ $comment->users->avatar }}" class="rounded-circle" alt="avatar-13"></a>
                                         </div>
-                                        <div class="comment-meta-date">
-                                            <span>{{ trans('province.time') }}</span>
+                                        <div class="comment-content">
+                                            <div class="comment-meta">
+                                                <div class="comment-meta-author">
+                                                    {{ $comment->users->name ?? '' }}
+                                                </div>
+                                                <div class="comment-meta-date">
+                                                    <span>{{ $comment->created_at }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="comment-body">
+                                                <div class="comment-rating">
+                                                    {{ rand(1, 5) }} <i class="fa fa-star"></i>
+                                                </div>
+                                                {{ $comment->content }}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
-                                    <div class="comment-body">
-                                        <div class="comment-rating">
-                                            {{ rand(1, 5)}} <i class="fa fa-star"></i>
-                                        </div>
-                                        {{ trans('province.content') }}
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 <!-- Contact 1 start -->
+                @if (Auth::check())
                 <div class="contact-3 mb-60">
                     <h3 class="heading">{{ trans('province.leavecomment')}}</h3>
                     <div class="container">
                         <div class="row">
-                            {!! Form::open(['method' => 'POST']) !!}
+                            {!! Form::open(['method' => 'POST', 'route' => ['property.comment', $property->id]]) !!}
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group name">
-                                        {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('province.name')]) !!}
+                                        {!! form::text('name', Auth::user()->name, ['class' => 'form-control', 'placeholder' => trans('province.name')]) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group email">
-                                        {!! form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('province.email')]) !!}
+                                        {!! form::text('name', Auth::user()->email, ['class' => 'form-control', 'placeholder' => trans('province.email')]) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -172,13 +176,14 @@
                             </div>
                             {!! form::close() !!}
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="send-btn">
+                                <div class="send-btn">
                                     <a href="{{ route('createcalendar',['id' => $property->id]) }}"><button class="bntshowdl">{{ trans('message.setcalendar') }}</button></a>
-                                    </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar mbl">
@@ -224,25 +229,10 @@
                     <div class="widget categories">
                         <h5 class="sidebar-title">{{ trans('province.category') }}</h5>
                         <ul>
-                            <li><a href="#">{{ trans('province.name') }}<span>(12)</span></a></li>
+                            @foreach ($categories as $category)
+                                <li><a href="#">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
-                    </div>
-
-                    <!-- Recent posts start -->
-                    <div class="widget recent-posts">
-                        <h5 class="sidebar-title">{{ trans('province.recentcategory') }}</h5>
-                        <div class="media mb-4">
-                            <a class="pr-4" href="properties-details.html">
-                            <img src="#" alt="sub-property">
-                        </a>
-                            <div class="media-body align-self-center">
-                                <h5>
-                                <a href="#">{{ $property->name }}</a>
-                            </h5>
-                                <p>{{ $property->created_at }}</p>
-                                <p> <strong>{{ $property->price }} {{ $property->unit->name}}</strong></p>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Social list start -->
