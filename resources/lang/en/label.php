@@ -98,7 +98,6 @@ return [
     'pass_required' => 'Please enter a password!',
     'newpass_required' => 'Please enter a password new!',
     'pass_min' => 'Password must be at least 6 characters long',
-    //filter
     'search_province' => '--Choose Province--',
     'search_district' => '--Choose District--',
     'search_propertyCategory' => '--Choose Property Category--',

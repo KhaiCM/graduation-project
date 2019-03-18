@@ -23,7 +23,8 @@
         @foreach($bl as $cb)
             <tr>
                 <td>{{ $cb->id }}</td>
-                <td>{{ $cb->title }}<br><img src="{{ asset(config('app.blog_image')) }}/{{ $cb->image }}"/></td>
+                <td>{{ $cb->title }}<br>
+                <div><img class="imgblog" src="{{ asset(config('app.blog_image')) }}/{{ $cb->image }}"/></td></div>
                 <td>{{ $cb->describe }}</td>
                 <td>{{ $cb->slug }}</td>
                 <td>{{ $cb->status }}</td>
