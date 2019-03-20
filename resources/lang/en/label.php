@@ -109,4 +109,6 @@ return [
     'acreage' => '--select acreage--',
     'setcalendar' => 'Set Calendar',
     'contract' => 'Contract',
+    'acreage_filter' => '--select acreage--',
 ];
+

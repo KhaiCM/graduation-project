@@ -23,10 +23,10 @@
                                     <i class="fa fa-star-o"></i>
                                 </div>
                             </div>
-                            <img src="{{ asset(config('app.property_path') . $item->link) }}" alt="property-2" class="img-fluid">
+                            <img src="{{ asset(config('app.property_path') . $item->image) }}" alt="property-2" class="img-fluid">
                         </a>
                         <div class="property-overlay">
-                            <a href="properties-details.html" class="overlay-link">
+                            <a href="{{ route('property.view', $item->id) }}" class="overlay-link">
                                 <i class="fa fa-link"></i>
                             </a>
                             <div class="property-magnify-gallery">
@@ -40,10 +40,10 @@
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="properties-details.html">{{ $item->property_name }}</a>
+                            <a href="{{ route('property.view', $item->id) }}">{{ $item->property_name }}</a>
                         </h1>
                         <div class="location">
-                            <a href="properties-details.html">
+                            <a href="#">
                                 <i class="fa fa-map-marker"></i>{{ $item->address }}
                             </a>
                             <div> {!! $item->describe !!} </div>
@@ -51,10 +51,10 @@
                     </div>
                     <div class="footer">
                         <a href="#">
-                            <i class="fa fa-user"></i>{{ $item->address }}
+                            <i class="fa fa-user"></i> {{ $item->users->name}}
                         </a>
                         <span>
-                            <i class="fa fa-calendar-o"></i>{{ $item->address }}
+                            <i class="fa fa-calendar-o"></i>{{ $item->created_at }}
                         </span>
                     </div>
                 </div>
@@ -68,3 +68,4 @@
 </div>
 <!-- Properties list fullwidth end -->
 @endsection
+

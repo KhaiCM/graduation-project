@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Property;
 
 class FilterController extends Controller
 {
@@ -16,12 +17,11 @@ class FilterController extends Controller
         $price = ($request->has('price') ? $request->get('price') : false);
         $form = ($request->has('form') ? $request->get('form') : false);
 
-        $query = \DB::table('properties')
-            ->join('property_types', 'property_types.id', '=', 'properties.property_type_id')
+        $query = Property::
+            join('property_types', 'property_types.id', '=', 'properties.property_type_id')
             ->join('districts', 'districts.id', '=', 'properties.district_id')
-            ->join('property_images', 'property_images.property_id', '=', 'properties.id')
-            ->select('properties.id', 'properties.name as property_name', 'address', 'describe', 'acreage', 'price', 'districts.name', 'property_types.name', 'property_images.link');
-
+            ->select('properties.id', 'properties.name as property_name', 'properties.user_id', 'properties.created_at', 'address', 'describe', 'image', 'acreage', 'price', 'districts.name', 'property_types.name')
+            ->with('users');
         if ($request->has('district')) {
             $query->where('districts.id', $request->get('district'));
         }
@@ -41,7 +41,6 @@ class FilterController extends Controller
         if ($request->has('form')) {
             $query->where('properties.form', $request->get('form'));
         }
-
         $filter = $query->get();
 
         return view('fontend.homepages.filter', compact('filter'));

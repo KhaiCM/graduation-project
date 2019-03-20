@@ -20,6 +20,7 @@ class Property extends Model
         'price',
         'status',
         'form',
+        'image',
     ];
 
     public function districts()

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PropertyRequest;
 use App\Models\District;
+use App\Models\Property;
+use App\Models\PropertyCategory;
+use App\Models\PropertyImage;
 use App\Models\PropertyType;
 use App\Models\Province;
-use App\Models\PropertyCategory;
 use App\Models\Unit;
-use App\Models\Property;
-use App\Models\PropertyImage;
-use Illuminate\Support\Facades\Auth;
-use App\Repositories\PropertyRepository;
 use App\Repositories\PropertyImageRepository;
-use App\Http\Requests\PropertyRequest;
+use App\Repositories\PropertyRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -49,10 +49,10 @@ class PropertyController extends Controller
 
         $district = District::all();
 
-        $propertyCategory = PropertyCategory:: all();
+        $propertyCategory = PropertyCategory::all();
 
         $propertyType = PropertyType::all();
-        
+
         return view('fontend.properties.property_submit', compact('user', 'province', 'district', 'propertyCategory', 'propertyType', 'unit'));
     }
 
@@ -64,28 +64,35 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
-        $request->merge([
-            'status' => 0,
-            'user_id' => $request->user()->id,
-        ]);
-        $properties = $this->property->create($request->all());
-
         if ($request->hasFile('file')) {
+            $img = null;
+            $property_image = [];
             foreach ($request->file('file') as $item) {
                 $name = $item->getClientOriginalName();
                 $image = str_random(5) . $name;
-                while (file_exists('upload/property' . $image))
-                {
+                while (file_exists('upload/property' . $image)) {
                     $image = str_random(5) . '.' . $image;
                 }
-                $item->move(config('app.property_path'), $image); 
+                $item->move(config('app.property_path'), $image);
+                if (is_null($img)) {
+                    $img = $image;
+                }
+                $property_image [] = $image;
+            }
+            $request->merge([
+                'status' => 0,
+                'user_id' => $request->user()->id,
+                'image' => $img,
+            ]);
+            $properties = $this->property->create($request->all());
+            foreach ($property_image as $item) {
                 $file = [
                     'property_id' => $properties->id,
-                    'link' => $image,
+                    'link' => $item,
                 ];
                 $image = $this->property_image->create($file);
             }
-            
+
             return redirect('property')->with('message', __('message.add_property'));
         }
     }
@@ -103,9 +110,7 @@ class PropertyController extends Controller
             $properties = Property::with('propertyImage')->where('user_id', $id)->paginate(config('pagination.myProperty'));
 
             return view('fontend.properties.my_property', compact('properties'));
-        }
-        catch (ModelNotFoundException $ex)
-        {
+        } catch (ModelNotFoundException $ex) {
             echo $ex->getMessage();
         }
     }
@@ -118,7 +123,7 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        
+
         $properties = $this->property->findOrFail($id);
 
         $user = Auth::user();
@@ -129,7 +134,7 @@ class PropertyController extends Controller
 
         $district = District::all();
 
-        $propertyCategory = PropertyCategory:: all();
+        $propertyCategory = PropertyCategory::all();
 
         $propertyType = PropertyType::all();
 
@@ -157,15 +162,13 @@ class PropertyController extends Controller
                 foreach ($request->file('file') as $item) {
                     $name = $item->getClientOriginalName();
                     $image = str_random(5) . $name;
-                    while (file_exists('upload/property' . $image ))
-                    {
+                    while (file_exists('upload/property' . $image)) {
                         $image = str_random(5) . '.' . $name;
                     }
                     $item->move(config('app.property_path'), $image);
                     $propertyImage = PropertyImage::where('property_id', $id)->get();
-                    foreach($propertyImage as $item) {
-                        if (file_exists(config('app.property_path') . $item->link))
-                        {
+                    foreach ($propertyImage as $item) {
+                        if (file_exists(config('app.property_path') . $item->link)) {
                             unlink(config('app.property_path') . $item->link);
                         }
                     }
@@ -179,9 +182,7 @@ class PropertyController extends Controller
 
                 return redirect(route('property.show', $request->user()->id))->with('message', __('label.edit_sussess'));
             }
-        }
-        catch (ModelNotFoundException $ex)
-        {
+        } catch (ModelNotFoundException $ex) {
             echo $ex->getMessage();
         }
     }
@@ -200,9 +201,8 @@ class PropertyController extends Controller
 
             $propertyImage = PropertyImage::where('property_id', $id)->get();
 
-            foreach($propertyImage as $item) {
-                if (file_exists(config('app.property_path') . $item->link))
-                {
+            foreach ($propertyImage as $item) {
+                if (file_exists(config('app.property_path') . $item->link)) {
                     unlink(config('app.property_path') . $item->link);
                 }
             }
@@ -211,9 +211,7 @@ class PropertyController extends Controller
             $properties = $this->property->delete($id);
 
             return redirect(route('property.show', Auth::user()->id));
-        }
-        catch (ModelNotFoundException $ex)
-        {
+        } catch (ModelNotFoundException $ex) {
             echo $ex->getMessage();
         }
     }

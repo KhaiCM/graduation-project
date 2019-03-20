@@ -99,4 +99,8 @@ return [
     'search_propertyCategory' => '--Lựa chọn thể loại tài sản--',
     'search_propertyType' => '--Lựa chọn kiểu tài sản--',
     'notification' => 'Không có kết quả bạn yêu cầu',
+    'price_1' => '--select price--',
+    'price_2' => '--agree--',
+    'acreage_filter' => '--select acreage--',
 ];
+
