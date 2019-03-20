@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Product;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\PropertyType;
+use App\Models\PropertyCategory;
 use App\Models\Unit;
 use App\Models\Comment;
-use App\Models\PropertyCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Requests\CommentRequest;
@@ -21,7 +24,9 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    { }
+    {
+        
+    }
 
     /**
      * Show the application dashboard.
@@ -30,10 +35,23 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $province = [__('label.search_province')];
+        $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
+
+        $district  = [__('label.search_district')];
+        $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
+
+        $propertyCategory  = [__('label.search_propertyCategory')];
+        $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
+
+        $propertyType  = [__('label.search_propertyType')];
+        $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
+
         $properties = Property::paginate(config('pagination.home'));
 
-        return view('fontend.homepages.homepage', compact('properties'));
+        return view('fontend.homepages.homepage', compact('properties', 'province', 'district','property', 'propertyType', 'propertyCategory'));
     }
+
     public function getProSold()
     {
         $properties = Property::where('form', '1')->paginate(config('pagination.all'));
@@ -83,3 +101,4 @@ class HomeController extends Controller
         }
     }
 }
+
