@@ -2,12 +2,13 @@
 
 return [
 
-    'blog_image' => 'public/blog/',
+    'blog_image' => 'upload/blog/',
     'blog_cat_page' => 5,
     'blog_page' => 5,
     'contract_page' => 5,
     'property_path' => 'upload/property/',
     'avatar_path' => 'upload/avatar/',
+    'post_page' => 20,
     /*
     |--------------------------------------------------------------------------
     | Application Name

@@ -21,13 +21,13 @@
                             <img class="blog-theme img-fluid" src="{{ asset(config('app.blog_image')) }}/{{ $post->image }}" alt="{{ $post->title }}    ">
                             <div class="detail">
                                 <div class="date-box">
-                                    <h5>{{ $post->created_at }}</h5>
+                                    <h5>{{ $post->created_at->toFormattedDateString() }}</h5>
                                 </div>
                                 <h3>
                                     <a href="{{ route('post.view', $post->id) }}">{{ $post->title }}</a>
                                 </h3>
                                 <div class="post-meta">
-                                    <span><a href="#"><i class="fa fa-user"></i>{{ $post->user->name ?? '' }}</a></span>
+                                    <span><a href="#"><i class="fa fa-user"></i>{{ $post->user['name'] }}</a></span>
                                     <span><a href="{{ route('post.view', $post->id) }}"><i class="fa fa-commenting-o"></i>{{ trans('province.comment') }}</a></span>
                                 </div>
                                 <p>{{ $post->describe }}</p>

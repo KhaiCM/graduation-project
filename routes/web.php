@@ -123,9 +123,15 @@ Route::group(['prefix' => 'ajax'], function () {
 });
 
 //set_calendar
-Route::get('calendar/{id}', 'SetCalenderController@create')->name('createcalendar');
-Route::post('calendar/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendar');
+Route::get('calendar/{id}', 'SetCalenderController@create')->name('createcalendars');
+Route::post('calendar/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendars');
 
 Route::get('setcalendarlist', 'SetCalenderController@getlist')->name('setcalendar.index');
-Route::get('deletecalendar/{id}', 'SetCalenderController@getDelete')->name('deletecalendar');
+Route::get('deletecalendar/{id}', 'SetCalenderController@getDelete')->name('deletecalendars');
 
+//post
+Route::get('postlist', 'PostController@showlist');
+
+//contract
+Route::get('contract/{id}', 'ContractController@create')->name('createcontracts');
+Route::post('contract/{id}', 'ContractController@postcreate')->name('contracts');

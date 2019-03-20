@@ -73,7 +73,7 @@
                     </ul>
                     <div class="tab-content" id="carTabContent">
                         <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
-                            <h3 class="heading">{{ $property->name }} {{ trans('province.description') }}</h3> {!! $property->describe !!}
+                            <h3 class="heading">{{ $property->name }} {{ trans('province.description') }}</h3> {{ $property->describe }}
                         </div>
                         <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
                             <div class="floor-plans mb-60">
@@ -151,16 +151,16 @@
                     <h3 class="heading">{{ trans('province.leavecomment')}}</h3>
                     <div class="container">
                         <div class="row">
-                            {!! Form::open(['method' => 'POST', 'route' => ['property.comment', $property->id]]) !!}
+                            {{ Form::open(['method' => 'POST', 'route' => ['property.comment', $property->id]]) }}
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group name">
-                                        {!! form::text('name', Auth::user()->name, ['class' => 'form-control', 'placeholder' => trans('province.name')]) !!}
+                                        {{ form::text('name', Auth::user()->name, ['class' => 'form-control', 'placeholder' => trans('province.name')]) }}
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group email">
-                                        {!! form::text('name', Auth::user()->email, ['class' => 'form-control', 'placeholder' => trans('province.email')]) !!}
+                                        {{ form::text('name', Auth::user()->email, ['class' => 'form-control', 'placeholder' => trans('province.email')]) }}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -174,14 +174,11 @@
                                     </div>
                                 </div>
                             </div>
-                            {!! form::close() !!}
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="send-btn">
-                                    <a href="{{ route('createcalendar',['id' => $property->id]) }}"><button class="bntshowdl">{{ trans('message.setcalendar') }}</button></a>
-                                </div>
-                            </div>
+                            {{ form::close() }}
                         </div>
                     </div>
+                    <a href="{{ route('createcalendars', ['id' => $property->id]) }}"><button class="btn-md btn-color">{{ trans('message.setcalendar') }}</button></a>
+                    <a href="{{ route('createcontracts', ['id' => $property->id]) }}"><button class="btn-md btn-color">{{ trans('message.contract') }}</button></a>
                 </div>
                 @endif
             </div>
@@ -192,24 +189,24 @@
                         <h5 class="sidebar-title">{{ trans('province.seach') }}</h5>
                         <div class="search-area-inner">
                             <div class="search-contents ">
-                                {!! Form::open(['method' => 'GET']) !!}
+                                {{ Form::open(['method' => 'GET']) }}
                                 <div class="form-group">
-                                    {!! Form::select('area', [1 => __('label.area_from')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('area', [1 => __('label.area_from')], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('property-status', [1 => __('label.property_status'), 2=> __('label.for_sale'), 3=> __('label.for_rent')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('property-status', [1 => __('label.property_status'), 2=> __('label.for_sale'), 3=> __('label.for_rent')], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('location', [1 => __('label.location'), 2 => __('label.ha_noi')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('location', [1 => __('label.location'), 2 => __('label.ha_noi')], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('category', [1 => __('label.property_types'), 2 => __('label.commercial')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('category', [1 => __('label.property_types'), 2 => __('label.commercial')], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('bedrooms', [1 => __('label.bedrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('bedrooms', [1 => __('label.bedrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {{ Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) }}
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -219,7 +216,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button class="search-button btn-md btn-color">{!! __('label.search')!!}</button>
+                                <button class="search-button btn-md btn-color">{{ __('label.search') }}</button>
                                 {{ form::close() }}
                             </div>
                         </div>

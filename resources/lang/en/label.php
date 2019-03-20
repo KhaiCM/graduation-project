@@ -107,4 +107,6 @@ return [
     'price_1' => '--select price--',
     'price_2' => '--agree--',
     'acreage' => '--select acreage--',
+    'setcalendar' => 'Set Calendar',
+    'contract' => 'Contract',
 ];

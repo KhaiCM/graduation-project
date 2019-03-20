@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Egulias\EmailValidator\Warning\Comment;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -22,7 +23,7 @@ class PostController extends Controller
         {
             $post = Post::findOrFail($id);
 
-            return view('fontend.posts.blog_detail', compact('post'));
+            return view('fontend.posts.detail_blog', compact('post'));
         } catch (ModelNotFoundException $ex)
         {
             $ex->getMessage();
