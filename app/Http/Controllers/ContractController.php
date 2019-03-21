@@ -31,14 +31,6 @@ class ContractController extends Controller
 
     public function postcreate(Request $request, $id)
     {
-        try 
-        {
-            $ct = Property::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e)
-        {
-            echo $e->getMessage();
-        }
         $this->validate($request,
         [
             'note' => 'required|min:3|max:100',

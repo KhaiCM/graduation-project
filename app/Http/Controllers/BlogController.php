@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function getList()
     {
-        $bl = Post::with('categoryPost')->paginate(config('app.blog_page'));
+        $bl = Post::orderBy('id', 'desc')->paginate(config('app.blog_page'));
 
         return view('backend.blog.showblog', ['bl' => $bl]);
     }

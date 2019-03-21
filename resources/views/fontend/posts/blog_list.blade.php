@@ -40,7 +40,7 @@
                         <div class="pagination-box hidden-mb-45">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
-                                    <li class="page-item">{!! $posts->links() !!}</li>
+                                    <li class="page-item">{{ $posts->links() }}</li>
                                 </ul>
                             </nav>
                         </div>
@@ -52,10 +52,10 @@
                     <!-- Search box start -->
                     <div class="widget search-box">
                         <h5 class="sidebar-title">{{ trans('province.seach') }}</h5>
-                        {!! Form::open(['method' => 'POST']) !!}
-                            {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
-                            {!! Form::button("<i class='fa fa-search'></i>", ['class' => 'btn']) !!}
-                        {!! Form::close() !!}
+                        {{ Form::open(['method' => 'POST']) }}
+                            {{ Form::text('search', null, ['class' => 'form-control', 'placeholder' => trans('message.search')]) }}
+                            {{ Form::button("<i class='fa fa-search'></i>", ['class' => 'btn']) }}
+                        {{ Form::close() }}
                     </div>
 
                     <!-- Categories start -->

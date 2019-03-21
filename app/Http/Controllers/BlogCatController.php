@@ -9,7 +9,7 @@ class BlogCatController extends Controller
 {
     public function getList()
     {
-        $cat = CategoryPost::paginate(config('app.blog_cat_page'));
+        $cat = CategoryPost::orderBy('id', 'desc')->paginate(config('app.blog_cat_page'));
 
         return view('backend.blogcats.showblogcat', ['cat' => $cat]);
     }

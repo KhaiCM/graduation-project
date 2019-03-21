@@ -99,8 +99,10 @@ return [
     'search_propertyCategory' => '--Lựa chọn thể loại tài sản--',
     'search_propertyType' => '--Lựa chọn kiểu tài sản--',
     'notification' => 'Không có kết quả bạn yêu cầu',
-    'price_1' => '--select price--',
-    'price_2' => '--agree--',
+    'price_1' => '--chọn giá--',
+    'price_2' => '--đồng ý--',
     'acreage_filter' => '--select acreage--',
+    'setcalendar' => 'Đặt lịch hẹn',
+    'contract' => 'Hợp đồng',
 ];
 

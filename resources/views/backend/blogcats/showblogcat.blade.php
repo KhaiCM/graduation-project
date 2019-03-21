@@ -26,6 +26,6 @@
             @endforeach
         </tbody>
     </table>
-    {!! $cat->links(); !!}
+    {{ $cat->links() }}
 </div>
 @endsection

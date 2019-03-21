@@ -73,7 +73,7 @@
                     </ul>
                     <div class="tab-content" id="carTabContent">
                         <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
-                            <h3 class="heading">{{ $property->name }} {{ trans('province.description') }}</h3> {{ $property->describe }}
+                            <h3 class="heading">{{ $property->name }} {{ trans('province.description') }}</h3> {!! $property->describe !!}
                         </div>
                         <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
                             <div class="floor-plans mb-60">
