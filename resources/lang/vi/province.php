@@ -22,6 +22,7 @@ return [
     'email' => 'email',
     'feature' => 'Tính năng',
     'floorplan' => 'Sơ đồ',
+    'for' => 'Thuộc tỉnh',
     'garage' => 'Chỗ để xe',
     'highlight' => 'Nổi bật',
     'home' => 'Trang chủ',

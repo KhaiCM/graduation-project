@@ -4,9 +4,9 @@ return [
     'Admin' => 'Quản trị viên',
     'New' => 'Tin Tức',
     'Contact' => 'Liên hệ',
-    'About' => 'Thông tin',
+    'About' => 'Liên hệ',
     'Account' => 'Tài khoản',
-    'Detail' => 'Chie Tiết',
+    'Detail' => 'Chi Tiết',
     'Logout' => 'Đăng xuất',
     'Services' => 'Dịch vụ',
     'Clients' => 'Khách hàng',
@@ -40,6 +40,10 @@ return [
     'contact' => 'Liên hệ',
     'blog' => 'Bài viết',
     'blogcat' => 'danh mục bài viết',
+    //admin
+    'blog' => 'Tin tức',
+    'blogcat' => 'Thể loại tin tức',
+    'contract' => 'Hợp đồng',
     'setcalendar' => 'Lịch hẹn',
     //property
     'add_property' => 'Thêm tài sản thành công',
@@ -48,6 +52,8 @@ return [
     'file_required' => 'file không thể trống',
     'propertytype_id' => 'Kiểu tầi sản không thể trống',
     'property_district_id' => 'Địa chỉ huyện không thể trống',
+    'property_district_id' => 'Địa chỉ huyện không thể trống',
+    //schedule
     'note' => 'Ghi chú',
     'time' => 'Thời gian',
     'day' => 'Ngày',
@@ -58,5 +64,9 @@ return [
     'property' => 'Tài sản',
     'date' => 'ngày',
     'name' => 'Tên',
+    
+    //province admin
+    'Submit' =>  'Cập nhật',
+    'submit_add' => 'Thêm mới',
 ];
 

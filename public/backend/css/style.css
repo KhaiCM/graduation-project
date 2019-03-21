@@ -13,7 +13,6 @@
     height: 50px;
     width: 50px;
     left: 50%;
-    margin-left: 500px;
 }
 
 .topnav a {
@@ -43,9 +42,18 @@
     color: white;
 }
 
-.dropdown {
+.menu-right {
+    display: flex;
     float: right;
-    margin-right: 60px;
+    width: 300px;
+}
+
+.language {
+    margin-right: 100px;
+}
+
+.dropdown {
+    margin-right: 10px;
     overflow: hidden;
 }
 
@@ -182,7 +190,7 @@ textarea,
 }
 
 input[type=submit] {
-    background-color: #007bff;
+    background-color: #008c5e;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -203,7 +211,8 @@ input[type=reset] {
     margin-top: 20px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover,
+.button:hover {
     background-color: #245887;
 }
 
@@ -214,11 +223,10 @@ input[type=reset]:hover {
 .button {
     background-color: #008C5E;
     border: none;
+    border-radius: 4px;
     color: white;
-    padding: 15px 32px;
+    padding: 12px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
@@ -320,6 +328,7 @@ tr:nth-child(even) {
     background-color: #4CAF50;
     color: white;
 }
+
 .imgblog {
     width: 50px;
     height: 50px;

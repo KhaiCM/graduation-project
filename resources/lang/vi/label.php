@@ -1,5 +1,6 @@
 <?php
 return [
+    //header
     'title' => 'Bất động sản',
     'properties_sold' => 'Tài sản bán',
     'about_us' => 'Giới thiệu',
@@ -9,6 +10,9 @@ return [
     'login' => 'Đăng nhập',
     'sign_up' => 'Đăng kí',
     'property' => 'Tài sản',
+    'language' => 'Ngôn ngữ',
+    'english' => 'Tiếng anh',
+    'vietnam' => 'Tiếng việt',
     //footer
     'useful_links' => 'Liên kết hữu ích',
     'subscribe' => 'Theo dõi',
@@ -69,7 +73,7 @@ return [
     'property_category' => 'Thể loại tài sản',
     'form' => 'Hình thức',
     'property_type' => 'Loại tài sản',
-    'price' => 'Gía',
+    'price' => 'Giá',
     'province' => 'Tỉnh',
     'district' => 'Huyện',
     'describe' => 'Miêu Tả',
@@ -101,8 +105,7 @@ return [
     'notification' => 'Không có kết quả bạn yêu cầu',
     'price_1' => '--chọn giá--',
     'price_2' => '--đồng ý--',
-    'acreage_filter' => '--select acreage--',
+    'acreage_filter' => '--Chọn diện tích--',
     'setcalendar' => 'Đặt lịch hẹn',
     'contract' => 'Hợp đồng',
 ];
-

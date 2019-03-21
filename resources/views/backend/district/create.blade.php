@@ -18,6 +18,6 @@
         {!! Form::text('name', null, ['class' => 'input', 'placeholder' => trans('province.name')]) !!}<br/>
         {!! Form::label('provinces_id', trans('province.province')) !!}
         {!! Form::select('provinces_id', $provinces->pluck('name', 'id'), null, ['placeholder' => trans('province.choose')]) !!}
-        {!! Form::submit(trans('message.Submit')) !!}
+        {!! Form::submit(trans('message.submit_add')) !!}
     {!! Form::close() !!}
 @endsection

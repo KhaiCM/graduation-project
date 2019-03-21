@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Product;
 
-use Illuminate\Http\Request;
-use App\Models\Property;
-use App\Models\Province;
-use App\Models\District;
-use App\Models\PropertyType;
-use App\Models\PropertyCategory;
-use App\Models\Unit;
-use App\Models\Comment;
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
+use App\Models\District;
+use App\Models\Property;
+use App\Models\PropertyCategory;
+use App\Models\PropertyType;
+use App\Models\Province;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -25,7 +23,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -38,18 +36,18 @@ class HomeController extends Controller
         $province = [__('label.search_province')];
         $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
 
-        $district  = [__('label.search_district')];
+        $district = [__('label.search_district')];
         $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
 
-        $propertyCategory  = [__('label.search_propertyCategory')];
+        $propertyCategory = [__('label.search_propertyCategory')];
         $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
 
-        $propertyType  = [__('label.search_propertyType')];
+        $propertyType = [__('label.search_propertyType')];
         $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
 
         $properties = Property::paginate(config('pagination.home'));
 
-        return view('fontend.homepages.homepage', compact('properties', 'province', 'district','property', 'propertyType', 'propertyCategory'));
+        return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory'));
     }
 
     public function getProSold()
@@ -95,10 +93,15 @@ class HomeController extends Controller
             ]);
 
             return Redirect::back();
-        } catch (ModelNotFoundException $ex)
-        {
+        } catch (ModelNotFoundException $ex) {
             $ex->getMessage();
         }
     }
-}
 
+    public function changeLanguage($language)
+    {
+        \Session::put('lang', $language);
+
+        return redirect()->back();
+    }
+}

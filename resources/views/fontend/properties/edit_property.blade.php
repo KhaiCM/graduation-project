@@ -123,7 +123,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
+                                {!! Form::submit(__('label.changes'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
                             </div>
                         </div>
                     </form>

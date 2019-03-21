@@ -10,6 +10,9 @@ return [
     'login' => 'Login',
     'sign_up' => 'Sign up',
     'property' => 'Property',
+    'language' => 'Language',
+    'english' => 'English',
+    'vietnam' => 'Vietnamese',
     //footer
     'useful_links' => 'Useful Links',
     'subscribe' => 'Subscribe',
@@ -106,8 +109,8 @@ return [
     'price_1' => '--select price--',
     'price_2' => '--agree--',
     'acreage' => '--select acreage--',
+    'acreage_filter' => '--select acreage--',
     'setcalendar' => 'Set Calendar',
     'contract' => 'Contract',
-    'acreage_filter' => '--select acreage--',
 ];
 

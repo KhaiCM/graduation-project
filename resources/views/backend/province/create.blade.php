@@ -16,6 +16,6 @@
     {!! Form::open(['route' => 'province.create', 'method' => 'post']) !!}
         {!! Form::label('name', trans('province.name') , ['class' => 'label']) !!}
         {!! Form::text('name', null, ['class' => 'input', 'placeholder' => trans('province.name')]) !!}      
-        {!! Form::submit(trans('message.Submit')) !!}
+        {!! Form::submit(trans('message.submit_add')) !!}
     {!! Form::close() !!}
 @endsection

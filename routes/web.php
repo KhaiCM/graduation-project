@@ -139,3 +139,8 @@ Route::post('contract/{id}', 'ContractController@postcreate')->name('contracts')
 //contact
 Route::get('contact', 'ContactController@create')->name('createcontacts');
 Route::post('contact', 'ContactController@postcreate')->name('contacts');
+
+//i18n
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('change-language/{language}', 'Product\HomeController@changeLanguage')->name('user.change-language');
+});
