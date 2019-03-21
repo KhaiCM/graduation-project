@@ -9,24 +9,33 @@
 <body>
     <div class="topnav">
         <a class="active" href="{{ route('adminHome') }}">{{ trans('message.Home') }}</a>
-        <a href="#news">{{ trans('message.New') }}</a>
-        <a href="#contact">{{ trans('message.Contact') }}</a>
+        <a href="{{ route('blog.index') }}">{{ trans('message.New') }}</a>
+        <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
         <a href="#about">{{ trans('message.About') }}</a>
-        <img src="{{ asset(config('app.avatar_path') . Auth::user()->avatar) }}" alt="avatar" class="img-avatar">
-        <div class="dropdown">
-            <button class="dropbtn">{{ Auth::user()->name }}</button>
-            <div class="dropdown-content">
-                <a href="{{ route('user.detail', Auth::user()->id) }}">{{ trans('message.Detail') }}</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-                {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'class' => 'hide']) !!}
-                {!! Form::close() !!}
+        <div class="menu-right">
+            <div class="nav-item dropdown">
+            <button class="dropbtn"><i class="fa fa-language"></i></button>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" href="{!! route('user.change-language', ['en']) !!}">{{ __('label.english') }}</a>
+                    <a class="dropdown-item" href="{!! route('user.change-language', ['vi']) !!}">{{ __('label.vietnam') }}</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+            <img src="{{ asset(config('app.avatar_path') . Auth::user()->avatar) }}" alt="avatar" class="img-avatar">
+                <button class="dropbtn">{{ Auth::user()->name }}</button>
+                <div class="dropdown-content">
+                    <a href="{{ route('user.detail', Auth::user()->id) }}">{{ trans('message.Detail') }}</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('message.Logout') }}</a></l>
+                    {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'class' => 'hide']) !!}
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>
     <div class="sidenav">
-        <a href="{{ route('blog.index') }}">{{ trans('message.blog') }}</a>
+        <a href="{{ route('blog.index') }}">{{ trans('message.New') }}</a>
         <a href="{{ route('blogcat.index') }}">{{ trans('message.blogcat') }}</a>
-        <a href="{{ route('contact.index') }}">{{ trans('message.contact') }}</a>
+        <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
         <a href="{{ route('contract.index') }}">{{ trans('message.contract') }}</a>
         <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
         <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>

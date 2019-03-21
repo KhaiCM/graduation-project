@@ -39,10 +39,10 @@ return [
     'start_date' => 'start date',
     'end_date' => 'end date',
     'total_money' => 'total money',
-    'contract' => 'Contract',
-    'contact' => 'Contact',
     'blog' => 'Blog',
     'blogcat' => 'Blog Category',
+    'contract' => 'Contract',
+    'contact' => 'Contact',
     'setcalendar' => 'appointment schedule',
     //property
     'add_property' => 'Add property success',
@@ -58,6 +58,8 @@ return [
     'comment' => 'Comments Section',
     'startday' => 'Startday',
     'property' => 'Property',
+    'Submit' => 'Submit',
+    //schedule
     'date' => 'date',
     'name' => 'Name',
 ];

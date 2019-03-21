@@ -64,7 +64,7 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('user_page.edit', Auth::user()->id) }}">{{ __('label.user_page') }}</a></li>
-                                        <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                                        <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('message.Logout') }}</a></li>
                                         {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'class' => 'hide']) !!}
                                         {!! Form::close() !!}
                                     </ul>
@@ -73,6 +73,15 @@
                                 <a class="btn btn-sm btn-white-sm-outline btn-round signup-link" href="{{ route('login') }}">{!! __('label.login')!!}</a>
                                 <a class="btn btn-sm btn-white-sm-outline btn-round signup-link" href="{{ route('register') }}">{!! __('label.sign_up')!!}</a>
                                 @endif
+                            </li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ __('label.language') }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li class="dropdown-submenu"><a class="dropdown-item" href="{!! route('user.change-language', ['en']) !!}">{{ __('label.english') }}</a></li>
+                                    <li class="dropdown-submenu"><a class="dropdown-item" href="{!! route('user.change-language', ['vi']) !!}">{{ __('label.vietnam') }}</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

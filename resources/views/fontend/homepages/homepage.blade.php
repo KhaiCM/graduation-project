@@ -166,27 +166,27 @@
 <div class="services content-area-5">
     <div class="container">
         <div class="main-title">
-            <h1>{!! __('label.looking_for')!!}</h1>
+            <h1>{!! __('label.looking_for') !!}</h1>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInLeft delay-04s">
                 <i class="flaticon-hotel-building"></i>
-                <h5>{!! __('label.apartments_clean')!!}</h5>
+                <h5>{!! __('label.apartments_clean') !!}</h5>
                 <p>{{ trans('province.content') }}</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInUp delay-04s">
                 <i class="flaticon-house"></i>
-                <h5>{!! __('label.houses')!!}</h5>
+                <h5>{!! __('label.houses') !!}</h5>
                 <p>{{ trans('province.content') }}</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInDown delay-04s">
                 <i class="flaticon-call-center-agent"></i>
-                <h5>{!! __('label.support_24')!!}</h5>
+                <h5>{!! __('label.support_24/7')!!}</h5>
                 <p>{{ trans('province.content') }}</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInRight delay-04s">
                 <i class="flaticon-office-block"></i>
-                <h5>{!! __('label.commercial')!!}</h5>
+                <h5>{!! __('label.commercial') !!}</h5>
                 <p>{{ trans('province.content') }}</p>
             </div>
         </div>
