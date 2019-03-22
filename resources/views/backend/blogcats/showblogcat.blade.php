@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="high">
-        <a>{{ trans('message.bloglist') }}</a>
+        <a>{{ trans('message.blogcate') }}</a>
         <a href="{{ route('addblogcat') }}"><button class="button">{{ trans('message.add') }}</button></a>
     </div>
     <table>

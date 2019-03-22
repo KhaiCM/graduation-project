@@ -31,7 +31,7 @@
 							<span><a><i class="fa fa-clock-o"></i>{{ $post->created_at->toFormattedDateString() }}</a></span>
 							<span><a href="#"><i class="fa fa-commenting-o"></i></a></span>
 						</div>
-						<p>{{ $post->content }}</p>
+						<p>{!! $post->content !!}</p>
 						<br>
 						<div class="row clearfix tags-socal-box">
 							<div class="col-lg-5 col-md-5 col-sm-5">

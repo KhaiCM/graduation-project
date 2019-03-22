@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RentContract;
 use App\Models\Property;
 use App\Models\User;
+use Carbon\Carbon;
 
 class ContractController extends Controller
 {

@@ -26,7 +26,7 @@
                                 <div class="col-lg-12 ">
                                     <div class="form-group name">
                                         {{ Form::label('email', trans('message.email')) }}
-                                        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
+                                        {{ Form::text('email', Auth::user()->email, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.content')) }}<br>

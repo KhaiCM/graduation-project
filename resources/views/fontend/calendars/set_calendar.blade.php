@@ -32,15 +32,15 @@
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.time')) }}
-                                        {{ Form::text('time', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
+                                        {{ Form::text('time', null, ['class' => 'form-control', 'placeholder' => __('message.time')]) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.phone')) }}
-                                        {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
+                                        {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'placeholder' => __('message.phone')]) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.email')) }}
-                                        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) }}
+                                        {{ Form::text('email', Auth::user()->email, ['class' => 'form-control', 'placeholder' => __('message.email')]) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.note')) }}<br>

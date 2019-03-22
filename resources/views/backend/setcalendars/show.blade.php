@@ -13,9 +13,6 @@
                 <th>{{ trans('message.property') }}</th>
                 <th>{{ trans('message.date') }}</th>
                 <th>{{ trans('message.time') }}</th>
-                <th>{{ trans('message.phone') }}</th>
-                <th>{{ trans('message.email') }}</th>
-                <th>{{ trans('message.note') }}</th>
                 <th>{{ trans('message.task') }}</th>
             </tr>
         </thead>
@@ -26,10 +23,8 @@
                 <td>{{ $a->property_id }}</td>
                 <td>{{ $a->date }}</td>
                 <td>{{ $a->time }}</td>
-                <td>{{ $a->phone }}</td>
-                <td>{{ $a->email }}</td>
-                <td>{{ $a->note }}</td>
-                <td class="tdshow"><a href="{{ route('deletecalendars', $a->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
+                <td class="tdshow"><a href="{{ route('detail.calendars', $a->id) }}"><button class="bntshow">{{ trans('message.detail') }}</button></a>
+                <a href="{{ route('delete.calendars', $a->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
             </tr>
             @endforeach
         </tbody>
