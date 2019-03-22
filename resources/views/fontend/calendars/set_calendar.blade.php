@@ -36,11 +36,11 @@
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.phone')) }}
-                                        {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'placeholder' => __('message.phone')]) }}
+                                        {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'readonly' => 'true']) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.email')) }}
-                                        {{ Form::text('email', Auth::user()->email, ['class' => 'form-control', 'placeholder' => __('message.email')]) }}
+                                        {{ Form::text('email', Auth::user()->email, ['class' => 'form-control', 'readonly' => 'true']) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.note')) }}<br>

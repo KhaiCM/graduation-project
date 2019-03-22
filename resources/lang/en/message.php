@@ -64,7 +64,7 @@ return [
     'photo' => 'Photo',
     'detail' => 'Detail',
     'endday' => 'End date',
-    'youremail' => 'Your email',
+    'youremail' => 'Renter email',
     'leaseemail' => 'Lease email',
     'leasename' => 'Lease name',
     'image' => 'Image',
@@ -74,4 +74,10 @@ return [
     'owneremail' => 'Owner email',
     'blogcate' => 'Blog category',
     'editcategory' => 'Edit category',
+    'unit' => 'Unit',
+    'price' => 'Price',
+    'cannotblank' => 'Can not blank!',
+    'tooshort' => 'Too short',
+    'toolong' => 'Too long',
+    'yourname' => 'Renter name'
 ];
