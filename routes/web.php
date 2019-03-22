@@ -86,6 +86,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/news/{id}', 'PostController@getPostById')->name('post.view');
 
     Route::post('/news/{id}/comment', 'Product\HomeController@comment')->name('property.comment');
+
+    Route::get('listfollow/{id}', 'UserPageController@listFollow')->name('follow.show');
+
+    Route::get('userfollow/{id}', 'UserPageController@userFollow')->name('follow.user');
 });
 
 //user page

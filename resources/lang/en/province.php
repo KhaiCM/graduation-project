@@ -4,6 +4,7 @@ return [
     'action' => 'Action',
     'addDistrict' => 'Add District',
     'addProvince' => 'Add Province',
+    'avatar' => 'Avatar',
     'bathroom' => 'Bathrooms',
     'bedroom' => 'Bedrooms',
     'by' => 'By',
@@ -28,6 +29,7 @@ return [
     'home' => 'Home',
     'leavecomment' => 'leave comment',
     'listDistrict' => 'List District',
+    'listfollow' => 'Follow List',
     'listProvince' => 'List Provinces',
     'location' => 'location',
     'month' => 'Moth',
@@ -42,5 +44,6 @@ return [
     'start' => 'Get Started Now',
     'tag' => 'Tags',
     'time' => 'time',
+    'unfollow' => 'Unfollow',
     'video' => 'video',
 ];

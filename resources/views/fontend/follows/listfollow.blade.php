@@ -9,8 +9,8 @@
                 <div class="user-profile-box mrb">
                     <!--header -->
                     <div class="header clearfix">
-                        <h2>{{ 1 }}</h2>
-                        <img src="{{ asset(config('fontend.fontend_image.sub_property')) }}" alt="avatar" class="img-fluid profile-img">
+                        <h2>{!! $user->name !!}</h2>
+                        <img src="{{ asset(config('app.avatar_path') . $user->avatar) }}" alt="avatar" class="img-fluid profile-img">
                     </div>
                     <!-- Detail -->
                     <div class="detail clearfix">
@@ -21,12 +21,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('property.show', Auth::user()->id) }}" class="active">
+                                <a href="{{ route('property.show', Auth::user()->id) }}">
                                     <i class="flaticon-house"></i>{!! __('label.my_property') !!}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('follow.show', Auth::user()->id) }}">
+                                <a href="{{ route('follow.show', Auth::user()->id) }}" class="active">
                                     <i class="flaticon-heart-shape-outline"></i>{{ trans('province.listfollow') }}
                                 </a>
                             </li>
@@ -42,7 +42,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}">
-                                    <i class="flaticon-logout"></i>{!! __('Logout') !!}
+                                    <i class="flaticon-logout"></i>{!! __('message.Logout') !!}
                                 </a>
                             </li>
                         </ul>
@@ -50,42 +50,32 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="my-properties">
+                <div class="">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('label.name') }}</th>
-                                <th>{{ __('label.address') }}</th>
-                                <th>{{ __('label.date_added') }}</th>
-                                <!-- <th>Views</th> -->
+                                <th>{{ __('province.avatar') }}</th>
+                                <th>{{ __('province.name') }}</th>
                                 <th>{{ __('label.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($properties as $property)
                             <tr>
                                 <td class="image">
-                                    <a href="#"><img alt="my-properties-3" src="{{ asset(config('app.property_path') . $property->propertyImage()->value('link')) }}" class="img-fluid"></a>
+                                    <a href="#"><img alt="#" src="#" class="img-fluid"></a>
                                 </td>
                                 <td>
                                     <div class="inner">
-                                        <a href="#"><h2></h2></a>
-                                        <figure><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->address }}</figure>
-                                        <div class="tag price">{{ $property->price }}</div>
+                                        <a href="#"><h4>{{ trans('province.name') }}</h4></a>
                                     </div>
                                 </td>
-                                <td>{{ $property->created_at }}</td>
-                                <!-- <td>421</td> -->
                                 <td class="actions">
-                                    <a href="{{ route('property.edit', $property->id) }}" class="edit"><i class="fa fa-pencil"></i>{{ __('label.edit') }}</a>
-                                    <a href="{{ route('property.delete', $property->id) }}"><i class="delete fa fa-trash-o"></i>{{ __('label.delete') }}</a>
+                                    <a href="#"><button type='button' class="btn btn-md btn-color">{{ __('province.unfollow') }}</button></a>
                                 </td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                {{ $properties->links() }}
             </div>
         </div>
     </div>

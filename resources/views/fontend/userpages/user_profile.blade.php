@@ -16,13 +16,18 @@
                     <div class="detail clearfix">
                         <ul>
                             <li>
-                                <a href="#" class="active">
+                                <a href="{{ route('user_page.edit', Auth::user()->id) }}" class="active">
                                     <i class="flaticon-user"></i>{!! __('label.my_profile') !!}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('property.show', Auth::user()->id) }}">
                                     <i class="flaticon-house"></i>{!! __('label.my_property') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('follow.show', Auth::user()->id) }}">
+                                    <i class="flaticon-heart-shape-outline"></i>{{ trans('province.listfollow') }}
                                 </a>
                             </li>
                             <li>
