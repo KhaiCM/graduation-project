@@ -70,9 +70,9 @@ return [
     'photo' => 'Ảnh',
     'detail' => 'Chi tiết',
     'endday' => 'Ngày kết thúc',
-    'youremail' => 'Email của bạn',
+    'youremail' => 'Email của người thuê',
     'leaseemail' => 'Email người cho thuê',
-    'leasename' => 'Tên người cho thuể',
+    'leasename' => 'Tên người cho thuê',
     'image' => 'Hình ảnh',
     'propertyname' => 'Tên tài sản',
     'sender' => 'Người gửi',
@@ -80,5 +80,11 @@ return [
     'owneremail' => 'Email người sở hữu',
     'blogcate' => 'Danh mục bài viết',
     'editcategory' => 'Sửa danh mục bài viết',
+    'unit' => 'Đơn vị',
+    'price' => 'Giá',
+    'cannotblank' => 'Không được để trống',
+    'tooshort' => 'Quá ngắn',
+    'toolong' => 'Quá dài',
+    'yourname' => 'Tên người thuê'
 ];
 

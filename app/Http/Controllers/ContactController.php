@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Unit;
 use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
@@ -29,7 +30,6 @@ class ContactController extends Controller
 
     public function postCreate(ContactRequest $request)
     {
-        // $ct = new Contact;
         $ct = Contact::create($request->all());
 
         return redirect('/')->with('noti', 'success');

@@ -7,6 +7,7 @@ use App\Models\RentContract;
 use App\Models\Property;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Http\Requests\ContractRequest;
 
 class ContractController extends Controller
 {
@@ -32,16 +33,8 @@ class ContractController extends Controller
 
     public function postcreate(Request $request, $id)
     {
-        $this->validate($request,
-        [
-            'note' => 'required|min:3|max:100',
-            'phone' => 'required',
-        ],
-        [
-            'note.required' => trans('message.cannotblank'),
-            'note.min' => trans('message.tooshort'),
-            'note.max' => trans('message.toolong'),
-            'phone.required' => trans('message.cannotblank'),
-        ]);
+        $ct = RentContract::create($request->all());
+
+        return redirect('/')->with('noti', 'success');
     }
 }
