@@ -64,6 +64,7 @@
         </div>
     </div>
 </body>
+    <script src="{{ asset('backend/js/style.js') }}"></script>
     <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
     <script> CKEDITOR.replace('editor1'); </script>
 </html>

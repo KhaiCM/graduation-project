@@ -140,6 +140,7 @@ Route::get('postlist', 'PostController@showlist');
 //contract
 Route::get('contract/{id}', 'ContractController@create')->name('createcontracts');
 Route::post('contract/{id}', 'ContractController@postcreate')->name('contracts');
+Route::get('detailcontracts/{id}', 'ContractController@getDetail')->name('detail.contracts');
 
 //contact
 Route::get('contacts', 'ContactController@create')->name('createcontacts');

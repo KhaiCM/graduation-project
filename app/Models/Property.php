@@ -45,7 +45,7 @@ class Property extends Model
 
     public function rentContract()
     {
-        return $this->hasMany('App\Models\RentContract', 'property_id');
+        return $this->hasMany('App\Models\RentContract');
     }
 
     public function users()

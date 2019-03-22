@@ -37,4 +37,10 @@ class ContractController extends Controller
 
         return redirect('/')->with('noti', 'success');
     }
+    public function getDetail($id)
+    {     
+        $ct = RentContract::findOrFail($id);
+        
+        return view('backend.contract.detail', ['ct' => $ct]);
+    }
 }

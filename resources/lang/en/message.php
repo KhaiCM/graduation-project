@@ -79,5 +79,6 @@ return [
     'cannotblank' => 'Can not blank!',
     'tooshort' => 'Too short',
     'toolong' => 'Too long',
-    'yourname' => 'Renter name'
+    'yourname' => 'Renter name',
+    'Imagepreview' => 'Image preview...',
 ];

@@ -17,6 +17,7 @@
                 <th>{{ trans('message.end_date') }}</th>
                 <th>{{ trans('message.content') }}</th>
                 <th>{{ trans('message.total_money') }}</th>
+                <th>{{ trans('message.task') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,9 @@
                 <td>{{ $cr->end_date }}</td>
                 <td>{{ $cr->content }}</td>
                 <td>{{ $cr->total_money }}</td>
+                <td class="tdshow"> <a href="{{ route('detail.contracts', $cr->id) }}"><button class="bntshow">{{ trans('message.detail') }}</button></a>
+                </td>
+            
             </tr>
             @endforeach
         </tbody>

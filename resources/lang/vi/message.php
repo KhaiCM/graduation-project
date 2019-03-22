@@ -85,6 +85,8 @@ return [
     'cannotblank' => 'Không được để trống',
     'tooshort' => 'Quá ngắn',
     'toolong' => 'Quá dài',
-    'yourname' => 'Tên người thuê'
+    'yourname' => 'Tên người thuê',
+    'delete' => 'Xóa',
+    'Imagepreview' => 'Hiển thị hình ảnh...',
 ];
 
