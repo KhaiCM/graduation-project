@@ -15,7 +15,7 @@
                     <div class="detail clearfix">
                         <ul>
                             <li>
-                                <a href="user-profile.html">
+                                <a href="{{ route('user_page.edit', Auth::user()->id) }}">
                                     <i class="flaticon-user"></i>{!! __('label.my_profile') !!}
                                 </a>
                             </li>
@@ -25,13 +25,18 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('property') }}">
-                                    <i class="flaticon-heart-shape-outline"></i>{!! __('label.submit_new_property') !!}
+                                <a href="{{ route('follow.show', Auth::user()->id) }}">
+                                    <i class="flaticon-heart-shape-outline"></i>{{ trans('province.listfollow') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('user.change_pass', Auth::user()->id) }}">
-                                    <i class="flaticon-add"></i>{!! __('label.change_password') !!}
+                                <a href="{{ route('property') }}">
+                                    <i class="flaticon-add"></i>{!! __('label.submit_new_property') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('user.change_pass', Auth::user()->id) }}" class="active">
+                                    <i class="flaticon-locked-padlock"></i>{!! __('label.change_password') !!}
                                 </a>
                             </li>
                             <li>

@@ -19,25 +19,11 @@ class UserPageController extends Controller
     {
         $this->user = $user;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getChangePass($id)
     {
         $user = $this->user->findOrFail($id);
-        
+
         return view('fontend.userpages.change_pass', compact('user'));
     }
 
@@ -54,34 +40,7 @@ class UserPageController extends Controller
 
         return redirect(route('user.post_change', $id))->with('message', __('label.changePass_success'));
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         try
@@ -94,13 +53,6 @@ class UserPageController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserPageRequest $request, $id)
     {
         $user = $this->user->findOrFail($id);
@@ -128,14 +80,15 @@ class UserPageController extends Controller
         return redirect(route('user_page.edit', $id))->with('message', __('label.edit_sussess'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function listFollow($id)
     {
-        //
+        $user = $this->user->findOrFail($id);
+
+        return view('fontend.follows.listfollow', compact('user'));
+    }
+
+    public function userFollow()
+    {
+        return view('fontend.follows.userfollow');
     }
 }

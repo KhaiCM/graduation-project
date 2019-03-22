@@ -4,6 +4,7 @@ return [
     'action' => 'Hành động',
     'addDistrict' => 'Thêm huyện',
     'addProvince' => 'Thêm tỉnh',
+    'avatar' => 'Ảnh đại diện',
     'bathroom' => 'Phòng tắm',
     'bedroom' => 'Phòng ngủ',
     'by' => 'Bởi',
@@ -28,6 +29,7 @@ return [
     'home' => 'Trang chủ',
     'leavecomment' => 'Để lại bình luận',
     'listDistrict' => 'Danh sách các huyện',
+    'listfollow' => 'Đang theo dõi',
     'listProvince' => 'Danh sách các tỉnh',
     'location' => 'Vị trí',
     'month' => 'Tháng',
@@ -43,5 +45,6 @@ return [
     'tag' => 'Tags',
     'time' => 'time',
     'video' => 'video',
+    'unfollow' => 'Bỏ theo dõi',
     'tag' => 'Tags',
 ];
