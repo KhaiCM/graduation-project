@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\SetCalendar;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class SetCalenderController extends Controller
 {
@@ -74,6 +75,13 @@ class SetCalenderController extends Controller
         $sc = SetCalendar::find($id);
         $sc->delete();
 
-        return redirect('setcalendarlist')->with('noti', 'success');
+        return redirect('listcalendars')->with('noti', 'success');
+    }
+
+    public function getDetail($id)
+    {
+        $sc = SetCalendar::find($id);
+        
+        return view('backend.setcalendars.detail', ['sc' => $sc]);
     }
 }

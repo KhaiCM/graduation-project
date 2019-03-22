@@ -13,11 +13,11 @@
             {{ session('message') }}
         </div>
     @endif
-    {!! Form::open(['route' => 'district.create', 'method' => 'post']) !!}
-        {!! Form::label('name', trans('province.name'), ['class' => 'label']) !!}
-        {!! Form::text('name', null, ['class' => 'input', 'placeholder' => trans('province.name')]) !!}<br/>
-        {!! Form::label('provinces_id', trans('province.province')) !!}
-        {!! Form::select('provinces_id', $provinces->pluck('name', 'id'), null, ['placeholder' => trans('province.choose')]) !!}
-        {!! Form::submit(trans('message.submit_add')) !!}
-    {!! Form::close() !!}
+    {{ Form::open(['route' => 'district.create', 'method' => 'post']) }}
+        {{ Form::label('name', trans('province.name'), ['class' => 'label']) }}<br>
+        {{ Form::text('name', null, ['class' => 'input', 'placeholder' => trans('province.name')]) }}<br/>
+        {{ Form::label('provinces_id', trans('province.province'), ['class' => 'label']) }}<br>
+        {{ Form::select('provinces_id', $provinces->pluck('name', 'id'), null, ['placeholder' => trans('province.choose')]) }}<br>
+        {{ Form::submit(trans('message.Submit')) }}
+    {{ Form::close() }}
 @endsection

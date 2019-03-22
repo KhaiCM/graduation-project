@@ -30,7 +30,7 @@ class Property extends Model
 
     public function setCalendar()
     {
-        return $this->hasMany('App\Models\SetCalendar', 'property_id');
+        return $this->hasMany('App\Models\SetCalendar');
     }
 
     public function propertyImage()

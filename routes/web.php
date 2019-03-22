@@ -127,11 +127,12 @@ Route::group(['prefix' => 'ajax'], function () {
 });
 
 //set_calendar
-Route::get('calendar/{id}', 'SetCalenderController@create')->name('createcalendars');
-Route::post('calendar/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendars');
+Route::get('calendars/{id}', 'SetCalenderController@create')->name('createcalendars');
+Route::post('calendars/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendars');
 
-Route::get('setcalendarlist', 'SetCalenderController@getlist')->name('setcalendar.index');
-Route::get('deletecalendar/{id}', 'SetCalenderController@getDelete')->name('deletecalendars');
+Route::get('listcalendars', 'SetCalenderController@getlist')->name('setcalendar.index');
+Route::get('deletecalendars/{id}', 'SetCalenderController@getDelete')->name('delete.calendars');
+Route::get('detailcalendars/{id}', 'SetCalenderController@getDetail')->name('detail.calendars');
 
 //post
 Route::get('postlist', 'PostController@showlist');
@@ -141,8 +142,8 @@ Route::get('contract/{id}', 'ContractController@create')->name('createcontracts'
 Route::post('contract/{id}', 'ContractController@postcreate')->name('contracts');
 
 //contact
-Route::get('contact', 'ContactController@create')->name('createcontacts');
-Route::post('contact', 'ContactController@postcreate')->name('contacts');
+Route::get('contacts', 'ContactController@create')->name('createcontacts');
+Route::post('contacts', 'ContactController@postcreate')->name('contacts');
 
 //i18n
 Route::group(['middleware' => 'locale'], function() {

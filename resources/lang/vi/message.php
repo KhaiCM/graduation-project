@@ -64,9 +64,21 @@ return [
     'property' => 'Tài sản',
     'date' => 'ngày',
     'name' => 'Tên',
-    
     //province admin
     'Submit' =>  'Cập nhật',
     'submit_add' => 'Thêm mới',
+    'photo' => 'Ảnh',
+    'detail' => 'Chi tiết',
+    'endday' => 'Ngày kết thúc',
+    'youremail' => 'Email của bạn',
+    'leaseemail' => 'Email người cho thuê',
+    'leasename' => 'Tên người cho thuể',
+    'image' => 'Hình ảnh',
+    'propertyname' => 'Tên tài sản',
+    'sender' => 'Người gửi',
+    'owner' => 'Người sở hữu',
+    'owneremail' => 'Email người sở hữu',
+    'blogcate' => 'Danh mục bài viết',
+    'editcategory' => 'Sửa danh mục bài viết',
 ];
 
