@@ -54,25 +54,25 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('province.avatar') }}</th>
                                 <th>{{ __('province.name') }}</th>
                                 <th>{{ __('label.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="image">
-                                    <a href="#"><img alt="#" src="#" class="img-fluid"></a>
-                                </td>
-                                <td>
-                                    <div class="inner">
-                                        <a href="#"><h4>{{ trans('province.name') }}</h4></a>
-                                    </div>
-                                </td>
-                                <td class="actions">
-                                    <a href="#"><button type='button' class="btn btn-md btn-color">{{ __('province.unfollow') }}</button></a>
-                                </td>
-                            </tr>
+                            @foreach ($user->follows as $follower)
+                                <tr>
+                                    <td>
+                                        <div class="inner">
+                                            <a href="{{ route('follow.user', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
+                                        </div>
+                                    </td>
+                                    <td class="actions">
+                                        {{ Form::open(['route' => ['user.unfollow', $follower->id], 'method' => 'DELETE']) }}
+                                            {{ Form::submit(__('province.unfollow'), ['class' => 'btn btn-md btn-color']) }}
+                                        {{ Form::close() }}
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
