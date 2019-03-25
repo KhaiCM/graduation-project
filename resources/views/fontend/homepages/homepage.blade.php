@@ -137,7 +137,7 @@
                                     </ul>
                                 </div>
                                 <div class="footer">
-                                    <a href="#">
+                                    <a href="{{ route('follow.user',  $property->users->id) }}">
                                         <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
                                     </a>
                                     <span>

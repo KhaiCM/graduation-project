@@ -90,6 +90,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('listfollow/{id}', 'UserPageController@listFollow')->name('follow.show');
 
     Route::get('userfollow/{id}', 'UserPageController@userFollow')->name('follow.user');
+
+    Route::post('userfollow/{id}/follow', 'UserPageController@followUser')->name('user.follow');
+
+    Route::delete('/{id}/unfollow', 'UserPageController@unFollowUser')->name('user.unfollow');
 });
 
 //user page
