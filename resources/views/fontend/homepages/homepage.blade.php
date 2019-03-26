@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-6 col-lg-3 col-md-3">
                         <div class="form-group">
-                            {!! Form::select('form', [2 => '--form--', 0 => 'sale', 1 => 'rent'], null, ['class' => 'selectpicker search-fields']) !!}
+                            {!! Form::select('form', processForm(config('search.form')), null, ['class' => 'selectpicker search-fields']) !!}
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 col-md-3">
@@ -225,4 +225,3 @@
 </div>
 <!-- Blog end -->
 @endsection
-

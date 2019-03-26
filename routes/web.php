@@ -153,3 +153,7 @@ Route::post('contacts', 'ContactController@postcreate')->name('contacts');
 Route::group(['middleware' => 'locale'], function() {
     Route::get('change-language/{language}', 'Product\HomeController@changeLanguage')->name('user.change-language');
 });
+
+//login with face, github
+Route::get('redirect/{social}', 'Auth\SocialAuthController@redirect')->name('redirect.login');
+Route::get('callback/{social}', 'Auth\SocialAuthController@callback');

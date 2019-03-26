@@ -57,6 +57,8 @@
                         </div>
                         <div class="form-group">
                             {!! Form::submit(__('label.login'), ['class' => 'btn btn-color btn-md btn-block', 'name' => 'login']) !!}
+                            <a href="{{ route('redirect.login', ['social' => 'facebook']) }}" class="btn btn-primary">{{ __('label.facebook_login') }}</a>
+                            <a href="{{ route('redirect.login', ['social' => 'github']) }}" class="btn btn-primary">{{ __('label.github_login') }}</a>
                         </div>
                         {!! Form::close() !!}
                         <div class="login-footer text-center">
