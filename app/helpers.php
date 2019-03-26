@@ -1,4 +1,17 @@
 <?php
+use Intervention\Image\Facades\Image;
+use Illuminate\Http\UploadedFile;
+
+if (! function_exists('get_avatar')) {
+    function get_avatar($user) {
+        if (strpos($user->avatar, 'https://') === 0) {
+            return $user->avatar;
+        }
+        $image = config('app.avatar_path') . ($user->avatar ?? config('app.default_avatar'));
+        
+        return $image;
+    }
+}
 
 if (! function_exists('processFilter')) {
     function processFilter($filters)
@@ -23,7 +36,19 @@ if (! function_exists('processFilter')) {
     }
 }
 
-if(! function_exists('filterPrice')) {
+if (! function_exists('processForm')) {
+    function processForm($filters)
+    {
+        $return = [];
+        foreach ($filters as $key => $filter) {
+            $return[$key] = __($filter);
+        }
+        
+        return $return;
+    }
+}
+
+if (!function_exists('filterPrice')) {
     function queryFilter($query, $key, $filters, $selected)
     {
         if (isset($filters[$selected]) && is_array($filters[$selected]))

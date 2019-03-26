@@ -48,6 +48,9 @@ return [
     'password' => 'Mật khẩu',
     'keep_me_signed_in' => 'Duy trì đăng nhập',
     'do_not_have_an_account' => 'Bạn chưa có tài khoản ? ',
+    'facebook_login' => 'Đăng nhập với Facebook',
+    'google_login' => 'Đăng nhập với Google',
+    'github_login' => 'Đăng nhập với github',
     //register
     'create_your_account' => 'Tạo mới tài khoản',
     'name' => 'Tên',
@@ -106,6 +109,10 @@ return [
     'price_1' => '--chọn giá--',
     'price_2' => '--đồng ý--',
     'acreage_filter' => '--Chọn diện tích--',
+    'form_filter' => '--Hình thức--',
+    'sale' => 'Bán',
+    'rent' => 'Cho thuê',
     'setcalendar' => 'Đặt lịch hẹn',
     'contract' => 'Hợp đồng',
+    
 ];

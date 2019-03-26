@@ -67,6 +67,7 @@
                                         <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('message.Logout') }}</a></li>
                                         {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'class' => 'hide']) !!}
                                         {!! Form::close() !!}
+                                        <ul id="messages" class="list-group"></ul>
                                     </ul>
                                 </li>
                                 @else

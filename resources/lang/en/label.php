@@ -50,6 +50,9 @@ return [
     'keep_me_signed_in' => 'Keep Me Signed In',
     'do_not_have_an_account' => 'Do not have an account ? ',
     'sign_up' => 'Sign Up',
+    'facebook_login' => 'Login with FB',
+    'google_login' => 'Login with Google',
+    'github_login' => 'Login with Github',
     //register
     'create_your_account' => 'Create Your account',
     'name' => 'Name',
@@ -108,8 +111,10 @@ return [
     'notification' => 'No results you require',
     'price_1' => '--select price--',
     'price_2' => '--agree--',
-    'acreage' => '--select acreage--',
     'acreage_filter' => '--select acreage--',
+    'form_filter' => '--Form--',
+    'sale' => 'Sale',
+    'rent' => 'Rent',
     'setcalendar' => 'Set Calendar',
     'contract' => 'Contract',
 ];

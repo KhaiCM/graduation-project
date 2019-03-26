@@ -27,6 +27,7 @@ return [
     'for' => 'Thuộc tỉnh',
     'follow' => 'Theo dõi',
     'garage' => 'Chỗ để xe',
+    'hasFollow' => 'Bạn vừa được theo dõi bởi: ',
     'highlight' => 'Nổi bật',
     'home' => 'Trang chủ',
     'leavecomment' => 'Để lại bình luận',

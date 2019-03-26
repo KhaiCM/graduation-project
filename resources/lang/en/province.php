@@ -27,6 +27,7 @@ return [
     'for' => 'Belong',
     'follow' => 'Follow',
     'garage' => 'Garage',
+    'hasFollow' => 'You have been followed by: ',
     'highlight' => 'Highlight',
     'home' => 'Home',
     'leavecomment' => 'leave comment',
