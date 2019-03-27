@@ -9,7 +9,7 @@ if (! function_exists('get_avatar')) {
         }
         $image = config('app.avatar_path') . ($user->avatar ?? config('app.default_avatar'));
         
-        return $image;
+        return asset($image);
     }
 }
 
@@ -66,4 +66,3 @@ if (!function_exists('filterPrice')) {
         return $query;
     }
 }
-

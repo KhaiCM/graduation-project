@@ -27,6 +27,7 @@ class SocialAccountService
                     'email' => $email,
                     'name' => $providerUser->getName(),
                     'password' => $providerUser->getName(),
+                    'avatar' => $providerUser-> getAvatar(),
                 ]);
             }
 

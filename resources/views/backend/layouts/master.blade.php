@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="nav-item dropdown">
-            <img src="{{ asset(config('app.avatar_path') . Auth::user()->avatar) }}" alt="avatar" class="img-avatar">
+            <img src="{{ get_avatar( Auth::user()) }}" alt="avatar" class="img-avatar">
                 <button class="dropbtn">{{ Auth::user()->name }}</button>
                 <div class="dropdown-content">
                     <a href="{{ route('user.detail', Auth::user()->id) }}">{{ trans('message.Detail') }}</a>
