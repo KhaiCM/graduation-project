@@ -74,4 +74,13 @@ class User extends Authenticatable
     {
         return (boolean)$this->follows()->where('follows_id', $userId)->first(['users.id']);
     }
+
+    public function wallet()
+    {
+        return $this->hasOne('App\Models\Wallet', 'wallet_id');
+    }
+    public function serviceDetial()
+    {
+        return $this->hasOne('App\Models\Service_detail', 'user_id');
+    }
 }
