@@ -9,7 +9,7 @@
                     <!--header -->
                     <div class="header clearfix">
                         <h2>{!! $user->name !!}</h2>
-                        <img src="{{ asset(config('app.avatar_path') . $user->avatar) }}" alt="avatar" class="img-fluid profile-img">
+                        <img src="{{ get_avatar($user) }}" alt="avatar" class="img-fluid profile-img">
                     </div>
                     <!-- Detail -->
                     <div class="detail clearfix">

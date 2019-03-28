@@ -11,3 +11,4 @@ const mix = require('laravel-mix');
  |
  */
 mix.copyDirectory('resources/js/ajax.js', 'public/js/ajax.js');
+mix.copyDirectory('resources/img/avatar', 'public/upload/avatar')

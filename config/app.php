@@ -8,6 +8,7 @@ return [
     'contract_page' => 5,
     'property_path' => 'upload/property/',
     'avatar_path' => 'upload/avatar/',
+    'default_avatar' => '0_48.png',
     'post_page' => 20,
     /*
     |--------------------------------------------------------------------------
