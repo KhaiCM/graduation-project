@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function rentContract()
     {
-        return $this->hasMany('App\Models\RentContract', 'lessee_id');
+        return $this->hasMany('App\Models\RentContract');
     }
 
     public function roleUser()

@@ -8,8 +8,9 @@
         {{ Form::text('title', '', ['class' => 'input', 'placeholder' => trans('message.title')]) }}<br><br>
 
         {{ Form::label('file', trans('message.image'), ['class' => 'label']) }}<br>
-        {{ Form::file('file', ['class' => 'label']) }}<br><br>
-
+        {{ Form::file('file_img', ['class' => 'label', 'onchange' => 'previewFile()']) }}
+        <img class="imgblog" src="" alt="{{ trans('message.Imagepreview') }}"><br>
+        
         {{ Form::label('describe', trans('message.describe'), ['class' => 'label']) }}<br>
         {{ Form::textarea('describe') }}<br>
 
