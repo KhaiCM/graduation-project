@@ -70,6 +70,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
         Route::get('contactlist', 'ContactController@getlist')->name('contact.index');
         Route::get('deletecontact/{id}', 'ContactController@getDeleteContact')->name('deletecontact');
     });
+
+    //tesst role
+    Route::group(['prefix' => 'test'], function () {
+        Route::resource('role', 'Admin\RoleController');
+    });
 });
 
 Route::group(['prefix' => '/'], function () {
