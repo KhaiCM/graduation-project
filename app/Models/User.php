@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -49,9 +50,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\RentContract');
     }
 
-    public function roleUser()
+    public function role()
     {
-        return $this->hasMany('App\Models\RoleUser', 'user_id');
+        return $this->belongsToMany('App\Models\Role');
     }
 
     public function comments()
