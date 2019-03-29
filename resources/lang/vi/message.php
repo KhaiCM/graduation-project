@@ -88,5 +88,8 @@ return [
     'yourname' => 'Tên người thuê',
     'delete' => 'Xóa',
     'Imagepreview' => 'Hiển thị hình ảnh...',
+    'recharge' => 'Nạp tiền',
+    'amount' => 'Số tiền',
+    'puttofirst' => 'Đưa lên đầu',
 ];
 
