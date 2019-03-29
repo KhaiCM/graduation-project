@@ -10,6 +10,7 @@ use App\Http\Requests\ChangePassRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\EloquentRepository;
+use App\Events\FollowEvent;
 
 class UserPageController extends Controller
 {
@@ -102,6 +103,7 @@ class UserPageController extends Controller
             return redirect()->back()->with('error', trans('province.error'));
         }
         $user->followers()->attach(auth()->user()->id);
+        event(new FollowEvent(trans('province.hasFollow') . auth()->user()->name));
 
         return redirect()->back()->with('success', trans('province.success'));
     }

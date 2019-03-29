@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "lib_bower": "https://github.com/KhaiCM/lib_bower.git",
-    "ckeditor": "^4.11.3"
+    "ckeditor": "^4.11.3",
+    "pusher-js": "pusher#^4.4.0"
   }
 }
