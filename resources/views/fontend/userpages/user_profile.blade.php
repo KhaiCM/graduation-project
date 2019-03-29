@@ -16,6 +16,9 @@
                     <div class="detail clearfix">
                         <ul>
                             <li>
+                                <a>{{ trans('message.amount') }}:</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('user_page.edit', Auth::user()->id) }}" class="active">
                                     <i class="flaticon-user"></i>{!! __('label.my_profile') !!}
                                 </a>

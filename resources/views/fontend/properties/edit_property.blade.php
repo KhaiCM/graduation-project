@@ -90,6 +90,12 @@
                                     {!! Form::textarea('describe', $properties->describe, ['class' => 'form-control', 'id' =>'editor1', 'placeholder' => __('label.detailed_nformation')]) !!}
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group message">
+                                    {!! Form::label(__('message.puttofirst')) !!}
+                                    {!! Form::checkbox('put', '') !!}
+                                </div>
+                            </div>
                         </div>
                         <h3 class="heading">{!! Form::label('name', __('label.property_image')) !!}</h3>
                         <div class="form-group">

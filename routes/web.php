@@ -163,3 +163,6 @@ Route::group(['middleware' => 'locale'], function() {
 //login with face, github
 Route::get('redirect/{social}', 'Auth\SocialAuthController@redirect')->name('redirect.login');
 Route::get('callback/{social}', 'Auth\SocialAuthController@callback');
+
+//recharge
+Route::get('recharge', 'RechargeController@in')->name('recharge.in');

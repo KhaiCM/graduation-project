@@ -81,4 +81,7 @@ return [
     'toolong' => 'Too long',
     'yourname' => 'Renter name',
     'Imagepreview' => 'Image preview...',
+    'recharge' => 'Recharge',
+    'amount' => 'Amount',
+    'puttofirst' => 'Put to first',
 ];
