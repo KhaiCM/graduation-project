@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserPageRequest;
 use App\Repositories\UserPageRepository;
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -22,7 +23,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = $this->user->all();
+        // dd($user);
+        return view('backend.users.list_user', compact('user'));
     }
 
     /**
@@ -120,5 +123,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editPermission($id)
+    {
+        $user = $this->user->findOrFail($id);
+        $role = Role::all();
+        
+        return view('backend.users.edit_permission', compact('user', 'role'));
     }
 }

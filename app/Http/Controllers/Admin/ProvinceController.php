@@ -23,8 +23,8 @@ class ProvinceController extends Controller
     public function index()
     {
         $provinces = $this->province->all();
-
-    	return view('backend.province.show', compact('provinces'));
+        
+        return view('backend.province.show', compact('provinces'));
     }
 
     /**
@@ -69,16 +69,12 @@ class ProvinceController extends Controller
      */
     public function edit($id)
     {
-        try
-        {
-            $province = $this->province->findOrFail($id);
+        $province = $this->province->findOrFail($id);
+        if (!\Auth::user()->can('update', $province))
+            abort(403);
 
-            return view('backend.province.edit', compact('province'));
-        }
-        catch (ModelNotFoundException $ex)
-        {
-            echo $ex->getMessage();
-        }
+        return view('backend.province.edit', compact('province'));
+
     }
 
     /**
@@ -90,16 +86,12 @@ class ProvinceController extends Controller
      */
     public function update(ProvinceRequest $request, $id)
     {
-        try
-        {
-            $province = $this->province->update($request, $id);
+        $province = $this->province->findOrFail($id);
+        if (!\Auth::user()->can('update', $province))
+            abort(403);
+        $province = $this->province->update($request, $id);
 
-            return redirect(route('province.index'))->with('message', trans('province.edit_success'));
-        }
-        catch (ModelNotFoundException $ex)
-        {
-            echo $ex->getMessage();
-        }
+        return redirect(route('province.index'))->with('message', trans('province.edit_success'));
     }
 
     /**

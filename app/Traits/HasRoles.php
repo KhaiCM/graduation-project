@@ -16,7 +16,7 @@ trait HasRoles
 
     public function isSuperAdmin()
     {
-        return $this->hasRole($superAdminRole);
+        return $this->hasRole($this->superAdminRole);
     }
 
     public function hasRole($role)

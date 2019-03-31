@@ -51,4 +51,5 @@ return [
     'video' => 'video',
     'unfollow' => 'Bỏ theo dõi',
     'tag' => 'Tags',
+    'stt' => 'STT',
 ];

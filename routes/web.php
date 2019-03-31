@@ -72,8 +72,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
     });
 
     //tesst role
-    Route::group(['prefix' => 'test'], function () {
-        Route::resource('role', 'Admin\RoleController');
+    Route::group(['prefix' => 'authorizing'], function () {
+        Route::get('role', 'Admin\RoleController@getRole')->name('role.index');
+        Route::post('role', 'Admin\RoleController@postRole')->name('role.create');
+        Route::post('permission', 'Admin\RoleController@postPermission')->name('permission.create');
+        Route::post('set-permission', 'Admin\RoleController@setPermission')->name('permission.set');
+        Route::get('list-user', 'Admin\UserController@index')->name('user.list');
+        Route::get('edit-user/{id}', 'Admin\UserController@editPermission')->name('user.edit');
+        Route::post('edit-user/{id}', 'Admin\RoleController@setRole')->name('user.editRole');
     });
 });
 

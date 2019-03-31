@@ -117,5 +117,15 @@ return [
     'rent' => 'Rent',
     'setcalendar' => 'Set Calendar',
     'contract' => 'Contract',
+    //admin authorizing
+    'create_role' => 'Add Role',
+    'name_role' => 'Name Role',
+    'name_permission' => 'Name Permission',
+    'create_permission' => 'Add Permission',
+    'role' => 'Role',
+    'select_permission_with_role' => 'Select Permission with Role',
+    'save' => 'Save',
+    'list_user' => 'List user',
+    'edit_user' =>  'Edit user',
 ];
 

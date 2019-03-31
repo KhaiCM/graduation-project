@@ -114,5 +114,14 @@ return [
     'rent' => 'Cho thuê',
     'setcalendar' => 'Đặt lịch hẹn',
     'contract' => 'Hợp đồng',
-    
+    //admin authorizing
+    'create_role' => 'Thêm vai trò',
+    'create_permission' => 'Thêm quyền',
+    'name_role' => 'Tên vai trò',
+    'name_permission' => 'Tên quyền',
+    'role' => 'Vai trò',
+    'select_permission_with_role' => 'Lựa chọn quyền cho từng vai trò',
+    'save' => 'Lưu',
+    'list_user' => 'Danh sách người dùng',
+    'edit_user' =>  'Sửa quyền người dùng',
 ];
