@@ -11,7 +11,6 @@
         <a class="active" href="{{ route('adminHome') }}">{{ trans('message.Home') }}</a>
         <a href="{{ route('blog.index') }}">{{ trans('message.New') }}</a>
         <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
-        <a href="#about">{{ trans('message.About') }}</a>
         <div class="menu-right">
             <div class="nav-item dropdown">
             <button class="dropbtn"><i class="fa fa-language"></i></button>
@@ -58,9 +57,6 @@
                     <div>
                         @endif
                         @yield('content')
-                        <!-- <div class="footer">
-                            <h2>{{ trans('message.Footer') }}</h2>
-                        </div> -->
                     </div>
                 </div>
             </div>

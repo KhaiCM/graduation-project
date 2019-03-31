@@ -22,7 +22,7 @@
                             <div class="col-md-12">
                                 <div class="pull-left">
                                     <h3>{{ $property->name }}</h3>
-                                    <p><i class="fa fa-map-marker"></i>{{ $property->districts->name ?? '' }}</p>
+                                    <p><i class="fa fa-map-marker"></i>&nbsp;{{ $property->districts->name ?? '' }}</p>
                                 </div>
                                 <div class="p-r">
                                     <h3>{{ $property->price }} {{ $property->unit->name ?? '' }}</h3>
@@ -34,9 +34,9 @@
                     <!-- main slider carousel items -->
                     <div class="carousel-inner">
                         @foreach ($property->propertyImage as $image)
-                            <div class="item carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}" data-slide-number="{{ $loop->iteration }}">
-                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" class="img-fluid" alt="{{ $property->name }}">
-                            </div>
+                        <div class="item carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}" data-slide-number="{{ $loop->iteration }}">
+                            <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" class="img-fluid" alt="{{ $property->name }}">
+                        </div>
                         @endforeach
                         <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                         <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
@@ -44,11 +44,11 @@
                     <!-- main slider carousel nav controls -->
                     <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
                         @foreach ($property->propertyImage as $image)
-                            <li class="list-inline-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-                                <a id="carousel-selector-{{ $loop->iteration }}" class="selected" data-slide-to="{{ $loop->iteration }}" data-target="#propertiesDetailsSlider">
-                                    <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" class="img-fluid" alt="{{ $property->name }}">
-                                </a>
-                            </li>
+                        <li class="list-inline-item {{ $loop->iteration == 1 ? 'active' : '' }}">
+                            <a id="carousel-selector-{{ $loop->iteration }}" class="selected" data-slide-to="{{ $loop->iteration }}" data-target="#propertiesDetailsSlider">
+                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" class="img-fluid" alt="{{ $property->name }}">
+                            </a>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -73,7 +73,7 @@
                     </ul>
                     <div class="tab-content" id="carTabContent">
                         <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
-                            <h3 class="heading">{{ $property->name }} {{ trans('province.description') }}</h3> {!! $property->describe !!}
+                            <h3 class="heading">{{ trans('province.description') }}</h3> {!! $property->describe !!}
                         </div>
                         <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
                             <div class="floor-plans mb-60">
@@ -114,41 +114,40 @@
                     </div>
                 </div>
                 <!-- Comments section start -->
-                    <div class="comments-section">
-                        <h3 class="heading">{{ trans('province.comment') }}</h3>
-                        <ul class="comments">
-                            @foreach ($property->comments as $comment)
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-author">
-                                            <a href="#"><img src="{{ asset(config('app.avatar_path')) }}/{{ $comment->users->avatar }}" class="rounded-circle" alt="avatar-13"></a>
+                <div class="comments-section">
+                    <h3 class="heading">{{ trans('province.comment') }}</h3>
+                    <ul class="comments">
+                        @foreach ($property->comments as $comment)
+                        <li>
+                            <div class="comment">
+                                <div class="comment-author">
+                                    <a href="#"><img src="{{ get_avatar($comment->users) }}" class="rounded-circle" alt="avatar-13"></a>
+                                </div>
+                                <div class="comment-content">
+                                    <div class="comment-meta">
+                                        <div class="comment-meta-author">
+                                            {{ $comment->users->name ?? '' }}
                                         </div>
-                                        <div class="comment-content">
-                                            <div class="comment-meta">
-                                                <div class="comment-meta-author">
-                                                    {{ $comment->users->name ?? '' }}
-                                                </div>
-                                                <div class="comment-meta-date">
-                                                    <span>{{ $comment->created_at }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="comment-body">
-                                                <div class="comment-rating">
-                                                    {{ rand(1, 5) }} <i class="fa fa-star"></i>
-                                                </div>
-                                                {{ $comment->content }}
-                                            </div>
+                                        <div class="comment-meta-date">
+                                            <span>{{ $comment->created_at }}</span>
                                         </div>
                                     </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="comment-body">
+                                        <div class="comment-rating">
+                                            {{ rand(1, 5) }} <i class="fa fa-star"></i>
+                                        </div>
+                                        {{ $comment->content }}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
                 <!-- Contact 1 start -->
                 @if (Auth::check())
                 <div class="contact-3 mb-60">
-                    <h3 class="heading">{{ trans('province.leavecomment')}}</h3>
                     <div class="container">
                         <div class="row">
                             {{ Form::open(['method' => 'POST', 'route' => ['property.comment', $property->id]]) }}
@@ -168,17 +167,22 @@
                                         {!! form::textarea('content', null, ['class' => 'form-control', 'placeholder' => trans('province.comment')]) !!}
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="">
                                     <div class="send-btn">
                                         <button type="submit" class="btn btn-color btn-md btn-message">{{ trans('province.comment') }}</button>
                                     </div>
                                 </div>
                             </div>
-                            {{ form::close() }}
+                            {{ Form::close() }}&nbsp;
+                        </div>
+                        <div class="">
+                            <div class="send-btn">
+                                <a href="{{ route('createcalendars', ['id' => $property->id]) }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.setcalendar') }}</button></a>
+                                <a href="{{ route('createcontracts', ['id' => $property->id]) }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.contract') }}</button></a>
+                            </div>
                         </div>
                     </div>
-                    <a href="{{ route('createcalendars', ['id' => $property->id]) }}"><button class="btn-md btn-color">{{ trans('message.setcalendar') }}</button></a>
-                    <a href="{{ route('createcontracts', ['id' => $property->id]) }}"><button class="btn-md btn-color">{{ trans('message.contract') }}</button></a>
+
                 </div>
                 @endif
             </div>
@@ -217,7 +221,7 @@
                                 </div>
                                 <br>
                                 <button class="search-button btn-md btn-color">{{ __('label.search') }}</button>
-                                {{ form::close() }}
+                                {{ Form::close() }}
                             </div>
                         </div>
                     </div>
@@ -227,7 +231,7 @@
                         <h5 class="sidebar-title">{{ trans('province.category') }}</h5>
                         <ul>
                             @foreach ($categories as $category)
-                                <li><a href="#">{{ $category->name }}</a></li>
+                            <li><a href="#">{{ $category->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

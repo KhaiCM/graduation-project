@@ -16,11 +16,15 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check())
-        {
-            return $next($request);
+        if (!Auth::check()) {
+            return redirect('login');
         } else {
-            return redirect(route('login'));
+            $user = Auth::user();
+            if ($user->hasRole('super admin')) {
+                return $next($request);
+            } else {
+                return redirect('/');
+            }
         }
     }
 }

@@ -22,9 +22,7 @@
             <tr>
                 <td>{{ ++$key }}</td>
                 <td>{{ $province->name }}</td>
-                @can('update', $province)
                 <td><a href="{{ route('province.edit', $province->id) }}">{{ trans('province.edit') }}</a></td>
-                @endcan
                 <td><a href="{{ route('province.destroy', $province->id) }}">{{ trans('province.delete') }}</a></td>
             </tr>
         @endforeach
