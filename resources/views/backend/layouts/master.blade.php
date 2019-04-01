@@ -40,6 +40,8 @@
         <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
         <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
         <a href="{{ route('setcalendar.index') }}">{{ trans('message.setcalendar') }}</a>
+        <a href="{{ route('role.index') }}">{{ trans('label.role') }}</a>
+        <a href="{{ route('user.list') }}">{{ trans('label.list_user') }}</a>
     </div>
     <div class="main">
         @if (count($errors) > 0)
@@ -55,9 +57,9 @@
                     <div>
                         @endif
                         @yield('content')
-                        <div class="footer">
+                        <!-- <div class="footer">
                             <h2>{{ trans('message.Footer') }}</h2>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

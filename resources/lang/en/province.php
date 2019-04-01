@@ -50,4 +50,5 @@ return [
     'time' => 'time',
     'unfollow' => 'Unfollow',
     'video' => 'video',
+    'stt' => 'STT',
 ];

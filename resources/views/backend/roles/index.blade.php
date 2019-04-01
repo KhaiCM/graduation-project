@@ -1,81 +1,62 @@
 @extends('backend.layouts.master')
 @section('content')
-<div class="container col-md-8 col-md-offset-2">
-    <div class="well well bs-component">
-        {!! Form::open(['route' => 'property.create', 'method' => 'POST', 'files' => true]) !!}
-        @foreach ($errors->all() as $error)
-            <p class="alert alert-danger">{{ $error }}</p>
-        @endforeach
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-        @endif
-        <fieldset>
-            <legend>{{  __('label.property_title') }}</legend>
-            <div class="form-group">
-                {!! Form::label('name', __('label.property_title')) !!} 
-                <div class="col-lg-10">
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) !!}
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
-                </div>
-            </div>
-        </fieldset>
-        {{ Form::close() }}
+<div>
+    @foreach ($errors->all() as $error)
+    <p class="alert alert-danger">{{ $error }}</p>
+    @endforeach
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
     </div>
-</div>
-<div class="container col-md-8 col-md-offset-2">
-    <div class="well well bs-component">
-        {!! Form::open(['route' => 'property.create', 'method' => 'POST', 'files' => true]) !!}
-        @foreach ($errors->all() as $error)
-            <p class="alert alert-danger">{{ $error }}</p>
-        @endforeach
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
+    @endif
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="well well bs-component">
+            {!! Form::open(['route' => 'role.create', 'method' => 'POST']) !!}
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        {!! Form::label('name', __('label.create_role')) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('label.name_role')]) !!}
+                        {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
+                    </div>
+                </div>
+            </fieldset>
+            {{ Form::close() }}
         </div>
-        @endif
-        <fieldset>
-            <legend>{{  __('label.property_title') }}</legend>
-            <div class="form-group">
-                {!! Form::label('name', __('label.property_title')) !!} 
-                <div class="col-lg-10">
-                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('label.property_title')]) !!}
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
-                </div>
-            </div>
-        </fieldset>
-        {{ Form::close() }}
     </div>
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="well well bs-component">
+            {!! Form::open(['route' => 'permission.create', 'method' => 'POST']) !!}
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-lg-10">
+                       {!! Form::label('name', __('label.create_permission')) !!}
+                       {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('label.name_permission')]) !!}
+                       {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
+                   </div>
+               </div>
+           </fieldset>
+           {{ Form::close() }}
+       </div>
+   </div>
 </div>
-<form>
-    <h2>{{  __('label.property_title') }}</h2>
+{!! Form::open(['route' => 'permission.set', 'method' => 'POST']) !!}
+    <h2>{{  __('label.select_permission_with_role') }}</h2>
     <div class="form-group">
-        {!! Form::label(__('label.property_category')) !!}
-        {!! Form::select('province_id', [], '', ['class' => 'selectpicker search-fields']) !!}
+        {!! Form::label(__('label.role')) !!}
+        {!! Form::select('role_id', $role->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields']) !!}
     </div>
     <div class="input-group mb-3">
-        {!! Form::checkbox('hobbies', 'value', true) !!}
-        {!! Form::label('name', __('label.property_title')) !!}
-        {!! Form::checkbox('hobbies', 'value', true) !!}
-        {!! Form::label('name', __('label.property_title')) !!}
-        {!! Form::checkbox('hobbies', 'value', true) !!}
-        {!! Form::label('name', __('label.property_title')) !!}
-        {!! Form::checkbox('hobbies', 'value', true) !!}
-        {!! Form::label('name', __('label.property_title')) !!}
+        {!! Form::label(__('label.role')) !!}
+        @foreach ($permission as $item)
+        {!! Form::checkbox('permission_id[]', $item->id) !!}
+        {!! Form::label('name', $item->name) !!}
+        @endforeach
     </div>
     <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
-            {!! Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
+            {!! Form::submit(__('label.save'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
         </div>
     </div>
-</form>
+{{ Form::close() }}
 @endsection

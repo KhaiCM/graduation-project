@@ -92,5 +92,8 @@ return [
     'amount' => 'Số tiền',
     'puttofirst' => 'Đưa lên đầu',
     'amounts' => 'Số tiền: ',
+    //role
+    'add_role_success' => 'Thêm vai trò thành công',
+    'add_permission_success' => 'Thêm quyền thành công',
+    'edit_role_success' => 'Sửa vai trò thành công',
 ];
-

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     protected $guarded = ['id'];
+    public $timestamps = false;
 
     protected $fillable = [
         'name', 
@@ -17,7 +18,7 @@ class Role extends Model
         return $this->belongsToMany('App\Models\User');
     }
 
-    public function permission()
+    public function permissions()
     {
         return $this->belongsToMany('App\Models\Permission');
     }

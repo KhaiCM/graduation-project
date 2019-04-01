@@ -4,82 +4,62 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Models\Permission;
+use App\Repositories\RoleRepository;
+use App\Repositories\PermissionRepository;
+use App\Repositories\UserPageRepository;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('backend.roles.index');
-    }
+	protected $role;
+	protected $permission;
+	protected $user;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('backend.roles.create');
-    }
+	public function __construct(RoleRepository $role, PermissionRepository $permission, UserPageRepository $user)
+	{
+		$this->role = $role;
+		$this->permission = $permission;
+		$this->user = $user;
+	}
+	public function getRole()
+	{
+		$role = Role::all();
+		$permission = Permission::all();
+		
+		return view('backend.roles.index', compact('permission', 'role'));
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	public function postRole(Request $request)
+	{
+		$role = $this->role->create($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+		return redirect(route('role.index'))->with('message', __('message.add_role_success'));
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+	public function postPermission(Request $request)
+	{
+		$role = $this->permission->create($request->all());
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+		return redirect(route('role.index'))->with('message', __('message.add_permission_success'));
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	public function setPermission(Request $request)
+	{
+		$role = $this->role->findOrFail($request->role_id);
+		$permission = $request->permission_id;
+		$role->permissions()->sync($permission);
+		
+		return redirect(route('role.index'))->with('message', __('message.add_permission_success'));
+	}
+
+		public function setRole(Request $request, $id)
+	{
+		$user = $this->user->findOrFail($request->id);
+		$role = $request->role_id;
+		$user->role()->sync($role);
+		
+		return redirect(route('user.list'))->with('message', __('message.edit_role_success'));
+	}
+
 }
