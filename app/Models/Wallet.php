@@ -10,7 +10,6 @@ class wallet extends Model
 
     protected $fillable = [
         'balance',
-        'total_amount',
     ];
 
     public function user()

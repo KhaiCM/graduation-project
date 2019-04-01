@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceDetialTable extends Migration
+class CreateWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateServiceDetialTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_detail', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('service_id');
-            $table->string('start_date', 225);
-            $table->string('end_date', 225);
-            $table->integer('property_id');
+            $table->string('balance', 225);
+            $table->string('total_amount', 225);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateServiceDetialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_detail');
+        Schema::dropIfExists('wallets');
     }
 }

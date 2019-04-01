@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateProperties3Table extends Migration
+class UpdateWalletsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class UpdateProperties3Table extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('service_id')) {
-            Schema::table('properties', function (Blueprint $table) {
-                $table->integer('service_id')->nullable();
-            });
-        }
+        Schema::table('wallets', function (Blueprint $table) {
+            $table->dropColumn('total_amount');
+        });
     }
 
     /**
@@ -27,8 +25,8 @@ class UpdateProperties3Table extends Migration
      */
     public function down()
     {
-        Schema::table('properties', function (Blueprint $table) {
-            $table->dropColumn('service_id');
+        Schema::table('wallets', function (Blueprint $table) {
+            $table->integer('total_amount');
         });
     }
 }

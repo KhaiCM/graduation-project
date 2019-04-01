@@ -166,3 +166,4 @@ Route::get('callback/{social}', 'Auth\SocialAuthController@callback');
 
 //recharge
 Route::get('recharge', 'RechargeController@in')->name('recharge.in');
+Route::post('recharge', 'RechargeController@postin')->name('recharge.post');

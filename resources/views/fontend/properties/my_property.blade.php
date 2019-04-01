@@ -9,11 +9,12 @@
                 <div class="user-profile-box mrb">
                     <!--header -->
                     <div class="header clearfix">
-                        <h2>{{ 1 }}</h2>
+                        <h2>{{ Auth::user()->name }}</h2>
                         <img src="{{ asset(config('fontend.fontend_image.sub_property')) }}" alt="avatar" class="img-fluid profile-img">
                     </div>
                     <!-- Detail -->
                     <div class="detail clearfix">
+                        <a>{{ __('message.amounts') }}</a>
                         <ul>
                             <li>
                                 <a href="{{ route('user_page.edit', Auth::user()->id) }}">
