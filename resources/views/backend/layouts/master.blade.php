@@ -38,6 +38,7 @@
         <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
         <a href="{{ route('contract.index') }}">{{ trans('message.contract') }}</a>
         <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
+        <a href="{{ route('procat.index') }}">{{ trans('province.propertyCategoy') }}</a>
         <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
         <a href="{{ route('setcalendar.index') }}">{{ trans('message.setcalendar') }}</a>
         <a href="{{ route('role.index') }}">{{ trans('label.role') }}</a>
