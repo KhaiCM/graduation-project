@@ -84,4 +84,5 @@ return [
     'recharge' => 'Recharge',
     'amount' => 'Amount',
     'puttofirst' => 'Put to first',
+    'amounts' => 'Amount: ',
 ];

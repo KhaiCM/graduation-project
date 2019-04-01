@@ -20,13 +20,13 @@
                                 {{ session('message') }}
                             </div>
                             @endif
-                            {{ Form::open(['method' => 'POST']) }}
+                            {{ Form::open(['method' => 'POST', route('recharge.post')]) }}
                             <h3 class="heading">{{ __('message.recharge') }}</h3>
                             <div class="row">
                                 <div class="col-lg-12 ">
                                     <div class="form-group name">
-                                        {{ Form::label('amount', trans('message.amount')) }}
-                                        {!! Form::text('amount', null, ['class' => 'form-control', 'placeholder' => __('message.amount')]) !!}
+                                        {{ Form::label('balance', trans('message.amount')) }}
+                                        {!! Form::text('balance', null, ['class' => 'form-control', 'placeholder' => __('message.amount')]) !!}
                                     </div>
                                 <div class="col-lg-4">
                                     {{ Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) }}

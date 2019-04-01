@@ -91,5 +91,6 @@ return [
     'recharge' => 'Nạp tiền',
     'amount' => 'Số tiền',
     'puttofirst' => 'Đưa lên đầu',
+    'amounts' => 'Số tiền: ',
 ];
 

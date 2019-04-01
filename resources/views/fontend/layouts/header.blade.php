@@ -44,6 +44,9 @@
                                 <a class="nav-link" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ __('label.contact_us') }}
                                 </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('createcontacts') }}">{{ __('label.contact_us') }}</a></li>
+                                </ul>
                             </li>
                             @if (Auth::check())
                             <li class="nav-item dropdown">
@@ -91,4 +94,3 @@
         </div>
     </div>
 </header>
-
