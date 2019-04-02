@@ -124,4 +124,9 @@ return [
     'save' => 'Lưu',
     'list_user' => 'Danh sách người dùng',
     'edit_user' =>  'Sửa quyền người dùng',
+        //user
+    'all_user' => 'Danh sách Người dùng',
+    'no_user' => 'Không có tài khoản',
+    'stt' => 'STT',
+    'join_at' => 'Ngày tạo',
 ];

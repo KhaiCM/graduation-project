@@ -85,7 +85,7 @@ return [
     'amount' => 'Amount',
     'puttofirst' => 'Put to first',
     'amounts' => 'Amount: ',
-    //role
+    // role
     'add_role_success' => 'Add Role Success',
     'add_permission_success' => 'Add Permission Success',
     'edit_role_success' => 'Edit Role Success',

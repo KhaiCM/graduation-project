@@ -127,5 +127,10 @@ return [
     'save' => 'Save',
     'list_user' => 'List user',
     'edit_user' =>  'Edit user',
+    //user
+    'all_user' => 'All Users',
+    'no_user' => 'No user',
+    'stt' => 'STT',
+    'join_at' => 'Join at',
 ];
 
