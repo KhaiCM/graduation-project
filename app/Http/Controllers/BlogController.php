@@ -84,7 +84,7 @@ class BlogController extends Controller
         return view('backend.blog.editblog', ['bl' => $bl, 'cat' => $cat]);
     }
 
-    public function postEditBlogCat(Request $request, $id)
+    public function postEditBlog(Request $request, $id)
     {
         try 
         {

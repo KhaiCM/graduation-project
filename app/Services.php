@@ -29,6 +29,10 @@ class SocialAccountService
                     'password' => $providerUser->getName(),
                     'avatar' => $providerUser-> getAvatar(),
                 ]);
+                $wl = wallet::create([
+                    'id' => $user->id,
+                    'balance' => 10000
+                ]);
             }
 
             $account->user()->associate($user);

@@ -15,18 +15,18 @@
                                 @endforeach
                             </div>
                             @endif
-                            @if (session('message'))
+                            @if (session('noti'))
                             <div class="alert alert-success">
-                                {{ session('message') }}
+                                {{ session('noti') }}
                             </div>
                             @endif
-                            {{ Form::open(['method' => 'POST', route('recharge.post', $id ) ]) }}
-                            <h3 class="heading">{{ __('message.recharge') }}</h3>
+                            {{ Form::open(['method' => 'POST', route('service.post', $id) ]) }}
+                            <h3 class="heading">{{ __('message.service') }}</h3>
                             <div class="row">
                                 <div class="col-lg-12 ">
                                     <div class="form-group name">
-                                        {{ Form::label('balance', trans('message.amount')) }}
-                                        {!! Form::text('balance', null, ['class' => 'form-control', 'placeholder' => __('message.amount')]) !!}
+                                        {{ Form::label('', trans('message.service')) }}<br>
+                                        {!! Form::select('service', $sv->pluck('name', 'id'), '', ['class' => 'selectpicker search-fields']) !!}
                                     </div>
                                 <div class="col-lg-4">
                                     {{ Form::submit(__('label.create'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) }}
