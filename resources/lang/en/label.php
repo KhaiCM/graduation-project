@@ -132,5 +132,6 @@ return [
     'no_user' => 'No user',
     'stt' => 'STT',
     'join_at' => 'Join at',
+    'hot_property' => 'Hot property',
 ];
 

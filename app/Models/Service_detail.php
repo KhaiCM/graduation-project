@@ -20,9 +20,12 @@ class service_detail extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
-
     public function service()
     {
         return $this->belongsTo('App\Models\Services', 'service_id');
+    }
+    public function property()
+    {
+        return $this->belongsTo('App\Models\Property', 'service_id');
     }
 }

@@ -92,6 +92,8 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('/prorent', 'Product\HomeController@getProRent')->name('home.rent');
 
+    Route::get('/prohot', 'Product\HomeController@getProHot')->name('home.hot');
+
     Route::get('/news', 'PostController@getPost')->name('post.index');
 
     Route::get('/news/{id}', 'PostController@getPostById')->name('post.view');
@@ -140,7 +142,6 @@ Route::group(['prefix' => 'ajax'], function () {
 
     Route::get('property_category/{property_category_id}', 'AjaxController@getPropertyType');
 });
-
 //set_calendar
 Route::get('calendars/{id}', 'SetCalenderController@create')->name('createcalendars');
 Route::post('calendars/{id}', 'SetCalenderController@postcreate')->name('postcreatecalendars');

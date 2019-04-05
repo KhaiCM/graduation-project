@@ -21,6 +21,7 @@ class Property extends Model
         'status',
         'form',
         'image',
+        'end_date',
     ];
 
     public function districts()
@@ -61,5 +62,9 @@ class Property extends Model
     public function unit()
     {
         return $this->belongsTo('App\Models\Unit', 'unit_id');
+    }
+    public function service()
+    {
+        return $this->belongsTo('App\Models\Service', 'service_id');
     }
 }
