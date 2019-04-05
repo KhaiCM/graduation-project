@@ -10,6 +10,11 @@
         </div>
     </div>
 </div>
+@if (session('noti'))
+<div>
+    {{ session('noti') }}
+<div>
+@endif
 <!-- Sub banner end -->
 <!-- Properties details page start -->
 <div class="properties-details-page content-area-15">

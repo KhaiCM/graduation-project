@@ -7,22 +7,21 @@ use App\Models\Property;
 use App\Models\SetCalendar;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class SetCalenderController extends Controller
 {
 
     public function create($id)
     {
-        try 
+        $sc = Property::findOrFail($id);
+        $user = Auth::user()->id;
+        if ($user == $sc->users->id)
         {
-            $sc = Property::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e) 
-        {
-            echo $e->getMessage();
+            return Redirect::back()->with('noti', trans('cannot'));
+        } else {
+            return view('fontend.calendars.set_calendar', ['sc' => $sc]);
         }
-
-        return view('fontend.calendars.set_calendar', ['sc' => $sc]);
     }
 
     public function postcreate(Request $request, $id)

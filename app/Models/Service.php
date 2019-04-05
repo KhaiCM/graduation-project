@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,8 +12,8 @@ class service extends Model
         'name',
     ];
 
-    public function serviceDetail()
+    public function users()
     {
-        return $this->hasOne('App\Models\Services', 'service_id');
+        return $this->hasMany('App\Models\Users');
     }
 }

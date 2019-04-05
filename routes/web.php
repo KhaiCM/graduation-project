@@ -33,15 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 
         Route::get('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
     });
-    Route::get('propertycategory', 'Admin\PropertyCategoryController@index');
-    Route::group(['prefix' => 'propertycategory'], function () {
-        Route::get('/index', 'Admin\PropertyCategoryController@index')->name('procat.index');
-        Route::get('/create', 'Admin\PropertyCategoryController@create')->name('procat.create');
-        Route::post('/create', 'Admin\PropertyCategoryController@store');
-        Route::get('/edit/{id}', 'Admin\PropertyCategoryController@edit')->name('procat.edit');
-        Route::post('/edit/{id}', 'Admin\PropertyCategoryController@update');
-        Route::get('/destroy/{id}', 'Admin\PropertyCategoryController@destroy')->name('procat.destroy');
-    });
     Route::get('/district', 'Admin\DistrictController@index');
     Route::group(['prefix' => 'district'], function () {
         Route::get('/index', 'Admin\DistrictController@index')->name('district.index');
@@ -180,5 +171,9 @@ Route::get('redirect/{social}', 'Auth\SocialAuthController@redirect')->name('red
 Route::get('callback/{social}', 'Auth\SocialAuthController@callback');
 
 //recharge
-Route::get('recharge', 'RechargeController@in')->name('recharge.in');
-Route::post('recharge', 'RechargeController@postin')->name('recharge.post');
+Route::get('recharge/{id}', 'RechargeController@in')->name('recharge.in');
+Route::post('recharge/{id}', 'RechargeController@postin')->name('recharge.post');
+
+//service
+Route::get('service/{id}', 'ServiceController@in')->name('service.in');
+Route::post('service/{id}', 'ServiceController@postIn')->name('service.post');

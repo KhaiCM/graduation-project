@@ -23,6 +23,7 @@ class User extends Authenticatable
         'phone',
         'password',
         'avatar',
+        'wallet_id',
     ];
 
     /**
@@ -78,10 +79,10 @@ class User extends Authenticatable
 
     public function wallet()
     {
-        return $this->hasOne('App\Models\Wallet', 'wallet_id');
+        return $this->hasOne('App\Models\Wallet', 'id');
     }
-    public function serviceDetial()
+    public function service()
     {
-        return $this->hasOne('App\Models\Service_detail', 'user_id');
+        return $this->belongsTo('App\Models\Service', 'service_id');
     }
 }

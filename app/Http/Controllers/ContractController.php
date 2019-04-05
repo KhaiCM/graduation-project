@@ -8,6 +8,8 @@ use App\Models\Property;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Http\Requests\ContractRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ContractController extends Controller
 {
@@ -19,16 +21,15 @@ class ContractController extends Controller
     }
     public function create($id)
     {
-        try 
+        
+        $ct = Property::findOrFail($id);
+        $user = Auth::user()->id;
+        if ($user == $ct->users->id)
         {
-            $ct = Property::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e) 
-        {
-            echo $e->getMessage();
+            return Redirect::back()->with('noti', trans('message.cannot'));
+        } else {
+            return view('fontend.contract.contract', ['ct' => $ct]);
         }
-
-        return view('fontend.contract.contract', ['ct' => $ct]);
     }
 
     public function postcreate(Request $request, $id)

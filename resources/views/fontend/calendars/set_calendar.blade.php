@@ -20,12 +20,14 @@
                                 {{ session('message') }}
                             </div>
                             @endif
-                            <h3>{{ $sc->name }}</h3>
-                            <p>{{ $sc->describe }}</p>
                             {{ Form::open(['method' => 'POST', route('postcreatecalendars', $sc->id )]) }}
                             <h3 class="heading">{{ __('label.setcalendar') }}</h3>
                             <div class="row">
                                 <div class="col-lg-12 ">
+                                    <div class="form-group name">
+                                        {{ Form::label('content', trans('message.propertyname')) }}
+                                        {{ Form::text('phone', $sc->name, ['class' => 'form-control', 'readonly' => 'true']) }}
+                                    </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.day')) }}<br>
                                         {{ Form::date('date') }}
@@ -36,7 +38,7 @@
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.phone')) }}
-                                        {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'readonly' => 'true']) }}
+                                        {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('content', trans('message.email')) }}

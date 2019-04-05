@@ -8,7 +8,7 @@
         {{ Form::text('title', $bl->title, ['class' => 'input']) }}<br><br>
 
         {{ Form::label('image', trans('message.image'), ['class' => 'label']) }}<br>
-        {{ Form::file('file_img', ['class' => 'label', 'onchange' => 'previewFile()']) }}
+        {{ Form::file('file_img', ['class' => 'label']) }}
         <img class="imgblog" src="{{ asset(config('app.blog_image') . $bl->image) }}" alt="Image preview..."><br>
 
         {{ Form::label('describe', trans('message.describe'), ['class' => 'label']) }}<br>
