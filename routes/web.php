@@ -33,6 +33,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 
         Route::get('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
     });
+    Route::get('propertycategory', 'Admin\PropertyCategoryController@index');
+
+    Route::group(['prefix' => 'propertycategory'], function () {
+
+        Route::get('/index', 'Admin\PropertyCategoryController@index')->name('procat.index');
+
+        Route::get('/create', 'Admin\PropertyCategoryController@create')->name('procat.create');
+
+        Route::post('/create', 'Admin\PropertyCategoryController@store')->name('propertycat.create');
+
+        Route::get('/edit/{id}', 'Admin\PropertyCategoryController@edit')->name('procat.edit');
+
+        Route::post('/edit/{id}', 'Admin\PropertyCategoryController@update')->name('procat.update');
+
+        Route::get('/destroy/{id}', 'Admin\PropertyCategoryController@destroy')->name('procat.destroy');
+    });
     Route::get('/district', 'Admin\DistrictController@index');
     Route::group(['prefix' => 'district'], function () {
         Route::get('/index', 'Admin\DistrictController@index')->name('district.index');
