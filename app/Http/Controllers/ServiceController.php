@@ -26,8 +26,8 @@ class ServiceController extends Controller
    
         if($request->service == 1 && $user->wallet->balance >= 10000) 
         {
-            $sotiencu = $rc->balance;
-            $rc->balance = $sotiencu - 10000;
+            $old = $rc->balance;
+            $rc->balance = $old - 10000;
 
             $rc->save();
 
@@ -39,8 +39,8 @@ class ServiceController extends Controller
         }
         else if($request->service == 2 && $user->wallet->balance >= 30000)
         {
-            $sotiencu = $rc->balance;
-            $rc->balance = $sotiencu - 30000;
+            $old = $rc->balance;
+            $rc->balance = $old - 30000;
 
             $rc->save();
 
@@ -48,9 +48,7 @@ class ServiceController extends Controller
         }
         else if($request->service == 2 && $user->wallet->balance < 30000) 
         {
-            return Redirect::back()->with('noti', 'khong du tien');
+            return Redirect::back()->with('noti', trans('message.cannot'));
         }
-
-        return redirect('/')->with('noti', 'success');
     }
 }

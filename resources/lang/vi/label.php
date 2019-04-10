@@ -129,4 +129,5 @@ return [
     'no_user' => 'Không có tài khoản',
     'stt' => 'STT',
     'join_at' => 'Ngày tạo',
+    'hot_property' => 'Tài sản nổi bật',
 ];

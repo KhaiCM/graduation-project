@@ -16,4 +16,8 @@ class service extends Model
     {
         return $this->hasMany('App\Models\Users');
     }
+    public function property()
+    {
+        return $this->hasMany('App\Models\Property');
+    }
 }

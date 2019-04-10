@@ -10,10 +10,15 @@ use App\Models\PropertyImage;
 use App\Models\PropertyType;
 use App\Models\Province;
 use App\Models\Unit;
+use App\Models\Service;
+use App\Models\Wallet;
+use App\Models\User;
 use App\Repositories\PropertyImageRepository;
 use App\Repositories\PropertyRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class PropertyController extends Controller
 {
@@ -53,7 +58,11 @@ class PropertyController extends Controller
 
         $propertyType = PropertyType::all();
 
-        return view('fontend.properties.property_submit', compact('user', 'province', 'district', 'propertyCategory', 'propertyType', 'unit'));
+        $sv = Service::all();
+
+        $cb = Carbon::now();
+
+        return view('fontend.properties.property_submit', compact('user', 'province', 'district', 'propertyCategory', 'propertyType', 'unit', 'sv', 'cb'));
     }
 
     /**
@@ -64,36 +73,126 @@ class PropertyController extends Controller
      */
     public function store(PropertyRequest $request)
     {
-        if ($request->hasFile('file')) {
-            $img = null;
-            $property_image = [];
-            foreach ($request->file('file') as $item) {
-                $name = $item->getClientOriginalName();
-                $image = str_random(5) . $name;
-                while (file_exists('upload/property' . $image)) {
-                    $image = str_random(5) . '.' . $image;
+        $id = Auth::user()->id; //id user
+        $rc = Wallet::findOrFail($id);  //id wallet
+        $user = User::findOrFail($rc->id);
+        if ($request->service == null)
+        {
+            if ($request->hasFile('file'))
+            {
+                $img = null;
+                $property_image = [];
+                foreach ($request->file('file') as $item) 
+                {
+                    $name = $item->getClientOriginalName();
+                    $image = str_random(5) . $name;
+                    while (file_exists('upload/property' . $image)) {
+                        $image = str_random(5) . '.' . $image;
+                    }
+                    $item->move(config('app.property_path'), $image);
+                    if (is_null($img)) {
+                        $img = $image;
+                    }
+                    $property_image [] = $image;
                 }
-                $item->move(config('app.property_path'), $image);
-                if (is_null($img)) {
-                    $img = $image;
+                $request->merge([
+                    'status' => 0,
+                    'user_id' => $request->user()->id,
+                    'image' => $img,
+                ]);
+                $properties = $this->property->create($request->all());
+                
+                foreach ($property_image as $item) 
+                {
+                    $file = [
+                        'property_id' => $properties->id,
+                        'link' => $item,
+                    ];
+                    $image = $this->property_image->create($file);
                 }
-                $property_image [] = $image;
             }
-            $request->merge([
-                'status' => 0,
-                'user_id' => $request->user()->id,
-                'image' => $img,
-            ]);
-            $properties = $this->property->create($request->all());
-            foreach ($property_image as $item) {
-                $file = [
-                    'property_id' => $properties->id,
-                    'link' => $item,
-                ];
-                $image = $this->property_image->create($file);
+                return redirect('property')->with('message', __('message.add_property'));
+        } elseif ($request->service == 1 && $user->wallet->balance >= 10000) {
+            $old = $rc->balance;
+            $rc->balance = $old - 10000;
+            $rc->save(); 
+            if ($request->hasFile('file'))
+            {
+                $img = null;
+                $property_image = [];
+                foreach ($request->file('file') as $item) 
+                {
+                    $name = $item->getClientOriginalName();
+                    $image = str_random(5) . $name;
+                    while (file_exists('upload/property' . $image)) {
+                        $image = str_random(5) . '.' . $image;
+                    }
+                    $item->move(config('app.property_path'), $image);
+                    if (is_null($img)) {
+                        $img = $image;
+                    }
+                    $property_image [] = $image;
+                }
+                $request->merge([
+                    'status' => 0,
+                    'user_id' => $request->user()->id,
+                    'image' => $img,
+                    'end_date' => Carbon::now()->addDays(10)->toDateString(),
+                ]);
+                $properties = $this->property->create($request->all());
+                
+                foreach ($property_image as $item) 
+                {
+                    $file = [
+                        'property_id' => $properties->id,
+                        'link' => $item,
+                    ];
+                    $image = $this->property_image->create($file);
+                }
             }
-
             return redirect('property')->with('message', __('message.add_property'));
+        } elseif ($request->service == 1 && $user->wallet->balance < 10000) {
+            return Redirect::back()->with('noti', trans('message.cannot'));
+        } elseif($request->service == 2 && $user->wallet->balance >= 30000) {
+            $old = $rc->balance;
+            $rc->balance = $old - 30000;
+            $rc->save();
+            if ($request->hasFile('file'))
+            {
+                $img = null;
+                $property_image = [];
+                foreach ($request->file('file') as $item) 
+                {
+                    $name = $item->getClientOriginalName();
+                    $image = str_random(5) . $name;
+                    while (file_exists('upload/property' . $image)) {
+                        $image = str_random(5) . '.' . $image;
+                    }
+                    $item->move(config('app.property_path'), $image);
+                    if (is_null($img)) {
+                        $img = $image;
+                    }
+                    $property_image [] = $image;
+                }
+                $request->merge([
+                    'status' => 0,
+                    'user_id' => $request->user()->id,
+                    'image' => $img,
+                    'end_date' => Carbon::now()->addDays(30)->toDateString(),
+                ]);
+                $properties = $this->property->create($request->all());
+                foreach ($property_image as $item) 
+                {
+                    $file = [
+                        'property_id' => $properties->id,
+                        'link' => $item,
+                    ];
+                    $image = $this->property_image->create($file);
+                }
+            }
+                return redirect('property')->with('message', __('message.add_property'));
+        } elseif($request->service == 2 && $user->wallet->balance < 30000) {
+            return Redirect::back()->with('noti', trans('message.cannot'));
         }
     }
 

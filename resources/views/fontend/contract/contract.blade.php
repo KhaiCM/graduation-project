@@ -36,7 +36,7 @@
                                         {{ Form::hidden('lessee_id', Auth::user()->id, ['class' => 'form-control', 'readonly' => 'true']) }}
                                     </div>
                                     <div class="form-group name">
-                                        {{ Form::hidden('property_id', $ct->id, ['class' => 'form-control', 'hide' => 'true']) }}
+                                        {{ Form::hidden('property_id', $ct->id, ['class' => 'form-control']) }}
                                     </div>
                                     <div class="form-group name">
                                         {{ Form::label('email', trans('message.youremail')) }}

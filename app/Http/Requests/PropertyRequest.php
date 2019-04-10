@@ -33,6 +33,7 @@ class PropertyRequest extends FormRequest
             'describe' => 'required|min:5',
             'file' => 'required',
             'file.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'end_date' => 'requered',
         ];
     }
 

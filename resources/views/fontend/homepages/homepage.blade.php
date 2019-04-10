@@ -78,6 +78,83 @@
 <!-- Search area start -->
 </div>
 <!-- banner end -->
+<!-- hot properties -->
+@if (count($pp) > 0)
+    <div class="featured-properties content-area-2">
+        <div class="container">
+            <div class="main-title">
+                <h1>{!! __('message.hot_properties')!!}</h1>
+            </div>
+            <div class="row filter-portfolio">
+                <div class="cars">
+                    @foreach ($pp as $property)
+                        <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
+                            <div class="property-box">
+                                <div class="property-thumbnail">
+                                    <a href="#" class="property-img">
+                                        <div class="price-ratings-box">
+                                            <p class="price">
+                                                {{ $property->price }} {{ $property->unit->name ?? '' }}
+                                            </p>
+                                            <div class="ratings">
+                                                <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        @foreach ($property->propertyImage as $image)
+                                            <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
+                                            @break
+                                        @endforeach
+                                    </a>
+                                    <div class="property-overlay">
+                                        <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
+                                            <i class="fa fa-link"></i>
+                                        </a>
+                                        <div class="property-magnify-gallery">
+                                            @foreach ($property->propertyImage as $image)
+                                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="overlay-link">
+                                                @break
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="detail">
+                                    <h1 class="title">
+                                        <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
+                                    </h1>
+                                    <div class="location">
+                                        <a href="#">
+                                            <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
+                                        </a>
+                                    </div>
+                                    <ul class="facilities-list clearfix">
+                                        {!! $property->describe !!}
+                                    </ul>
+                                </div>
+                                <div class="footer">
+                                    <a href="{{ route('follow.user',  $property->users->id) }}">
+                                        <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
+                                    </a>
+                                    <span>
+                                        <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            {!! $properties->links() !!}
+        </div>
+    </div>
+@else
+    <div class="featured-properties content-area-2">
+    <div class="container">
+        <div class="main-title">
+            <h1>{{ trans('province.none') }}</h1>
+        </div>
+    </div>
+    </div>
+@endif
 <!-- Featured properties start -->
 @if (count($properties) > 0)
     <div class="featured-properties content-area-2">
@@ -161,7 +238,7 @@
     </div>
     </div>
 @endif
-<!-- Featured properties end
+<!-- Featured properties end -->
 <!-- services start -->
 <div class="services content-area-5">
     <div class="container">

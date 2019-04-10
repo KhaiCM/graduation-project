@@ -13,6 +13,8 @@ use App\Models\Province;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
+use DB;
 
 class HomeController extends Controller
 {
@@ -47,19 +49,32 @@ class HomeController extends Controller
 
         $properties = Property::paginate(config('pagination.home'));
 
-        return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory'));
+        $now = Carbon::now();
+    
+        $pp = Property::whereRaw("DATEDIFF('" . $now . "',end_date) < 0")->paginate(config('pagination.home'));
+
+        return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory', 'pp' ));
     }
 
     public function getProSold()
     {
-        $properties = Property::where('form', '1')->paginate(config('pagination.all'));
+        $properties = Property::where('form', '0')->paginate(config('pagination.all'));
 
         return view('fontend.homepages.property_list', compact('properties'));
     }
 
     public function getProRent()
     {
-        $properties = Property::where('form', '0')->paginate(config('pagination.all'));
+        $properties = Property::where('form', '1')->paginate(config('pagination.all'));
+
+        return view('fontend.homepages.property_list', compact('properties'));
+    }
+
+    public function getProHot()
+    {
+        $now = Carbon::now();
+        
+        $properties = Property::whereRaw("DATEDIFF('" . $now . "', end_date) < 0")->paginate(config('pagination.all'));
 
         return view('fontend.homepages.property_list', compact('properties'));
     }
