@@ -15,6 +15,7 @@ $factory->define(App\Models\Property::class, function (Faker $faker) {
         'price' => rand(1, 10) * 1000,
         'status' => str_random(100),
         'form' => rand(0, 1),
+        'image' => $faker->imageUrl(400, 300),
         'created_at' => now(),
         'updated_at' => now(),
     ];
