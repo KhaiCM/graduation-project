@@ -21,7 +21,6 @@ class ContractController extends Controller
     }
     public function create($id)
     {
-        
         $ct = Property::findOrFail($id);
         $user = Auth::user()->id;
         if ($user == $ct->users->id)
