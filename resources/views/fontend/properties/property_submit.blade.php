@@ -95,6 +95,8 @@
                                     <div class="form-group">
                                         {{ Form::label(__('message.service')) }}
                                         {{ Form::select('service', $sv->pluck('name', 'id'), null, ['class' => 'selectpicker search-fields', 'placeholder' => trans('message.service')]) }}
+                                        {{ __('message.1tuan') }} <br>
+                                        {{ __('message.1tuan') }}
                                     </div>
                                 </div>
                             </div>

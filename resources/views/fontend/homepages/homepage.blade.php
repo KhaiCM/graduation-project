@@ -88,7 +88,7 @@
             <div class="row filter-portfolio">
                 <div class="cars">
                     @foreach ($pp as $property)
-                        <div class="col-lg-4 col-md-6 col-sm-12 filtr-item" data-category="3">
+                        <div class="col-lg-4" data-category="3">
                             <div class="property-box">
                                 <div class="property-thumbnail">
                                     <a href="#" class="property-img">
@@ -143,7 +143,6 @@
                     @endforeach
                 </div>
             </div>
-            {!! $properties->links() !!}
         </div>
     </div>
 @else
