@@ -31,7 +31,11 @@
                                         <figure><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->address }}</figure>
                                     </div>
                                 </td>
-                                <td>{{ $property->form }}</td>
+                                @if($property->form == 0)
+                                <td>{{ __('label.sale') }}</td>
+                                @else
+                                <td>{{ __('label.rent') }}</td>
+                                @endif
                                 <td>{{ $property->acreage }} m2</td>
                                 <td>{{ $property->price }} {{ $property->unit->name ?? '' }}</td>
                                 <td>{{ $property->created_at->format('d/m/Y') }}</td>
