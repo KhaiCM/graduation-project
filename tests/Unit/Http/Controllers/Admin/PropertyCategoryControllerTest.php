@@ -5,6 +5,7 @@ namespace Tests\Unit\Http\Controllers\Admin;
 use Tests\TestCase;
 use Illuminate\Http\Request;
 use App\Models\PropertyCategory;
+use App\Models\User;
 use App\Repositories\PropertyCategoryRepository;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -38,10 +39,13 @@ class PropertyCategoryControllerTest extends TestCase
 
     public function testPropertyCategorIndex()
     {
+        $user = User::find(1);
         $propertyCategory = factory(PropertyCategory::class)->create();
         $this->assertInstanceOf(PropertyCategory::class, $propertyCategory);
         $data = PropertyCategory::findOrFail($propertyCategory->id);
         $this->assertEquals($data->name, $propertyCategory->name);
+        $response = $this->actingAs($user)->get(route('procat.index'))->assertViewIs('backend.propertycategory.show');
+        $response->assertStatus(200);
     }
 
     public function testPropertyCategorDelete()

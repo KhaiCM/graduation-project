@@ -2,7 +2,7 @@
 <header class="top-header top-header-bg d-none d-xl-block d-lg-block d-md-block">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 margin">
                 <ul class="top-social-media pull-left">
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="dropdown-toggle header-user">
@@ -41,7 +41,6 @@
                     <a id="navbarDropdown" class="nav-link dropdown-toggle ">
                         <img src="{{ get_avatar( Auth::user()) }}" alt="avatar" class="img-avatar">
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <div class="dropdown-submenu noti-title">
                             <h5 class="text-overflow"><small>{{ Auth::user()->name }}</small> </h5>

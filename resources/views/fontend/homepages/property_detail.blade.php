@@ -24,7 +24,7 @@
                 <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-60">
                     <div class="heading-properties">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 margin-property">
                                 <div class="pull-left">
                                     <h3>{{ $property->name }}</h3>
                                     <p><i class="fa fa-map-marker"></i>&nbsp;{{ $property->districts->name ?? '' }}</p>
@@ -183,7 +183,7 @@
                         <div class="">
                             <div class="send-btn">
                                 <a href="{{ route('createcalendars', ['id' => $property->id]) }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.setcalendar') }}</button></a>
-                                <a href="{{ route('createcontracts', ['id' => $property->id]) }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.contract') }}</button></a>
+                                <a href="{{ route('createcontracts', ['id' => $property->id]) }}"><button class="btn btn-color btn-md btn-message">{{ trans('message.contract') }}</button></a>
                             </div>
                         </div>
                     </div>

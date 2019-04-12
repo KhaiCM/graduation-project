@@ -7,6 +7,7 @@ return [
     'rental_property' => 'Tài sản cho thuê',
     'news' => 'Tin tức',
     'contact_us' => 'Liên hệ chúng tôi',
+    'contact_info' => 'Thông tin liên hệ',
     'login' => 'Đăng nhập',
     'sign_up' => 'Đăng kí',
     'property' => 'Tài sản',
