@@ -93,8 +93,10 @@ return [
     'puttofirst' => 'Đưa lên đầu',
     'amounts' => 'Số tiền: ',
     'service' => 'Dịch vụ',
-    '1tuan' => '1 tuần: 10.000VND',
-    '1thang' => '1 tháng: 30.000VND',
+    '1week' => '1 tuần: 10.000VND',
+    '1month' => '1 tháng: 30.000VND',
+    'price' => 'Giá dịch vụ sản phẩm hot:',
+    'watchmore' => 'Xem thêm',
     //role
     'add_role_success' => 'Thêm vai trò thành công',
     'add_permission_success' => 'Thêm quyền thành công',
