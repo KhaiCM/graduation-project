@@ -27,6 +27,7 @@
     <link type="text/css" rel="stylesheet" href="{{ asset('bower_components/lib_bower/assets/css/skins/default.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('bower_components/lib_bower/assets/css/style.css') }}">
     <script>
+        var count;
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!}
@@ -74,6 +75,9 @@
     <script src="{{ asset('js/ajax.js') }}"></script>
     <script src="{{ asset('bower_components/pusher-js/dist/web/pusher.min.js') }}"></script>
     <script>
+        $('#co').append('&nbsp;<b>' + $('#noti').data('count') + '</b>');
+    </script>
+    <script>
         $(document).ready(function(){
             // Khởi tạo một đối tượng Pusher với app_key
             var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
@@ -85,14 +89,18 @@
             var channel = pusher.subscribe('follow-channel-' + window.Laravel.userId);
 
             //Bind một function addMesagePusher với sự kiện FollowEvent
-            channel.bind('App\\Events\\FollowEvent', addMessageDemo);
+            channel.bind('App\\Events\\FollowEvent', notyFollow);
         });
 
         //function add message
-        function addMessageDemo(data) {
+        function notyFollow(data) {
             var liTag = $("<li class='list-group-item'></li>");
             liTag.html(data.message);
-            $('#messages').append(liTag);
+            $('.dropdown-toolbar').append(liTag);
+            $('.dropdown-toolbar-title').remove();
+            count = document.getElementsByClassName("list-group-item");
+            $('#noti').data('count', count.length);
+            $('#co').html('&nbsp;<b>' + $('#noti').data('count') + '</b>');
         }
     </script>
 </body>

@@ -26,30 +26,17 @@
           <div class="col-lg-6 col-md-6 col-sm-6">
             <ul class="top-social-media pull-left ">
                 @if (Auth::check())
-                <li class="list-inline-item dropdown notif">
-                    <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i class="fa fa-fw fa-bell-o"></i><span class="notif-bullet"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5><small><span class="label label-danger pull-xs-right">{{ __('label.vietnam') }}</span>{{ __('label.vietnam') }}</small></h5>
-                        </div>
-                        <!-- item-->
-                        <a href="#" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-faded">
-                                <img src="{{ asset(config('fontend.fontend_image.logo')) }}" alt="img" class="rounded-circle img-fluid">
-                            </div>
-                            <p class="notify-details">
-                                <b>{{ __('label.john_doe') }}</b>
-                                <span>{{ __('label.user_registration') }}</span>
-                                <small class="text-muted">{{ __('label.minutes_ago') }}</small>
-                            </p>
+                    <li class="list-inline-item dropdown notif">
+                        <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
+                            <i data-count="0" class="fa fa-fw fa-bell-o" id='noti'><span id="co"></span></i>
                         </a>
-                        <!-- All-->
-                        <a href="#" class="dropdown-item notify-item notify-all">{{ __('label.view_all_allerts') }}</a>
-                    </div>
-                </li>
+
+                        <div class="dropdown-menu dropdown-menu-left ">
+                            <div class="dropdown-toolbar">
+                                <span class="dropdown-toolbar-title">{{ trans('province.nonoti') }}</span>
+                            </div>
+                        </div>
+                    </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle ">
                         <img src="{{ get_avatar( Auth::user()) }}" alt="avatar" class="img-avatar">

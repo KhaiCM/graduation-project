@@ -103,7 +103,7 @@ class UserPageController extends Controller
             return redirect()->back()->with('error', trans('province.error'));
         }
         $user->followers()->attach(auth()->user()->id);
-        event(new FollowEvent(trans('province.hasFollow') . auth()->user()->name));
+        event(new FollowEvent(auth()->user()->name . trans('province.hasFollow')));
 
         return redirect()->back()->with('success', trans('province.success'));
     }
