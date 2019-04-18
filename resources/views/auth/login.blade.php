@@ -30,7 +30,7 @@
     <div class="login-page cnt-bg-photo overview-bgi" style="background-image: url({{ asset(config('fontend.fontend_image.banner')) }})">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-5" id="auto-margin">
                     <div class="content-form-box forgot-box clearfix">
                         <div class="login-header clearfix">
                             <div class="pull-left">

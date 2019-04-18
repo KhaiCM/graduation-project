@@ -7,6 +7,7 @@ return [
     'rental_property' => 'Rental Property',
     'news' => 'News',
     'contact_us' => 'Contact us',
+    'contact_info' => 'Contact Info',
     'login' => 'Login',
     'sign_up' => 'Sign up',
     'property' => 'Property',

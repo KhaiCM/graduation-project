@@ -2,42 +2,34 @@
 <footer class="footer">
     <div class="container footer-inner">
         <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-item">
+                    <h4>
+                    {!! __('label.about_us')!!}
+                    </h4>
+                    <a class="text-real">Nắm rõ được nhu cầu của thị trường bất động sản, chúng tôi sẽ mang đến những tư vấn hợp lý, những dịch vụ tiện ích và nhanh chóng nhất cho các bạn</a>
+                </div>
+            </div>
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-item">
                     <h4>{!! __('label.contact_us')!!}</h4>
                     <ul class="contact-info">
                         <li>
-                            Address: 20/F Green Road, Dhanmondi, Dhaka
+                            {!! __('label.address')!!}: Trần Khát Chân, Hà Nội 
                         </li>
                         <li>
-                            Email: <a href="#">info@themevessel.com</a>
+                            {!! __('label.email')!!}: <a href="#">info@themevessel.com</a>
                         </li>
                         <li>
-                            Phone: <a href="#">+tel:+0477-85x6-552</a>
-                        </li>
-                        <li>
-                            Fax: +XXXX XXXX XXX
+                        {!! __('label.phone')!!}: <a href="#">Tel:+0477-85x6-552</a>
                         </li>
                     </ul>
-
                     <ul class="social-list clearfix">
                         <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
                         <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>
-                    {!! __('label.useful_links')!!}
-                    </h4>
-                    <ul class="links">
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>{!! __('label.contact_us')!!}</a>
-                        </li>
                     </ul>
                 </div>
             </div>
