@@ -86,8 +86,10 @@ return [
     'puttofirst' => 'Put to first',
     'amounts' => 'Amount: ',
     'service' => 'service',
-    '1tuan' => '10.000VND per week',
-    '1thang' => '30.000VND per mouth',
+    '1week' => '10.000VND per week',
+    '1month' => '30.000VND per mouth',
+    'price' => 'hot product servic price:',
+    'watchmore' => 'Watch more',
     // role
     'add_role_success' => 'Add Role Success',
     'add_permission_success' => 'Add Permission Success',

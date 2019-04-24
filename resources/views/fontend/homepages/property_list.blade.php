@@ -86,7 +86,7 @@
                                         <i class="fa fa-user"></i> {{ $property->users->name ?? '' }}
                                     </a>
                                     <span>
-                                    <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
+                                    <i class="fa fa-calendar-o"></i> {{ $property->created_at->toFormattedDateString() }}
                                 </span>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                                 <h5>
                                     <a href="#">{{ $property->name }}</a>
                                 </h5>
-                                <p>{{ $property->created_at }}</p>
+                                <p>{{ $property->created_at->toFormattedDateString() }}</p>
                                 <p><strong>{{ $property->price }} {{ $property->unit->name ?? '' }}</strong></p>
                             </div>
                         </div>

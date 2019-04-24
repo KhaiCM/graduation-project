@@ -93,10 +93,12 @@
                                 <!-- service -->
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
+                                        {{ __('message.price') }} <br>
+                                        {{ __('message.1week') }} <br>
+                                        {{ __('message.1month') }} <br>
                                         {{ Form::label(__('message.service')) }}
                                         {{ Form::select('service', $sv->pluck('name', 'id'), null, ['class' => 'selectpicker search-fields', 'placeholder' => trans('message.service')]) }}
-                                        {{ __('message.1tuan') }} <br>
-                                        {{ __('message.1tuan') }}
+                                        
                                     </div>
                                 </div>
                             </div>

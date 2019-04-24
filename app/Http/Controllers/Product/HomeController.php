@@ -10,11 +10,13 @@ use App\Models\Property;
 use App\Models\PropertyCategory;
 use App\Models\PropertyType;
 use App\Models\Province;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use DB;
+use App\Repositories\HotProductsRepository;
 
 class HomeController extends Controller
 {
@@ -23,9 +25,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    protected $HotProductsRepository;
 
+    public function __construct(HotProductsRepository $hot)
+    {
+        $this->hot = $hot;
     }
 
     /**
@@ -49,11 +53,11 @@ class HomeController extends Controller
 
         $properties = Property::paginate(config('pagination.home'));
 
-        $now = Carbon::now();
+        $posts = Post::take(10)->get();
     
-        $pp = Property::whereRaw("DATEDIFF('" . $now . "',end_date) < 0")->paginate(config('pagination.home'));
+        $pp = $this->hot->all()->take(config('pagination.hotPro'))->get();
 
-        return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory', 'pp' ));
+        return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory', 'pp', 'posts' ));
     }
 
     public function getProSold()
@@ -71,10 +75,8 @@ class HomeController extends Controller
     }
 
     public function getProHot()
-    {
-        $now = Carbon::now();
-        
-        $properties = Property::whereRaw("DATEDIFF('" . $now . "', end_date) < 0")->paginate(config('pagination.all'));
+    {         
+        $properties = $this->hot->all()->paginate(config('pagination.ahotProll'));
 
         return view('fontend.homepages.property_list', compact('properties'));
     }

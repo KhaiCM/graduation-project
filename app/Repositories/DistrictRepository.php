@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\DistricRequest;
 use App\Models\District;
 use App\Http\Requests\DistrictRequest;
 
