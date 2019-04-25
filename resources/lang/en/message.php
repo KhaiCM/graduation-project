@@ -50,6 +50,7 @@ return [
     'max' => 'Upload file size has exceeded the limit',
     'propertytype_id' => 'property type cannot be empty',
     'property_district_id' => 'cannot empty the district',
+    'propertytype_id' => 'No asset property type',
     'note' => 'Note',
     'time' => 'Time',
     'day' => 'Day',

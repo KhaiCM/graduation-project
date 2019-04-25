@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\SocialAccount;
 use App\Models\User;
+use App\Models\Wallet;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 
 class SocialAccountService
@@ -29,7 +30,7 @@ class SocialAccountService
                     'password' => $providerUser->getName(),
                     'avatar' => $providerUser-> getAvatar(),
                 ]);
-                $wl = wallet::create([
+                $wl = Wallet::create([
                     'id' => $user->id,
                     'balance' => 10000
                 ]);

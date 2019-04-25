@@ -28,9 +28,9 @@ class UpdateUsers2Table extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address');
-            $table->dropColumn('avatar');
-            $table->dropColumn('phone');
+            $table->string('address')->change();
+            $table->string('avatar')->change();
+            $table->string('phone')->change();
         });
     }
 }
