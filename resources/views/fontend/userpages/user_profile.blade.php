@@ -15,7 +15,7 @@
                     <!-- Detail -->
                     <div class="detail clearfix">
                         <a>{{ __('message.amounts') }}</a>
-                        <a>{{ Auth::user()->Wallet->balance }}</a>
+                        <a>{{ Auth::user()->Wallet->balance ?? '0 Đ' }}</a>
                         <ul>
                             <li>
                                 <a href="{{ route('user_page.edit', Auth::user()->id) }}" class="active">
