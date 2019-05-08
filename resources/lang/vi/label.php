@@ -131,4 +131,12 @@ return [
     'stt' => 'STT',
     'join_at' => 'Ngày tạo',
     'hot_property' => 'Tài sản nổi bật',
+    //admin blog
+    'article_overview' => 'Tổng quan tin tức',
+    'pending' => 'Chờ',
+    'active' => 'Kích hoạt',
+    //admin blog cat
+    'name_blog_cat' => 'Tên thể loại tin tức',
+    'blog_cat' => 'Thể loại tin tức',
+    'add_blog_cat' => 'Thêm thể loại tin tức',
 ];

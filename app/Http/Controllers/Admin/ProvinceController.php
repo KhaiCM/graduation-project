@@ -47,7 +47,7 @@ class ProvinceController extends Controller
     {
         $provinces = $this->province->add($request);
 
-        return redirect(route('province.create'))->with('message', trans('message.add_success'));;
+        return redirect(route('province.index'))->with('message', trans('message.add_success'));;
     }
 
     /**
@@ -70,8 +70,9 @@ class ProvinceController extends Controller
     public function edit($id)
     {
         $province = $this->province->findOrFail($id);
-        if (!\Auth::user()->can('update', $province))
-            abort(403);
+        // dd($province_edit);
+        // if (!\Auth::user()->can('update', $province))
+        //     abort(403);
 
         return view('backend.province.edit', compact('province'));
 
@@ -87,8 +88,8 @@ class ProvinceController extends Controller
     public function update(ProvinceRequest $request, $id)
     {
         $province = $this->province->findOrFail($id);
-        if (!\Auth::user()->can('update', $province))
-            abort(403);
+        // if (!\Auth::user()->can('update', $province))
+        //     abort(403);
         $province = $this->province->update($request, $id);
 
         return redirect(route('province.index'))->with('message', trans('province.edit_success'));

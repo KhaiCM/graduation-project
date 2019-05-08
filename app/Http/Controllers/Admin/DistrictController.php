@@ -25,8 +25,9 @@ class DistrictController extends Controller
     public function index()
     {
         $districts = $this->district->all();
+        $provinces = Province::all();
 
-        return view('backend.district.show', compact( 'districts'));
+        return view('backend.district.show', compact( 'districts', 'provinces'));
     }
 
     /**
@@ -51,7 +52,7 @@ class DistrictController extends Controller
     {
         $district = $this->district->add($request);
 
-        return redirect(route('district.create'))->with('message', trans('message.add_success'));;
+        return redirect(route('district.index'))->with('message', trans('message.add_success'));;
     }
 
     /**

@@ -35,6 +35,11 @@ class PropertyRequest extends FormRequest
             'file.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'end_date' => 'requered',
         ];
+
+        if (request()->method() == 'POST') {
+            $rules = array_merge($rules, ['img' => 'required|image']);
+        }
+        return $rules;
     }
 
     public function messages()

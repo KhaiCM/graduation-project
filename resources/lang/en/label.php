@@ -134,5 +134,13 @@ return [
     'stt' => 'STT',
     'join_at' => 'Join at',
     'hot_property' => 'Hot property',
+    //admin blog
+    'article_overview' => 'Article details',
+    'pending' => 'Pending',
+    'active' => 'Active',
+    //admin blog cat
+    'name_blog_cat' => 'Name blog category',
+    'blog_cat' => 'Blog Category',
+    'add_blog_cat' => 'Add blog category',
 ];
 

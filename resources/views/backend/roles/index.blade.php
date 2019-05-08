@@ -1,5 +1,24 @@
 @extends('backend.layouts.master')
 @section('content')
+<!-- Start content -->
+<div class="container-fluid">
+
+
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="breadcrumb-holder">
+                <h1 class="main-title float-left">{{ trans('province.listDistrict') }}</h1>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">{{ trans('province.listDistrict') }}</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
 <div>
     @foreach ($errors->all() as $error)
     <p class="alert alert-danger">{{ $error }}</p>
