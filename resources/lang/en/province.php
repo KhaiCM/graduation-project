@@ -54,4 +54,7 @@ return [
     'unfollow' => 'Unfollow',
     'video' => 'video',
     'stt' => 'STT',
+    //category property
+    'listPropertyCategory' => 'List Property Category',
+    'name_property_category' => 'Name Property Category',
 ];

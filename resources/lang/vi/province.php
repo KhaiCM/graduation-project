@@ -55,4 +55,6 @@ return [
     'unfollow' => 'Bỏ theo dõi',
     'tag' => 'Tags',
     'stt' => 'STT',
+    'listPropertyCategory' => 'Danh sách thể loại tài sản',
+    'name_property_category' => 'Tên thể loại tài sản',
 ];

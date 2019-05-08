@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\CategoryPost;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BlogRequest;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
     public function getList()
     {
         $bl = Post::orderBy('id', 'desc')->paginate(config('app.blog_page'));
+        // dd($bl->all());
 
         return view('backend.blog.showblog', ['bl' => $bl]);
     }
@@ -23,47 +26,25 @@ class BlogController extends Controller
         return view('backend.blog.addblog', ['cat' => $cat]);
     }
 
-    public function postAddBlog(Request $request)
+    public function postAddBlog(BlogRequest $request)
     {
-        $this->validate($request,
-        [
-            'title' => 'required|min:3|max:100',
-            'describe' => 'required|min:3|max:100',
-            'content' => 'required|min:3|max:100',
-            'slug' => 'required',
-            'status' => 'required',
-            'category_post_id' => 'required',
-        ],
-        [
-            'title.required' => trans('message.cannotblank'),
-            'title.min' => trans('message.tooshort'),
-            'title.max' => trans('message.toolong'),
-            'describe.required' => trans('message.cannotblank'),
-            'describe.min' => trans('message.tooshort'),
-            'describe.max' => trans('message.toolong'),
-            'content.required' => trans('message.cannotblank'),
-            'content.min' => trans('message.tooshort'),
-            'content.max' => trans('message.toolong'),
-            'slug.required' => trans('message.cannotblank'),
-            'status.required' => trans('message.cannotblank'),
-            'category_post_id.required' => trans('message.cannotblank'),
-        ]);
-        
         $user = Auth::user()->id;
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $file->move(config('app.blog_image'),$file->getClientOriginalName());
+            $name = $file->getClientOriginalName();
+            $file->move(config('app.blog_image'),$name);
         }
-
+        // dd($request->all());
         $bl = new Post;
-        $bl->image = $file->getClientOriginalName();
-        $bl->title = $request->title;
+        $bl->image = $name;
+        $bl->title = Str::title($request->title);
         $bl->describe = $request->describe;
-        $bl->slug = $request->slug;
+        $bl->slug = Str::slug($request->title);
         $bl->status = $request->status;
         $bl->category_post_id = $request->category_post_id;
         $bl->content = $request->content;
         $bl->user_id = $user;
+        // dd($bl);
         $bl->save();
 
         return redirect('admin/blog/addblog')->with('noti', 'success');

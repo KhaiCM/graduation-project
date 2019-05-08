@@ -1,70 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ trans('message.Admin') }}</title>
-    <!-- Font Awesome CSS -->
-    <link type="text/css" rel="stylesheet" href="{{ asset('bower_components/lib_bower/assets/fonts/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>{{ trans('message.Admin') }}</title>
+	<meta name="description" content="Free Bootstrap 4 Admin Theme | Pike Admin">
+	<meta name="author" content="Pike Web Development - https://www.pikephp.com">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{{ asset('bower_components/lib_bower/backend/assets/images/favicon.ico') }}">
+
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('bower_components/lib_bower/backend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+	
+	<!-- Font Awesome CSS -->
+	<link href="{{ asset('bower_components/lib_bower/backend/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+	
+	<!-- Custom CSS -->
+	<link href="{{ asset('bower_components/lib_bower/backend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
+	
+	<!-- BEGIN CSS for this page -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+	<!-- END CSS for this page -->
+	
 </head>
-<body>
-    <div class="topnav">
-        <a class="active" href="{{ route('adminHome') }}">{{ trans('message.Home') }}</a>
-        <a href="{{ route('blog.index') }}">{{ trans('message.New') }}</a>
-        <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
-        <div class="menu-right">
-            <div class="nav-item dropdown">
-            <button class="dropbtn"><i class="fa fa-language"></i></button>
-                <div class="dropdown-content">
-                    <a class="dropdown-item" href="{!! route('user.change-language', ['en']) !!}">{{ __('label.english') }}</a>
-                    <a class="dropdown-item" href="{!! route('user.change-language', ['vi']) !!}">{{ __('label.vietnam') }}</a>
-                </div>
-            </div>
-            <div class="nav-item dropdown">
-            <img src="{{ get_avatar( Auth::user()) }}" alt="avatar" class="img-avatar">
-                <button class="dropbtn">{{ Auth::user()->name }}</button>
-                <div class="dropdown-content">
-                    <a href="{{ route('user.detail', Auth::user()->id) }}">{{ trans('message.Detail') }}</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('message.Logout') }}</a></l>
-                    {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id' => 'logout-form', 'class' => 'hide']) !!}
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sidenav">
-        <a href="{{ route('blog.index') }}">{{ trans('message.New') }}</a>
-        <a href="{{ route('blogcat.index') }}">{{ trans('message.blogcat') }}</a>
-        <a href="{{ route('contact.index') }}">{{ trans('message.Contact') }}</a>
-        <a href="{{ route('contract.index') }}">{{ trans('message.contract') }}</a>
-        <a href="{{ route('province.index') }}">{{ trans('province.province') }}</a>
-        <a href="{{ route('procat.index') }}">{{ trans('province.propertyCategoy') }}</a>
-        <a href="{{ route('district.index') }}">{{ trans('province.district') }}</a>
-        <a href="{{ route('setcalendar.index') }}">{{ trans('message.setcalendar') }}</a>
-        <a href="{{ route('role.index') }}">{{ trans('label.role') }}</a>
-        <a href="{{ route('user.list') }}">{{ trans('label.list_user') }}</a>
-    </div>
-    <div class="main">
-        @if (count($errors) > 0)
-        <div>
-            @foreach ($errors->all() as $err)
-            {{ $err }}
-            @endforeach
-            <div>
-                @endif
-                @if (session('noti'))
-                <div>
-                    {{ session('noti') }}
-                    <div>
-                        @endif
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<body class="adminbody">
+
+	<div id="main">
+
+		@include('backend.admin.layouts.header')
+		
+		
+		@include('backend.admin.layouts.sidebar')
+
+
+		<div class="content-page">
+
+			<!-- Start content -->
+			<div class="content">
+				@yield('content')
+				
+			</div>
+		</div>
+	</div>
+	<!-- END content-page -->
+
+	@include('backend.admin.layouts.footer')
+
+</div>
+<!-- END main -->
+
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/modernizr.min.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/moment.min.js') }}"></script>
+
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/detect.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/fastclick.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/jquery.blockUI.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/jquery.nicescroll.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ asset('bower_components/lib_bower/backend/assets/js/pikeadmin.js') }}"></script>
+
+<!-- BEGIN Java Script for this page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Counter-Up-->
+<script src="{{ asset('bower_components/lib_bower/backend/assets/plugins/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('bower_components/lib_bower/backend/assets/plugins/counterup/jquery.counterup.min.js') }}"></script>
+<script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+<script> CKEDITOR.replace('editor1'); </script>			
+<script> CKEDITOR.replace('editor2'); </script>	
+<script>
+	$(document).ready(function() {
+			// data-tables
+			$('#example1').DataTable();
+			
+			// counter-up
+			$('.counter').counterUp({
+				delay: 10,
+				time: 600
+			});
+		} );	
+	</script>
+	<script>
+		setTimeout(function(){
+			$('#alert').hide();
+		}, 2000);
+	</script>
+
 </body>
-    <script src="{{ asset('backend/js/style.js') }}"></script>
-    <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
-    <script> CKEDITOR.replace('editor1'); </script>
 </html>
 

@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::get('detail/{id}', 'Admin\UserController@edit')->name('user.detail');
 
     Route::put('detail/{id}', 'Admin\UserController@update')->name('user.update');

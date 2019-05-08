@@ -1,9 +1,12 @@
 <?php
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 
 if (! function_exists('get_avatar')) {
     function get_avatar($user) {
+
+        // dd(Auth::user());
         if (strpos($user->avatar, 'https://') === 0) {
             return $user->avatar;
         }

@@ -62,7 +62,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         {{ Form::label(__('label.form')) }}
-                                        {{ Form::select('form', [0 => 'sale', 1 => 'rent'], '', ['class' => 'selectpicker search-fields']) }}
+                                        {{ Form::select('form', [0 => 'Sale', 1 => 'Rent'], '', ['class' => 'selectpicker search-fields']) }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6">

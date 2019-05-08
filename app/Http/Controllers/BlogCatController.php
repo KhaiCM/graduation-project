@@ -35,7 +35,7 @@ class BlogCatController extends Controller
         $cat->name = $request->name;
         $cat->save();
 
-        return redirect('admin/blogcat/addblogcat')->with('noti', 'success');
+        return redirect('admin/blogcat/blogcatlist')->with('noti', 'success');
     }
 
     public function getEditBlogCat($id)
