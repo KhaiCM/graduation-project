@@ -3,7 +3,7 @@
 
 		<!-- LOGO -->
 		<div class="headerbar-left">
-			<a href="index.html" class="logo"><img alt="Logo" src="{{ asset('bower_components/lib_bower/backend/assets/images/logo.png') }}" /> <span>Admin</span></a>
+			<a href="{{ route('dashboard') }}" class="logo"><img alt="Logo" src="{{ asset('bower_components/lib_bower/backend/assets/images/logo.png') }}" /> <span>Admin</span></a>
 		</div>
 
 		<nav class="navbar-custom">

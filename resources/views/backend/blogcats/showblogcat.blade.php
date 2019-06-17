@@ -80,69 +80,8 @@
                             <td>{{ $cb->name }}</td>
                             <td>2</td>
                             <td>
-                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_edit_category_10"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-hidden="true" id="modal_edit_category_10">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <form action="#" method="post">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit category</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>             
-                                                </div>
-
-                                                <div class="modal-body">                
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label>Category title (required)</label>
-                                                                <input class="form-control" name="title" type="text" value="Blog" required />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label>Description (optional)</label>
-                                                                <textarea class="form-control" name="description" rows="5">Our blog articles</textarea>
-                                                            </div>
-                                                        </div>  
-                                                    </div>
-
-                                                    <div class="row">                                   
-                                                        <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label>Active</label>
-                                                                <select name="active" class="form-control">
-                                                                    <option selected="selected" value="1">YES</option>
-                                                                    <option  value="0">NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>             
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary">Edit category</button>
-                                                </div>
-
-                                            </form> 
-
-                                        </div>
-                                    </div>
-                                </div> 
-                                <a href="javascript:deleteRecord_10('10');" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                <script>
-                                    function deleteRecord_10(RecordId)
-                                    {
-                                        if (confirm('Confirm delete')) {
-                                            window.location.href = '#';
-                                        }
-                                    }
-                                </script>
+                                <a href="{{ route('editblogcat', $cb->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a href="{{ route('deleteblogcat', $cb->id) }}" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -168,32 +107,28 @@
 
 </div>
 <!-- END content -->
-
-<div class="container">
-    <div class="high">
-        <a>{{ trans('message.blogcate') }}</a>
-        <a href="{{ route('addblogcat') }}"><button class="button">{{ trans('message.add') }}</button></a>
+<div class="modal fade" id="m_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Delete Setting - </p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete this setting ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <form action="{{ route('deleteblogcat', $cb->id) }}" method="POST">
+                    @method('DELETE')   
+                    @csrf
+                    <button class="btn btn-danger" type="submit">Yes</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>{{ trans('message.id') }}</th>
-                <th>{{ trans('message.name') }}</th>
-                <th>{{ trans('message.task') }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($cat as $cb)
-            <tr>
-                <td>{{ $cb->id }}</td>
-                <td>{{ $cb->name }}</td>
-                <td class="tdshow"><a href="{{ route('editblogcat', $cb->id) }}"><button class="bntshow">{{ trans('message.edit') }}</button></a>
-                    <a href="{{ route('deleteblogcat', $cb->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{ $cat->links() }}
-    </div>
-    @endsection
+</div>
+@endsection
 

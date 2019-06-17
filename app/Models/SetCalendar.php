@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SetCalendar extends Model
 {
     protected $guarded = ['id'];
+    protected $dates = ['date'];
 
     protected $fillable = [
         'property_id',
@@ -15,6 +16,7 @@ class SetCalendar extends Model
         'phone',
         'email',
         'note',
+        'user_id'
     ];
 
     public function properties()

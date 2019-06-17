@@ -18,33 +18,27 @@ class SetCalenderController extends Controller
         $user = Auth::user()->id;
         if ($user == $sc->users->id)
         {
-            return Redirect::back()->with('noti', trans('cannot'));
-        } else {
+            return Redirect::back()->with('noti', trans('label.cannot'));
+        }else {
             return view('fontend.calendars.set_calendar', ['sc' => $sc]);
         }
     }
 
     public function postcreate(Request $request, $id)
     {
-        try 
-        {
-            $sc = Property::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e)
-        {
-            echo $e->getMessage();
-        }
+        $sc = Property::findOrFail($id);
+
         $this->validate($request,
-        [
-            'note' => 'required|min:3|max:100',
-            'phone' => 'required',
-        ],
-        [
-            'note.required' => trans('message.cannotblank'),
-            'note.min' => trans('message.tooshort'),
-            'note.max' => trans('message.toolong'),
-            'phone.required' => trans('message.cannotblank'),
-        ]);
+            [
+                'note' => 'required|min:3|max:100',
+                'phone' => 'required',
+            ],
+            [
+                'note.required' => trans('message.cannotblank'),
+                'note.min' => trans('message.tooshort'),
+                'note.max' => trans('message.toolong'),
+                'phone.required' => trans('message.cannotblank'),
+            ]);
         
         $user = Auth::user()->id;
         
@@ -56,6 +50,7 @@ class SetCalenderController extends Controller
         $sc->note = $request->note;
         $sc->phone = $request->phone;
         $sc->property_id = $id;
+        $sc->user_id = $user;
 
         $sc->save();
 
@@ -71,7 +66,7 @@ class SetCalenderController extends Controller
 
     public function getDelete($id)
     {
-        $sc = SetCalendar::find($id);
+        $sc = SetCalendar::findOrFail($id);
         $sc->delete();
 
         return redirect('listcalendars')->with('noti', 'success');
@@ -79,8 +74,14 @@ class SetCalenderController extends Controller
 
     public function getDetail($id)
     {
-        $sc = SetCalendar::find($id);
+        $sc = SetCalendar::findOrFail($id);
         
         return view('backend.setcalendars.detail', ['sc' => $sc]);
+    }
+
+    public function getMyCalendar($id)
+    {
+        $calendar = SetCalendar::where('user_id',  '3')->get();
+        return view('fontend.calendars.my_calendar', compact('calendar'));
     }
 }

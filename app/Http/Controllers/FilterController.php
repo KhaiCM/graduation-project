@@ -10,9 +10,9 @@ class FilterController extends Controller
     public function filter(Request $request)
     {
         $province = ($request->has('province') ? $request->get('province') : false);
-        $district = ($request->has('district') ? $request->get('district') : false);
+        $district = ($request->has('district') ? $request->get('district') : '');
         $property_category = ($request->has('property_category') ? $request->get('property_category') : false);
-        $property_type = ($request->has('property_type') ? $request->get('property_type') : false);
+        $property_type = ($request->has('property_type') ? $request->get('property_type') : '');
         $acreage = ($request->has('acreage') ? $request->get('acreage') : false);
         $price = ($request->has('price') ? $request->get('price') : false);
         $form = ($request->has('form') ? $request->get('form') : false);
@@ -26,19 +26,19 @@ class FilterController extends Controller
             $query->where('districts.id', $request->get('district'));
         }
 
-        if ($request->has('property_type')) {
+        if ($request->has('property_type') && $request->property_type != 0) {
             $query->where('property_types.id', $request->get('property_type'));
         }
 
-        if ($request->has('acreage')) {
+        if ($request->has('acreage') && $request->acreage != 0) {
             $query = queryFilter($query, 'properties.acreage', config('search.acreage'), $request->get('acreage'));
         }
 
-        if ($request->has('price')) {
+        if ($request->has('price') && $request->price != 0) {
             $query = queryFilter($query, 'properties.price', config('search.price'), $request->get('price'));
         }
 
-        if ($request->has('form')) {
+        if ($request->has('form') && $request->form != 2) {
             $query->where('properties.form', $request->get('form'));
         }
         $filter = $query->get();

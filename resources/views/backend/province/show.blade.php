@@ -56,8 +56,7 @@
                             {!! Form::close() !!}
                         </div>
                     </div>
-                </div> 
-                <!--                         <h3><i class="fa fa-user"></i> All users (4 users)</h3>    -->                          
+                </div>                           
             </div>
             <!-- end card-header -->    
 
@@ -97,6 +96,7 @@
                         </tbody>
 
                     </table>
+                    {!! $provinces -> links() !!}
                 </div>  
             </div>  
             <!-- end card-body -->                              
@@ -116,7 +116,7 @@
 </div>
 <!-- END content -->
 
-<div class="container">
+<!-- <div class="container">
     @if (session('message'))
     <div class="alert alert-success">
         {{ session('message') }}
@@ -142,5 +142,5 @@
         @endforeach
     </table>
     {!! $provinces -> links() !!}
-</div>
+</div> -->
 @endsection

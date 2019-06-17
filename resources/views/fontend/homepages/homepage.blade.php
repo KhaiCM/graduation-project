@@ -81,7 +81,7 @@
 </div>
 <!-- banner end -->
 
-<div class="properties-list-rightside content-area-2">
+<!-- <div class="properties-list-rightside content-area-2">
     <div class="container">
         <div class="rmain-title">
             @if (count($properties) > 0)
@@ -168,11 +168,11 @@
 @endif
 <div class="send-btn main-title">
     <a href="{{ route('home.hot') }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.watchmore') }}</button></a>
-</div>
+</div> -->
 
 
 <!-- hot properties -->
-@if (count($pp) > 0)
+<!-- @if (count($pp) > 0)
 <div class="featured-properties content-area-2">
     <div class="container">
         <div class="main-title">
@@ -246,7 +246,7 @@
         </div>
     </div>
 </div>
-@endif
+@endif -->
 <!-- Featured properties start -->
 @if (count($properties) > 0)
 <div class="featured-properties content-area-2">
@@ -254,12 +254,6 @@
         <div class="main-title">
             <h1>{!! __('label.featured_properties')!!}</h1>
         </div>
-        <ul class="list-inline-listing filters filteriz-navigation">
-            <li class="active btn filtr-button filtr" data-filter="all">{!! __('label.all')!!}</li>
-            <li data-filter="1" class="btn btn-inline filtr-button filtr">{!! __('label.apartment')!!}</li>
-            <li data-filter="2" class="btn btn-inline filtr-button filtr">{!! __('label.house')!!}</li>
-            <li data-filter="3" class="btn btn-inline filtr-button filtr">{!! __('label.office')!!}</li>
-        </ul>
         <div class="row filter-portfolio">
             <div class="cars">
                 @foreach ($properties as $property)
@@ -369,12 +363,12 @@
             <h1>{!! __('label.news')!!}</h1>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="row">
                     @foreach ($posts as $post)
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="blog-grid-box">
-                            <img class="blog-theme img-fluid" src="{{ asset(config('app.blog_image')) }}/{{ $post->image }}" alt="{{ $post->title }}    ">
+                            <img class="blog-theme img-fluid " style="height: 260px;" src="{{ asset(config('app.blog_image')) }}/{{ $post->image }}" alt="{{ $post->title }}">
                             <div class="detail">
                                 <div class="date-box">
                                     <h5>{{ $post->created_at->toFormattedDateString() }}</h5>
@@ -386,7 +380,7 @@
                                     <span><a href="#"><i class="fa fa-user"></i>{{ $post->user['name'] }}</a></span>
                                     <span><a href="{{ route('post.view', $post->id) }}"><i class="fa fa-commenting-o"></i>{{ trans('province.comment') }}</a></span>
                                 </div>
-                                <p>{{ $post->describe }}</p>
+                                <p>{!! $post->describe !!}</p>
                                 <a href="{{ route('post.view', $post->id) }}" class="btn-read-more">{{ trans('province.readmore') }}</a>
                             </div>
                         </div>

@@ -26,17 +26,17 @@
           <div class="col-lg-6 col-md-6 col-sm-6">
             <ul class="top-social-media pull-left ">
                 @if (Auth::check())
-                    <li class="list-inline-item dropdown notif">
-                        <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
-                            <i data-count="0" class="fa fa-fw fa-bell-o" id='noti'><span id="co"></span></i>
-                        </a>
+                <li class="list-inline-item dropdown notif">
+                    <a href="#notifications-panel" class="dropdown-toggle" data-toggle="dropdown">
+                        <i data-count="0" class="fa fa-fw fa-bell-o" id='noti'><span id="co"></span></i>
+                    </a>
 
-                        <div class="dropdown-menu dropdown-menu-left ">
-                            <div class="dropdown-toolbar">
-                                <span class="dropdown-toolbar-title">{{ trans('province.nonoti') }}</span>
-                            </div>
+                    <div class="dropdown-menu dropdown-menu-left ">
+                        <div class="dropdown-toolbar">
+                            <span class="dropdown-toolbar-title">{{ trans('province.nonoti') }}</span>
                         </div>
-                    </li>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle ">
                         <img src="{{ get_avatar( Auth::user()) }}" alt="avatar" class="img-avatar">
@@ -108,20 +108,14 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('post.index') }}" id="navbarDropdown4" role="button"  aria-haspopup="true" aria-expanded="false">
                                 {{ __('label.news') }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('post.index') }}">{{ __('label.news') }}</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('createcontacts') }}" id="navbarDropdown4" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ __('label.contact_us') }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('createcontacts') }}">{{ __('label.contact_us') }}</a></li>
-                            </ul>
                         </li>
                         @if (Auth::check())
                         <li class="nav-item dropdown">
@@ -131,6 +125,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('property.show', Auth::user()->id) }}">{{ __('label.my_property') }}</a></li>
                                 <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('property') }}">{{ __('label.submit_new_property') }}</a></li>
+                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('myCalendar.show', Auth::user()->id) }}">{{ __('label.my_calendar') }}</a></li>
                             </ul>
                         </li>
                         @endif

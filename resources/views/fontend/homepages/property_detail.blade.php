@@ -1,15 +1,5 @@
 @extends('fontend.layouts.master')
 @section('content')
-<!-- Sub banner start -->
-<div class="sub-banner overview-bgi">
-    <div class="container">
-        <div class="breadcrumb-area">
-            <h1>{{ $property->name }}</h1>
-            <ul class="breadcrumbs">
-            </ul>
-        </div>
-    </div>
-</div>
 @if (session('noti'))
 <div>
     {{ session('noti') }}
@@ -191,7 +181,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-4 col-md-12 margin-top">
                 <div class="sidebar mbl">
                     <!-- Search area start -->
                     <div class="widget search-area d-none d-xl-block d-lg-block">

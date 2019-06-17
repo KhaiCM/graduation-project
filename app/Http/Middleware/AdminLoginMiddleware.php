@@ -20,7 +20,7 @@ class AdminLoginMiddleware
             return redirect('login');
         } else {
             $user = Auth::user();
-            if ($user->hasRole('super admin')) {
+            if ($user->hasRole('admin')) {
                 return $next($request);
             } else {
                 return redirect('/');

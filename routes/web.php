@@ -11,12 +11,12 @@
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
     Route::get('detail/{id}', 'Admin\UserController@edit')->name('user.detail');
 
     Route::put('detail/{id}', 'Admin\UserController@update')->name('user.update');
 
-    Route::get('/', 'Admin\ProvinceController@index');
+    Route::get('/', 'Admin\DashBoardController@index')->name('dashboard');
 
     Route::get('/province', 'Admin\ProvinceController@index')->name('adminHome');
 
@@ -48,6 +48,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{id}', 'Admin\PropertyCategoryController@update')->name('procat.update');
 
         Route::get('/destroy/{id}', 'Admin\PropertyCategoryController@destroy')->name('procat.destroy');
+    });
+    Route::get('propertytype', 'Admin\PropertyTypeController@index');
+
+    Route::group(['prefix' => 'propertytype'], function () {
+
+        Route::get('/index', 'Admin\PropertyTypeController@index')->name('protype.index');
+
+        Route::get('/create', 'Admin\PropertyTypeController@create')->name('protype.create');
+
+        Route::post('/create', 'Admin\PropertyTypeController@store')->name('protype.store');
+
+        Route::get('/edit/{id}', 'Admin\PropertyTypeController@edit')->name('protype.edit');
+
+        Route::put('/edit/{id}', 'Admin\PropertyTypeController@update')->name('protype.update');
+
+        Route::get('/destroy/{id}', 'Admin\PropertyTypeController@destroy')->name('protype.destroy');
     });
     Route::get('/district', 'Admin\DistrictController@index');
     Route::group(['prefix' => 'district'], function () {
@@ -165,6 +181,9 @@ Route::post('calendars/{id}', 'SetCalenderController@postcreate')->name('postcre
 Route::get('listcalendars', 'SetCalenderController@getlist')->name('setcalendar.index');
 Route::get('deletecalendars/{id}', 'SetCalenderController@getDelete')->name('delete.calendars');
 Route::get('detailcalendars/{id}', 'SetCalenderController@getDetail')->name('detail.calendars');
+
+//calendar cua toi
+Route::get('mycalendar/{id}', 'SetCalenderController@getMyCalendar')->name('myCalendar.show');
 
 //post
 Route::get('postlist', 'PostController@showlist');
