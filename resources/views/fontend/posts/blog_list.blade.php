@@ -1,13 +1,4 @@
 @extends('fontend.layouts.master') @section('content')
-<!-- Sub banner 2 start -->
-<div class="sub-banner-2">
-    <div class="container">
-        <div class="breadcrumb-area">
-            <h1>{{ trans('province.post') }}</h1>
-        </div>
-    </div>
-</div>
-<!-- Sub banner 2 end -->
 
 <!-- Blog section start -->
 <div class="blog-section content-area-2">

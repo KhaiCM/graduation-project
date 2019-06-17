@@ -21,7 +21,11 @@
     </div>
 </div>
 <!-- end row -->
-
+@if (session('message'))
+<div class="alert alert-success" id="alert">
+    {{ session('message') }}
+</div>
+@endif
 <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">                     
@@ -79,7 +83,7 @@
                                 <td>{{ $procat->name }}</td>
                                 <td>
                                     <a href="{{ route('procat.edit', $procat->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    <a href="javascript:deleteRecord_1('1');" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    <a href="{{ route('procat.destroy', $procat->id) }}" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                     <script>
                                         function deleteRecord_1(RecordId)
                                         {
@@ -93,6 +97,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    {!! $propertyCategories -> links() !!}
                 </div>  
             </div>  
             <!-- end card-body -->                              
@@ -111,32 +116,4 @@
 
 </div>
 <!-- END content -->
-
-<div class="container">
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
-    <div class="high">
-        <a>{{ trans('province.listPropertyCategory') }}</a>
-        <a href="{{ route('procat.create') }}"><button class="button">{{ trans('province.addPropertyCategory') }}</button></a>
-    </div>
-    <table>
-        <tr>
-            <th>#</th>
-            <th>{{ trans('province.name') }}</th>
-            <th colspan="2">{{ trans('province.action') }}</th>
-        </tr>
-        @foreach ($propertyCategories as $procat)
-        <tr>
-            <td>{{ $procat->id }}</td>
-            <td>{{ $procat->name }}</td>
-            <td><a href="{{ route('procat.edit', $procat->id) }}">{{ trans('province.edit') }}</a></td>
-            <td><a href="{{ route('procat.destroy', $procat->id) }}">{{ trans('province.delete') }}</a></td>
-        </tr>
-        @endforeach
-    </table>
-    {!! $propertyCategories -> links() !!}
-</div>
 @endsection

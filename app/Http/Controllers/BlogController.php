@@ -34,7 +34,6 @@ class BlogController extends Controller
             $name = $file->getClientOriginalName();
             $file->move(config('app.blog_image'),$name);
         }
-        // dd($request->all());
         $bl = new Post;
         $bl->image = $name;
         $bl->title = Str::title($request->title);
@@ -67,50 +66,43 @@ class BlogController extends Controller
 
     public function postEditBlog(Request $request, $id)
     {
-        try 
-        {
-            $bl = Post::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e) 
-        {
-            echo $e->getMessage();
-        }
-
+        $bl = Post::findOrFail($id);
+        $imageNull = $bl->image;
+        // dd($imageNull);
         $this->validate($request,
-        [
-            'title' => 'required|min:3|max:100',
-            'describe' => 'required|min:3|max:100',
-            'content' => 'required|min:3|max:100',
-            'slug' => 'required',
-            'status' => 'required',
-            'category_post_id' => 'required',
-        ],
-        [
-            'title.required' => trans('message.cannotblank'),
-            'title.min' => trans('message.tooshort'),
-            'title.max' => trans('message.toolong'),
-            'describe.required' => trans('message.cannotblank'),
-            'describe.min' => trans('message.tooshort'),
-            'describe.max' => trans('message.toolong'),
-            'content.required' => trans('message.cannotblank'),
-            'content.min' => trans('message.tooshort'),
-            'content.max' => trans('message.toolong'),
-            'slug.required' => trans('message.cannotblank'),
-            'status.required' => trans('message.cannotblank'),
-            'category_post_id.required' => trans('message.cannotblank'),
-        ]);
+            [
+                'title' => 'required|min:3|max:100',
+                'describe' => 'required|min:3',
+                'content' => 'required|min:3',
+                'status' => 'required',
+                'category_post_id' => 'required',
+            ],
+            [
+                'title.required' => trans('message.cannotblank'),
+                'title.min' => trans('message.tooshort'),
+                'title.max' => trans('message.toolong'),
+                'describe.required' => trans('message.cannotblank'),
+                'describe.min' => trans('message.tooshort'),
+                'describe.max' => trans('message.toolong'),
+                'content.required' => trans('message.cannotblank'),
+                'content.min' => trans('message.tooshort'),
+                'content.max' => trans('message.toolong'),
+                'status.required' => trans('message.cannotblank'),
+                'category_post_id.required' => trans('message.cannotblank'),
+            ]);
 
         $user = Auth::user()->id;
         if ($request->hasFile('file')) 
         {
             $file = $request->file('file');
             $file->move(config('app.blog_image'), $file->getClientOriginalName());
+            $imageNull = $file->getClientOriginalName();
         }
 
-        $bl->image = $file->getClientOriginalName();
+        $bl->image = $imageNull;
         $bl->title = $request->title;
         $bl->describe = $request->describe;
-        $bl->slug = $request->slug;
+        $bl->slug = Str::slug($request->title);
         $bl->status = $request->status;
         $bl->category_post_id = $request->category_post_id;
         $bl->content = $request->content;

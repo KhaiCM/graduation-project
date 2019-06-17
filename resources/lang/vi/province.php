@@ -43,6 +43,7 @@ return [
     'post' => 'Bài đăng',
     'province' => 'Tỉnh',
     'propertyCategoy' => 'Loại tài sản',
+    'propertyType' => 'Kiểu tài sản',
     'readmore' => 'Xem thêm',
     'recentcategory' => 'Tương tự',
     'seach' => 'Tìm kiếm nâng cao',
@@ -57,4 +58,8 @@ return [
     'stt' => 'STT',
     'listPropertyCategory' => 'Danh sách thể loại tài sản',
     'name_property_category' => 'Tên thể loại tài sản',
+    'list_property_type' => 'Danh sách kiểu tài sản',
+    'add_property_type' => 'Thêm kiểu tài sản',
+    'name_property_type' => 'Tên kiểu tài sản',
+    'for_property_category' => 'Thuộc loại tài sản',
 ];

@@ -62,6 +62,7 @@ return [
     //user_page
     'my_profile' => 'My Profile',
     'my_property' => 'My Property',
+    'my_calendar' => 'My Calendar',
     'submit_new_property' => 'Submit New Property',
     'change_password' => 'Change Password',
     'user_page' => 'User Page',
@@ -98,6 +99,11 @@ return [
     'actions' => 'Actions',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    //my calendar
+    'name_property' => 'Name property',
+    'property_owner' => 'Property owner',
+    'date' => 'Date set',
+    'time' => 'Time set',
     //change pass
     'current_password' => 'Current Password',
     'new_password' => 'New Password',

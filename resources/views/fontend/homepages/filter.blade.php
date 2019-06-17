@@ -17,10 +17,7 @@
                                 </p>
                                 <div class="ratings">
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
+
                                 </div>
                             </div>
                             <img src="{{ asset(config('app.property_path') . $item->image) }}" alt="property-2" class="img-fluid">

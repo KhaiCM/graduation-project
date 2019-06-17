@@ -60,6 +60,7 @@ return [
     //user page
     'my_profile' => 'Tài khoản cá nhân',
     'my_property' => 'Tài sản của tôi',
+    'my_calendar' => 'Lịch hẹn của tôi',
     'submit_new_property' => 'Tạo tài sản mới',
     'change_password' => 'Đổi mật khẩu',
     'user_page' => 'Tài khoản',
@@ -95,6 +96,11 @@ return [
     'actions' => 'Hành động',
     'edit' => 'Sửa',
     'delete' => 'Xóa',
+    //my calendar
+    'property_owner' => 'Chủ tài sản',
+    'name_property' => 'Tên tài sản',
+    'date' => 'Ngày hẹn',
+    'time' => 'Giờ hẹn',
     //change pass
     'current_password' => 'Mật khẩu hiện tại',
     'new_password' => 'Mật khẩu mới',

@@ -43,6 +43,7 @@ return [
     'post' => 'Post',
     'province' => 'Province',
     'propertyCategoy' => 'Property Categoy',
+    'propertyType' => 'Property Type',
     'readmore' => 'Read more',
     'recentcategory' => 'RECENT PROPERTIES',
     'seach' => 'Advanced Seach',
@@ -57,4 +58,8 @@ return [
     //category property
     'listPropertyCategory' => 'List Property Category',
     'name_property_category' => 'Name Property Category',
+    'list_property_type' => 'List Property Type',
+    'add_property_type' => 'Add property type',
+    'name_property_type' => 'Name Property Type',
+    'for_property_category' => 'For property category',
 ];

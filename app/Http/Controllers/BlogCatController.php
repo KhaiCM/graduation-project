@@ -22,14 +22,14 @@ class BlogCatController extends Controller
     public function postAddBlogCat(Request $request)
     {
         $this->validate($request,
-        [
-            'name' => 'required|min:3|max:100'
-        ],
-        [
-            'name.required' => trans('message.cannotblank'),
-            'name.min' => trans('message.tooshort'),
-            'name.max' => trans('message.toolong'),
-        ]);
+            [
+                'name' => 'required|min:3|max:100'
+            ],
+            [
+                'name.required' => trans('message.cannotblank'),
+                'name.min' => trans('message.tooshort'),
+                'name.max' => trans('message.toolong'),
+            ]);
 
         $cat = new CategoryPost;
         $cat->name = $request->name;
@@ -54,37 +54,30 @@ class BlogCatController extends Controller
 
     public function postEditBlogCat(Request $request, $id)
     {
-        try 
-        {
-            $cat = CategoryPost::findOrFail($id);
-        } 
-        catch (ModelNotFoundException $e) 
-        {
-            echo $e->getMessage();
-        }
 
+        $cat = CategoryPost::findOrFail($id);
         $this->validate($request,
-        [
-            'name' => '|required|min:3|max:100'
-        ],
-        [   
-            'name.required' => trans('message.cannotblank'),
-            'name.min' => trans('message.tooshort'),
-            'name.max' => trans('message.toolong'),
-        ]);
+            [
+                'name' => '|required|min:3|max:100'
+            ],
+            [   
+                'name.required' => trans('message.cannotblank'),
+                'name.min' => trans('message.tooshort'),
+                'name.max' => trans('message.toolong'),
+            ]);
 
         $cat->name = $request->name;
         $cat->save();
 
-        return redirect('blogcatlist')->with('noti', 'success');
+        return redirect('admin/blogcat/blogcatlist')->with('noti', 'success');
     }
 
     public function getDeleteBlogCat($id)
     {
-        $cat = CategoryPost::find($id);
-        $cat->delete();
+        $cat = CategoryPost::findOrFail($id);
+        $cat->delete($id);
 
-        return redirect('blogcatlist')->with('noti', 'success');
+        return redirect('admin/blogcat/blogcatlist')->with('noti', 'success');
     }
 }
 
