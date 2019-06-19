@@ -77,11 +77,11 @@
                         @foreach($cat as $key => $cb)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $cb->name }}</td>
+                            <td class="name">{{ $cb->name }}</td>
                             <td>2</td>
                             <td>
                                 <a href="{{ route('editblogcat', $cb->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="{{ route('deleteblogcat', $cb->id) }}" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $cb->id }}"><i class="fa fa-trash-o"></i></button>
                             </td>
                         </tr>
                         @endforeach
@@ -111,17 +111,17 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Delete Setting - </p>
+                <p class="modal-title">Xóa loại tin tức - </p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Do you really want to delete this setting ?</p>
+                <p>Bạn có muốn xóa ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <form action="{{ route('deleteblogcat', $cb->id) }}" method="POST">
+                <form action="{{ route('deleteblogcat', ['id' => ''])}}" method="POST">
                     @method('DELETE')   
                     @csrf
                     <button class="btn btn-danger" type="submit">Yes</button>
@@ -130,5 +130,24 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function() {
+        var $baseActionDelete = $('#m_modal').find('form').attr('action');
+        $('.show-modal').click(function() {
+            let $nameOfMenu = $(this).parents('tr').find('.name');
+            console.log($nameOfMenu);
+            $nameOfMenu = $nameOfMenu.text();
+            console.log($nameOfMenu);
+            $menuID = $(this).data('menu-id')
+            $form = $('#m_modal').find('form')
+            $form.attr('action', $baseActionDelete + '/' + $menuID);
+            $modalContent = $('#m_modal').find('p.modal-title');
+            $modalContent.children().remove();
+            $modalContent.append('<span class="m--font-danger">' + $nameOfMenu + '</span>')
+        });
+    });
+</script>
 @endsection
 
