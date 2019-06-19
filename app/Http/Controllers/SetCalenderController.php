@@ -26,6 +26,7 @@ class SetCalenderController extends Controller
 
     public function postcreate(Request $request, $id)
     {
+
         $sc = Property::findOrFail($id);
 
         $this->validate($request,
@@ -49,7 +50,7 @@ class SetCalenderController extends Controller
         $sc->email = $request->email;
         $sc->note = $request->note;
         $sc->phone = $request->phone;
-        $sc->property_id = $id;
+        $sc->properties_id = $id;
         $sc->user_id = $user;
 
         $sc->save();
@@ -81,7 +82,7 @@ class SetCalenderController extends Controller
 
     public function getMyCalendar($id)
     {
-        $calendar = SetCalendar::where('user_id',  '3')->get();
+        $calendar = SetCalendar::where('user_id',  $id)->get();
         return view('fontend.calendars.my_calendar', compact('calendar'));
     }
 }

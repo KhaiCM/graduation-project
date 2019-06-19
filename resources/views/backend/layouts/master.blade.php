@@ -78,6 +78,7 @@
 <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
 <script> CKEDITOR.replace('editor1'); </script>			
 <script> CKEDITOR.replace('editor2'); </script>	
+@yield('script')
 <script>
 	$(document).ready(function() {
 			// data-tables

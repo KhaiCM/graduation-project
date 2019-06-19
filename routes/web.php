@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
     Route::get('detail/{id}', 'Admin\UserController@edit')->name('user.detail');
 
     Route::put('detail/{id}', 'Admin\UserController@update')->name('user.update');
@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 
         Route::post('/edit/{id}', 'Admin\ProvinceController@update');
 
-        Route::get('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
+        Route::delete('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
     });
     Route::get('propertycategory', 'Admin\PropertyCategoryController@index');
 
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
 
         Route::post('/edit/{id}', 'Admin\PropertyCategoryController@update')->name('procat.update');
 
-        Route::get('/destroy/{id}', 'Admin\PropertyCategoryController@destroy')->name('procat.destroy');
+        Route::delete('/destroy/{id}', 'Admin\PropertyCategoryController@destroy')->name('procat.destroy');
     });
     Route::get('propertytype', 'Admin\PropertyTypeController@index');
 
@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
         Route::post('addblogcat', 'BlogCatController@postAddBlogCat');
         Route::get('editblogcat/{id}', 'BlogCatController@getEditBlogCat')->name('editblogcat');
         Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
-        Route::get('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
+        Route::delete('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
     });
     Route::group(['prefix' => 'blog'], function () {
         Route::get('bloglist', 'BlogController@getList')->name('blog.index');
@@ -93,7 +93,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
         Route::post('addblog', 'BlogController@postAddBlog');
         Route::get('editblog/{id}', 'BlogController@getEditBlog')->name('editblog');
         Route::post('editblog/{id}', 'BlogController@postEditBlog');
-        Route::get('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
+        Route::delete('deleteblog/{id}', 'BlogController@getDeleteBlog')->name('deleteblog');
     });
     Route::group(['prefix' => 'contract'], function () {
         Route::get('contractlist', 'ContractController@getlist')->name('contract.index');
