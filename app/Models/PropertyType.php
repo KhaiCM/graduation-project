@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Statistic;
 
 class PropertyType extends Model
 {
@@ -22,5 +23,10 @@ class PropertyType extends Model
     public function propertyCategory()
     {
         return $this->belongsTo('App\Models\PropertyCategory');
+    }
+
+    public function searchStatistics()
+    {
+        return $this->morphMany('App\Models\Statistic', 'object')->where('type', Statistic::TYPE_SEARCH);
     }
 }

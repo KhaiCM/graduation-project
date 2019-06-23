@@ -27,62 +27,65 @@
             <div class="card mb-3">
 
                 <div class="card-header">
-                    <span class="pull-right"><a href="{{ route('addblog') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>{{ trans('message.add') }}</a></span>
-                    <!-- <h3><i class="fa fa-file-text-o"></i> All articles (8 articles)</h3>                                 -->
-                </div>
-                <!-- end card-header -->    
-                
-                <div class="card-body">
+                  <span class="pull-right"><a href="{{ route('addblog') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>{{ trans('message.add') }}</a></span>
+                  <form class="form-inline my-2 my-lg-0">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                  </form>
+                  <!-- <h3><i class="fa fa-file-text-o"></i> All articles (8 articles)</h3>                                 -->
+              </div>
+              <!-- end card-header -->    
 
-                    <div class="table-responsive">  
-                        <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th style="width:50px">{{ trans('province.stt') }}</th>
-                                <th>{{ trans('label.article_overview') }}</th>
-                                <th style="width:160px">{{ trans('message.category_post_id') }}</th>
-                                <th>{{ trans('message.status') }}</th>
-                                <th style="width:100px">{{ trans('message.task') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($bl as $key => $cb)
-                            <tr>
-                                <td>{{ ++$key }}</td>                           
-                                <td>
-                                    <span style="float: left; margin-right:10px;"><img alt="image" style="max-width:140px; height:auto;" src="{{ asset(config('app.blog_image')) }}/{{ $cb->image }}" /></span>
-                                    <h5  class="name">{{ $cb->title }}</h5>Posted by <b>{{ $cb->User->name }}</b> {{ $cb->created_at }}<br />
-                                    <small>{!! $cb->describe !!}</small>
-                                </td>
-                                
-                                <td>{{ $cb->categoryPost->name }}</td>
-                                @if($cb->status == 0)
-                                <td>{{ trans('label.pending') }}</td>
-                                @else
-                                <td>{{ trans('label.active')}}</td>
-                                @endif
-                                <td>
-                                    <a href="{{ route('editblog', $cb->id) }}" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>                             
-                                    <a href="{{ route('deleteblog', $cb->id) }}" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $cb->id }}"><i class="fa fa-trash-o"></i></button>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {!! $bl->links(); !!}
-                </div>
-                
-                
-            </div>  
-            <!-- end card-body -->                              
-            
-        </div>
-        <!-- end card -->                   
+              <div class="card-body">
+
+                <div class="table-responsive">  
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th style="width:50px">{{ trans('province.stt') }}</th>
+                            <th>{{ trans('label.article_overview') }}</th>
+                            <th style="width:160px">{{ trans('message.category_post_id') }}</th>
+                            <th>{{ trans('message.status') }}</th>
+                            <th style="width:100px">{{ trans('message.task') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($bl as $key => $cb)
+                        <tr>
+                            <td>{{ ++$key }}</td>                           
+                            <td>
+                                <span style="float: left; margin-right:10px;"><img alt="image" style="max-width:140px; height:auto;" src="{{ asset(config('app.blog_image')) }}/{{ $cb->image }}" /></span>
+                                <h5  class="name">{{ $cb->title }}</h5>Posted by <b>{{ $cb->User->name }}</b> {{ $cb->created_at }}<br />
+                                <small>{!! $cb->describe !!}</small>
+                            </td>
+
+                            <td>{{ $cb->categoryPost->name }}</td>
+                            @if($cb->status == 0)
+                            <td>{{ trans('label.pending') }}</td>
+                            @else
+                            <td>{{ trans('label.active')}}</td>
+                            @endif
+                            <td>
+                                <a href="{{ route('editblog', $cb->id) }}" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>                             
+                                <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $cb->id }}"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {!! $bl->links(); !!}
+            </div>
+
+
+        </div>  
+        <!-- end card-body -->                              
 
     </div>
-    <!-- end col -->    
-    
+    <!-- end card -->                   
+
+</div>
+<!-- end col -->    
+
 </div>
 <!-- end row -->    
 </div>
@@ -116,6 +119,7 @@
 @endsection
 @section('script')
 <script>
+    console.log('dsfsfdsfd');
     $(document).ready(function() {
         var $baseActionDelete = $('#m_modal').find('form').attr('action');
         $('.show-modal').click(function() {

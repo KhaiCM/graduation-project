@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PropertyTableSeeder::class);
         $this->call(UnitTableSeeder::class);
         $this->call(PropertyTypeTableSeeder::class);
+        $this->call(StatisticTableSeeder::class);
     }
 }

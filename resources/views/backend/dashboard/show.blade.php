@@ -57,53 +57,41 @@
 		</div>
 	</div>
 	<!-- end row -->
-
-
-	
 	<div class="row">
-		
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">						
-			<div class="card mb-3">
-				<div class="card-header">
-					<h3><i class="fa fa-line-chart"></i> Items Sold Amount</h3>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non luctus metus. Vivamus fermentum ultricies orci sit amet sollicitudin.
-				</div>
-				
-				<div class="card-body">
-					<canvas id="lineChart"></canvas>
-				</div>							
-				<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-			</div><!-- end card-->					
-		</div>
-
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">						
-			<div class="card mb-3">
-				<div class="card-header">
-					<h3><i class="fa fa-bar-chart-o"></i> Colour Analytics</h3>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non luctus metus. Vivamus fermentum ultricies orci sit amet sollicitudin.
-				</div>
-				
-				<div class="card-body">
-					<canvas id="pieChart"></canvas>
-				</div>
-				<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-			</div><!-- end card-->					
-		</div>
-		
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">						
-			<div class="card mb-3">
-				<div class="card-header">
-					<h3><i class="fa fa-bar-chart-o"></i> Colour Analytics 2</h3>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non luctus metus. Vivamus fermentum ultricies orci sit amet sollicitudin.
-				</div>
-				
-				<div class="card-body">
-					<canvas id="doughnutChart"></canvas>
-				</div>
-				<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-			</div><!-- end card-->					
-		</div>
-		
+		<div id="province" class="col-12" style="height: 500px"></div>
+		<div id="property_category" class="col-12" style="height: 500px"></div>
 	</div>
-	<!-- end row -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        	@foreach ($province_statistics as $rkey => $row)
+        		[@foreach ($row as $key => $column){!! $rkey === 0 || $key === 0  ? '"' . $column . '"' : $column !!},@endforeach],
+        	@endforeach
+        ]);
+        var options = {
+          title: 'Tỉnh được tìm kiếm nhiều nhất',
+          legend: { position: 'bottom' }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('province'));
+        chart.draw(data, options);
+
+        var data2 = google.visualization.arrayToDataTable([
+        	@foreach ($property_category_statistics as $rkey => $row)
+        		[@foreach ($row as $key => $column){!! $rkey === 0 || $key === 0  ? '"' . $column . '"' : $column !!},@endforeach],
+        	@endforeach
+        ]);
+        var options2 = {
+          title: 'Loại tài sản được tìm kiếm nhiều nhất',
+          legend: { position: 'bottom' }
+        };
+
+        var chart2 = new google.visualization.LineChart(document.getElementById('property_category'));
+
+        chart2.draw(data2, options2);
+      }
+    </script>
 	@endsection
