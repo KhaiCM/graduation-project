@@ -8,6 +8,8 @@ use App\Models\Statistic;
 use App\Models\Property;
 use App\Models\District;
 use App\Models\PropertyType;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class FilterController extends Controller
 {
@@ -135,7 +137,7 @@ class FilterController extends Controller
         if ($request->has('form') && $request->form != 2) {
             $query->where('properties.form', $request->get('form'));
         }
-        $filter = $query->get();
+        $filter = $query->paginate(config('app.blog_page'));;
 
         return view('fontend.homepages.filter', compact('filter'));
     }

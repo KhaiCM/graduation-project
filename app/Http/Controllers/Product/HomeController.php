@@ -54,7 +54,7 @@ class HomeController extends Controller
         $properties = Property::paginate(config('pagination.home'));
 
         $posts = Post::take(3)->get();
-    
+
         $pp = $this->hot->all()->take(config('pagination.hotPro'))->get();
 
         return view('fontend.homepages.homepage', compact('properties', 'province', 'district', 'property', 'propertyType', 'propertyCategory', 'pp', 'posts' ));
@@ -62,16 +62,40 @@ class HomeController extends Controller
 
     public function getProSold()
     {
+        $province = [__('label.search_province')];
+        $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
+
+        $district = [__('label.search_district')];
+        $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
+
+        $propertyCategory = [__('label.search_propertyCategory')];
+        $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
+
+        $propertyType = [__('label.search_propertyType')];
+        $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
+
         $properties = Property::where('form', '0')->paginate(config('pagination.all'));
 
-        return view('fontend.homepages.property_list', compact('properties'));
+        return view('fontend.homepages.property_list', compact('properties',  'province', 'district', 'propertyType', 'propertyCategory'));
     }
 
     public function getProRent()
     {
+        $province = [__('label.search_province')];
+        $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
+
+        $district = [__('label.search_district')];
+        $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
+
+        $propertyCategory = [__('label.search_propertyCategory')];
+        $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
+
+        $propertyType = [__('label.search_propertyType')];
+        $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
+
         $properties = Property::where('form', '1')->paginate(config('pagination.all'));
 
-        return view('fontend.homepages.property_list', compact('properties'));
+        return view('fontend.homepages.property_list', compact('properties', 'province', 'district', 'propertyType', 'propertyCategory'));
     }
 
     public function getProHot()
@@ -83,6 +107,18 @@ class HomeController extends Controller
 
     public function find($id)
     {
+        $province = [__('label.search_province')];
+        $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
+
+        $district = [__('label.search_district')];
+        $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
+
+        $propertyCategory = [__('label.search_propertyCategory')];
+        $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
+
+        $propertyType = [__('label.search_propertyType')];
+        $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
+
         try {
             $property = Property::findOrFail($id);
             $comments = Property::where('property_id', $id);
@@ -92,6 +128,10 @@ class HomeController extends Controller
                 'property',
                 'comments',
                 'categories',
+                'province',
+                'district',
+                'propertyCategory',
+                'propertyType',
             ]));
         } catch (ModelNotFoundException $ex) {
             $ex->getMessage();

@@ -94,74 +94,33 @@
                         <h5 class="sidebar-title">{{ trans('province.seach') }}</h5>
                         <div class="search-area-inner">
                             <div class="search-contents ">
-                                {!! Form::open(['method' => 'GET']) !!}
+                            {!! Form::open(['route' => 'filter.property', 'method' => 'GET']) !!}
                                 <div class="form-group">
-                                    {!! Form::select('area', [1 => __('label.area_from')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('province', $province, null, ['class' => 'selectpicker search-fields', 'id' =>  'province']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('property-status', [1 => __('label.property_status'), 2=> __('label.for_sale'), 3=> __('label.for_rent')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('district', $district, null, ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('location', [1 => __('label.location'), 2 => __('label.ha_noi')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('property_category', $propertyCategory, null, ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('category', [1 => __('label.property_types'), 2 => __('label.commercial')], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('property_type', $propertyType, null, ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('bedrooms', [1 => __('label.bedrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('acreage', processFilter(config('search.acreage')), null, ['class' => 'selectpicker search-fields']) !!}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::select('bathrooms', [1 => __('label.bathrooms'), 2 => 1], null, ['class' => 'selectpicker search-fields']) !!}
+                                    {!! Form::select('price', processFilter(config('search.price')), null, ['class' => 'selectpicker search-fields']) !!}
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                    <div class="range-slider">
-                                        <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                        <div class="clearfix"></div>
-                                    </div>
+                                    {!! Form::select('form', processForm(config('search.form')), null, ['class' => 'selectpicker search-fields']) !!}
                                 </div>
                                 <br>
-                                <button class="search-button btn-md btn-color">{!! __('label.search')!!}</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Categories start -->
-                <div class="widget categories">
-                    <h5 class="sidebar-title">{{ trans('province.category') }}</h5>
-                    <ul>
-                        <li><a href="#">{{ trans('province.category') }}<span>(12)</span></a></li>
-                    </ul>
-                </div>
-
-                <!-- Recent posts start -->
-                <div class="widget recent-posts">
-                    <h5 class="sidebar-title">{{ trans('province.recentcategory') }}</h5>
-                    <div class="media mb-4">
-                        <a class="pr-4" href="properties-details.html">
-                            <img src="#" alt="sub-property">
-                        </a>
-                        <div class="media-body align-self-center">
-                            <h5>
-                                <a href="#">{{ $property->name }}</a>
-                            </h5>
-                            <p>{{ $property->created_at->toFormattedDateString() }}</p>
-                            <p><strong>{{ $property->price }} {{ $property->unit->name ?? '' }}</strong></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent comments start -->
-                <div class="recent-comments widget">
-                    <h5 class="sidebar-title">{{ trans('province.comment') }}</h5>
-                    <div class="media mb-4">
-                        <a class="pr-4" href="#">
-                            <img src="#" class="rounded-circle" alt="avatar">
-                        </a>
-                        <div class="media-body">
-                            <p>{{ trans('province.content') }}</p>
-                            <p>{{ trans('province.by') }} <span>{{ trans('province.name') }}</span></p>
+                                <div class="form-group">
+                                {!! Form::submit( __('label.search'), ['class' => 'search-button btn-md btn-color', 'name' => 'submit']) !!}
+                                </div>
+                                {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
