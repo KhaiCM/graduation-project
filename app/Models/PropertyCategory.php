@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Statistic;
 
 class PropertyCategory extends Model
 {
@@ -20,5 +21,10 @@ class PropertyCategory extends Model
     public function properties()
     {
         return $this->hasManyThrough('App\Models\Property', 'App\Models\PropertyType', 'property_category_id', 'property_type_id');
+    }
+
+    public function searchStatistics()
+    {
+        return $this->morphMany('App\Models\Statistic', 'object')->where('type', Statistic::TYPE_SEARCH);
     }
 }

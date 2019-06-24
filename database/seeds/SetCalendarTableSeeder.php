@@ -11,6 +11,6 @@ class SetCalendarTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\SetCalendar::class, 10)->create();
+        factory(App\Models\SetCalendar::class, 1000)->create();
     }
 }

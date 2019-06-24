@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Statistic;
 
 class Province extends Model
 {
@@ -20,5 +21,10 @@ class Province extends Model
     public function properties()
     {
         return $this->hasManyThrough('App\Models\Property', 'App\models\District', 'provinces_id', 'district_id');
+    }
+
+    public function searchStatistics()
+    {
+        return $this->morphMany('App\Models\Statistic', 'object')->where('type', Statistic::TYPE_SEARCH);
     }
 }

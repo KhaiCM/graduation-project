@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Statistic;
 
 class District extends Model
 {
@@ -21,5 +22,10 @@ class District extends Model
     public function properties()
     {
         return $this->hasMany('App\Models\Property', 'district_id');
+    }
+
+    public function searchStatistics()
+    {
+        return $this->morphMany('App\Models\Statistic', 'object')->where('type', Statistic::TYPE_SEARCH);
     }
 }
