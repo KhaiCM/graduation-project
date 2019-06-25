@@ -7,7 +7,6 @@
         
             <div class="col-lg-4 col-md-6 col-sm-12">
             @if(count($filter) > 0)
-
             @foreach($filter as $item)
                 <div class="property-box">
                     <div class="property-thumbnail">

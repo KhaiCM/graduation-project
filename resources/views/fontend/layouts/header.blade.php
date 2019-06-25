@@ -84,28 +84,14 @@
                             </li>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ __('message.hot_properties') }}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('home.hot') }}">{!! __('message.hot_properties')!!}</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('home.sold') }}" id="navbarDropdownMenuLink2" aria-haspopup="true" aria-expanded="false">
                                 {{ __('label.properties_sold') }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('home.sold') }}">{!! __('label.properties_sold')!!}</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="{{ route('home.rent') }}" id="navbarDropdownMenuLink2" aria-haspopup="true" aria-expanded="false">
                                 {{ __('label.rental_property') }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('home.rent') }}">{{ __('label.rental_property') }}</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ route('post.index') }}" id="navbarDropdown4" role="button"  aria-haspopup="true" aria-expanded="false">

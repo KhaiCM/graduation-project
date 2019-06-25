@@ -33,7 +33,7 @@ class PropertyTypeRepository
         $validated = $request->validated();
         $district->update([
             'name' => $request->get('name'),
-            'provinces_id' => $request->get('provinces_id'),
+            'property_category_id' => $request->get('property_category_id'),
         ]);
     }
 

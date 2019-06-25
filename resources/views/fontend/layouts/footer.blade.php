@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-xl-12">
-                <p class="copy">&copy;  2018 <a href="#" target="_blank"></a>. Trademarks and brands are the property of their respective owners.</p>
+                <p class="copy">&copy;  2019 <a href="#" target="_blank"></a>. Theme real estae by Minh Khai.</p>
             </div>
         </div>
     </div>

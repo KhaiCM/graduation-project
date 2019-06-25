@@ -56,21 +56,23 @@ class PropertyTypeController extends Controller
     public function edit($id)
     {
         try {
-            $propertyCategories = $this->propertyCategories->findOrFail($id);
+            $PropertyTypes = $this->PropertyTypes->findOrFail($id);
+        $propertyCategories = PropertyCategory::all();
+            $property_category = PropertyCategory::all();
 
-            return view('backend.propertycategory.edit', compact('propertyCategories'));
+            return view('backend.propertyType.edit', compact('PropertyTypes', 'property_category'));
         } catch (ModelNotFoundException $ex) {
             return $ex->getMessage();
         }
     }
 
-    public function update(PropertyCategoryRequest $request, $id)
+    public function update(PropertyTypeRequest $request, $id)
     {
         try
         {
-            $propertyCategories = $this->propertyCategories->update($request, $id);
+            $PropertyTypes = $this->PropertyTypes->update($request, $id);
 
-            return redirect(route('procat.index'))->with('message', trans('province.edit_success'));
+            return redirect(route('protype.index'))->with('message', trans('province.edit_success'));
         } catch (ModelNotFoundException $ex)
         {
             return $ex->getMessage();
@@ -80,9 +82,9 @@ class PropertyTypeController extends Controller
     public function destroy($id)
     {
         try {
-            $this->propertyCategories->destroy($id);
+            $this->PropertyTypes->destroy($id);
 
-            return redirect(route('procat.index'))->with('message', trans('province.delete_success'));
+            return redirect(route('protype.index'))->with('message', trans('province.delete_success'));
         } catch (ModelNotFoundException $ex) {
             return $ex->getMessage();
         }

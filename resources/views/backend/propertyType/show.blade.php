@@ -59,7 +59,6 @@
                         </div>
                     </div>
                 </div> 
-                <!--                         <h3><i class="fa fa-user"></i> All users (4 users)</h3>    -->                          
             </div>
             <!-- end card-header -->    
 
@@ -80,18 +79,17 @@
                         @foreach ($PropertyTypes as $key => $district)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td class="n">{{ $district->name }}</td>
+                            <td class="name">{{ $district->name }}</td>
                             <td>{{ $district->propertyCategory->name ?? '' }}</td>
                             <td>
-                                <a href="{{ route('district.edit', $district->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="javascript:deleteRecord_1('1');" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $province->id }}"><i class="fa fa-trash-o"></i></button>
+                                <a href="{{ route('protype.edit', $district->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $district->id }}"><i class="fa fa-trash-o"></i></button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
+                {!! $PropertyTypes -> links() !!}
             </div>  
             <!-- end card-body -->                              
 
@@ -106,7 +104,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Xóa tỉnh - </p>
+                <p class="modal-title">Xóa kiểu tài sản - </p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -116,7 +114,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <form action="{{ route('province.destroy', ['id' => ''])}}" method="POST">
+                <form action="{{ route('protype.destroy', ['id' => ''])}}" method="POST">
                     @method('DELETE')   
                     @csrf
                     <button class="btn btn-danger" type="submit">Yes</button>
@@ -124,38 +122,6 @@
             </div>
         </div>
     </div>
-</div>
-
-
-
-<div class="container">
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
-    <div class="high">
-        <a>{{ trans('province.listDistrict') }}</a>
-        <a href="{{ route('district.create') }}"><button class="button">{{ trans('province.addDistrict') }}</button></a>
-    </div>
-    <table>
-        <tr>
-            <th>#</th>
-            <th>{{ trans('province.name') }}</th>
-            <th>{{ trans('province.for') }}</th>
-            <th colspan="2">{{ trans('province.action') }}</th>
-        </tr>
-        @foreach ($PropertyTypes as $district)
-        <tr>
-            <td>{{ $district->id }}</td>
-            <td>{{ $district->name }}</td>
-            <td>{{ $district->provinces->name ?? '' }}</td>
-            <td><a href="{{ route('district.edit', $district->id) }}">{{ trans('province.edit') }}</a></td>
-            <td><a href="{{ route('district.destroy', $district->id) }}">{{ trans('province.delete') }}</a></td>
-        </tr>
-        @endforeach
-    </table>
-    {!! $PropertyTypes -> links() !!}
 </div>
 @endsection
 @section('script')

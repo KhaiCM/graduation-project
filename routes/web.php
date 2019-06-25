@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::put('/edit/{id}', 'Admin\PropertyTypeController@update')->name('protype.update');
 
-        Route::get('/destroy/{id}', 'Admin\PropertyTypeController@destroy')->name('protype.destroy');
+        Route::delete('/destroy/{id}', 'Admin\PropertyTypeController@destroy')->name('protype.destroy');
     });
     Route::get('/district', 'Admin\DistrictController@index');
     Route::group(['prefix' => 'district'], function () {

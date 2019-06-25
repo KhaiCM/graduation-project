@@ -1,6 +1,7 @@
 @extends('fontend.layouts.master')
 @section('content')
 <!-- User page start -->
+
 <div class="user-page content-area-7">
     <div class="container">
         <div class="row">
@@ -81,24 +82,13 @@
                                     <div class="form-group">
                                         {{ Form::label(__('label.acreage')) }}
                                         {!! Form::text('acreage', null, ['class' => 'form-control', 'placeholder' => __('label.acreage')]) !!}
-                                        <span>m2</span>
+                                        <span class="input-group-text">m2</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group message">
                                         {{ Form::label(__('label.describe')) }}
                                         {!! Form::textarea('describe', '', ['class' => 'form-control', 'id' =>'editor1', 'placeholder' => __('label.detailed_nformation')]) !!}
-                                    </div>
-                                </div>
-                                <!-- service -->
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        {{ __('message.price') }} <br>
-                                        {{ __('message.1week') }} <br>
-                                        {{ __('message.1month') }} <br>
-                                        {{ Form::label(__('message.service')) }}
-                                        {{ Form::select('service', $sv->pluck('name', 'id'), null, ['class' => 'selectpicker search-fields', 'placeholder' => trans('message.service')]) }}
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +117,7 @@
                                 <div class="col-lg-4 col-md-4">
                                     <div class="form-group">
                                         {{ Form::label(__('label.phone')) }}
-                                        {!! Form::text('phone', $user->phone, ['class' => 'form-control', 'readonly' => 'readonly', 'placeholder' => __('label.phone')]) !!}
+                                        {!! Form::text('phone', $user->phone, ['class' => 'form-control', 'placeholder' => __('label.phone')]) !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
