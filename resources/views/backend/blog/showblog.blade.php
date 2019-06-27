@@ -28,10 +28,6 @@
 
                 <div class="card-header">
                   <span class="pull-right"><a href="{{ route('addblog') }}" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>{{ trans('message.add') }}</a></span>
-                  <form class="form-inline my-2 my-lg-0">
-                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                      <button class="btn btn-primary btn-sm" type="submit">Search</button>
-                  </form>
                   <!-- <h3><i class="fa fa-file-text-o"></i> All articles (8 articles)</h3>                                 -->
               </div>
               <!-- end card-header -->    

@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = $this->user->all();
+        $user = $this->user->listUser();
         // dd($user);
         return view('backend.users.list_user', compact('user'));
     }

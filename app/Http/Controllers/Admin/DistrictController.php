@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Province;
+use App\Models\District;
 use App\Http\Requests\DistrictRequest;
 use App\Repositories\DistrictRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -122,5 +123,21 @@ class DistrictController extends Controller
         } catch (ModelNotFoundException $ex) {
             return $ex->getMessage();
         }
+    }
+
+    public function search(Request $request)
+    {
+        $provinces = Province::all();
+        // dd($request->all());
+        $province = ($request->has('search') ? $request->get('search') : false);
+        // dd($province);
+        $query = District::select('id', 'name', 'provinces_id');
+        if ($request->has('search')) {
+            $query->where('name', $request->get('search'));
+        }
+        // dd($query->toSql());
+        $filter = $query->paginate(config('app.blog_page'));
+// dd($filter);
+        return view('backend.district.filter', compact('filter', 'provinces'));
     }
 }

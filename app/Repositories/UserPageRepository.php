@@ -18,5 +18,10 @@ class UserPageRepository extends EloquentRepository
     {
         return User::findOrFail($id);
     }
+
+    public function listUser()
+    {
+        return User::paginate(config('pagination.all'));
+    }
 }
 
