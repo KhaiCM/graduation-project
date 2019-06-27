@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{id}', 'Admin\ProvinceController@update');
 
         Route::delete('/destroy/{id}', 'Admin\ProvinceController@destroy')->name('province.destroy');
+
+        Route::post('province-filter', 'Admin\ProvinceController@search')->name('province.search');
     });
     Route::get('propertycategory', 'Admin\PropertyCategoryController@index');
 
@@ -78,6 +80,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/edit/{id}', 'Admin\DistrictController@update');
 
         Route::get('/destroy/{id}', 'Admin\DistrictController@destroy')->name('district.destroy');
+
+        Route::post('district-filter', 'Admin\DistrictController@search')->name('district.search');
     });
     Route::group(['prefix' => 'blogcat'], function () {
         Route::get('blogcatlist', 'BlogCatController@getList')->name('blogcat.index');

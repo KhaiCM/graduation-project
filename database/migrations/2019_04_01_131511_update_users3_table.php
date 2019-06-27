@@ -14,7 +14,7 @@ class UpdateUsers3Table extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('wallet_id')->nullable()->change();
+            $table->integer('wallet_id')->nullable();
         });
     }
 
@@ -27,7 +27,6 @@ class UpdateUsers3Table extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('wallet_id');
-            $table->string('wallet_id')->change();
         });
     }
 }

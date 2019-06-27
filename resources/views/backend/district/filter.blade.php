@@ -34,7 +34,7 @@
 
             <div class="card-header">
                 <span class="pull-right"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_add_user"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ trans('province.addDistrict') }}</button></span>
-                    <form class="form-inline my-2 my-lg-0" action="{{ route('district.search') }}" method="POST">
+                    <form class="form-inline my-2 my-lg-0" action="{{route('district.search') }}" method="POST">
                         @csrf
                       <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-primary btn-sm" type="submit">Search</button>
@@ -85,7 +85,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach ($districts as $key => $district)
+                        @foreach ($filter as $key => $district)
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $district->name }}</td>
@@ -98,7 +98,7 @@
                         </tr>
                     </tbody>
                 </table>
-                {!! $districts -> links() !!}
+                {!! $filter -> links() !!}
             </div>  
         </div>  
         <!-- end card-body -->                              

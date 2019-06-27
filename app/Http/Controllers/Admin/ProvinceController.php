@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProvinceRequest;
 use App\Repositories\ProvinceRepository;
+use App\Models\Province;
 use App\Http\Controllers\Controller;
 
 class ProvinceController extends Controller
@@ -113,5 +114,20 @@ class ProvinceController extends Controller
         {
             echo $ex->getMessage();
         }
+    }
+
+    public function search(Request $request)
+    {
+        // dd($request->all());
+        $province = ($request->has('search') ? $request->get('search') : false);
+        // dd($province);
+        $query = Province::select('id', 'name');
+        if ($request->has('search')) {
+            $query->where('name', $request->get('search'));
+        }
+        // dd($query);
+        $filter = $query->paginate(config('app.blog_page'));
+
+        return view('backend.province.filter', compact('filter'));
     }
 }

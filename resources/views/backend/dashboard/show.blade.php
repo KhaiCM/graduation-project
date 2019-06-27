@@ -74,7 +74,14 @@
         ]);
         var options = {
           title: 'Tỉnh được tìm kiếm nhiều nhất',
-          legend: { position: 'bottom' }
+					legend: { position: 'bottom' },
+					vAxis: {
+							viewWindow: {
+									min: 0,
+									max: 1000
+							},
+							// ticks: [0, 25, 50, 75, 100] // display labels every 25
+					}
         };
         var chart = new google.visualization.LineChart(document.getElementById('province'));
         chart.draw(data, options);

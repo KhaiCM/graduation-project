@@ -19,7 +19,7 @@ class StatisticTableSeeder extends Seeder
     		'App\Models\PropertyType' => range(1, 5),
     	];
     	$months = range(1, 12);
-    	$years = range(2009, 2018);
+    	$years = range(2009, 2019);
     	foreach ($statistic as $type => $items) {
     		foreach ($items as $item) {
 	    		foreach ($years as $year) {
@@ -30,7 +30,7 @@ class StatisticTableSeeder extends Seeder
 	    					'object_id' => $item,
 	    					'month' => $month,
 	    					'year' => $year,
-	    					'count' => mt_rand(999, 99999)
+	    					'count' => mt_rand(99, 999)
 	    				]);
 	    			}
 	    		}

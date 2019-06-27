@@ -79,20 +79,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            @foreach ($provinces as $key => $province)
+                            @foreach ($filter as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td class="name">{{ $province->name }}</td>
+                                <td class="name">{{ $item->name }}</td>
                                 <td>
-                                    <a href="{{ route('province.edit', $province->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $province->id }}"><i class="fa fa-trash-o"></i></button>
+                                    <a href="{{ route('province.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $item->id }}"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
 
                     </table>
-                    {!! $provinces -> links() !!}
+                    {!! $filter -> links() !!}
                 </div>  
             </div>  
             <!-- end card-body -->                              
@@ -134,34 +134,6 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="container">
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
-    <div class="high">
-        <a>{{ trans('province.listProvince') }}</a>
-        <a href="{{ route('province.create') }}"><button class="button">{{ trans('province.addProvince') }}</button></a>
-    </div>
-    <table>
-        <tr>
-            <th>{{ trans('province.stt') }}</th>
-            <th>{{ trans('province.name') }}</th>
-            <th colspan="2">{{ trans('province.action') }}</th>
-        </tr>
-        @foreach ($provinces as $key => $province)
-        <tr>
-            <td>{{ ++$key }}</td>
-            <td>{{ $province->name }}</td>
-            <td><a href="{{ route('province.edit', $province->id) }}">{{ trans('province.edit') }}</a></td>
-            <td><a href="{{ route('province.destroy', $province->id) }}">{{ trans('province.delete') }}</a></td>
-        </tr>
-        @endforeach
-    </table>
-    {!! $provinces -> links() !!}
-</div> -->
 @endsection
 @section('script')
 <script>
