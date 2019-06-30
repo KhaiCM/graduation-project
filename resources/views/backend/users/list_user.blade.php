@@ -7,10 +7,10 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="breadcrumb-holder">
-                <h1 class="main-title float-left">{{ trans('label.blog_cat') }}</h1>
+                <h1 class="main-title float-left">{{ trans('label.list_user') }}</h1>
                 <ol class="breadcrumb float-right">
                     <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item active">{{ trans('message.blogcate') }}</li>
+                    <li class="breadcrumb-item active">{{ trans('message.list_user') }}</li>
                 </ol>
                 <div class="clearfix"></div>
             </div>
@@ -25,7 +25,6 @@
         <div class="card mb-3">
 
             <div class="card-header">
-                <span class="pull-right"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_add_category"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ trans('province.addProvince') }}</button></span>
                     <form class="form-inline my-2 my-lg-0" action="{{route('province.search') }}" method="POST">
                         @csrf
                       <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">

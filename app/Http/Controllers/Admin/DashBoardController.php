@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Statistic;
 use App\Models\Province;
 use App\Models\PropertyCategory;
+use App\Models\User;
+use App\Models\SetCalendar;
+use App\Models\RentContract;
+use App\Models\Property;
+
 
 class DashBoardController extends Controller
 {
@@ -21,40 +26,49 @@ class DashBoardController extends Controller
 
 	public function index()
 	{
+		$user = User::count();
+
+		$property = Property::count();
+
+		$setCalendar = SetCalendar::count();
+
+		$rentContract = RentContract::count();
+
+
 		$ids = Statistic::selectRaw('object_type, object_id, sum(count) as s_count')
-			->groupBy('object_type', 'object_id')
-			->where('type', Statistic::TYPE_SEARCH)
-			->where('object_type', Province::class)
-			->where(function ($q) {
-				$q->where(function ($q) {
-					$q->where('month', '>=', $this->month)
-					->where('year', $this->year - 1);
-				})
-				->orWhere(function ($q) {
-					$q->where('month', '<', $this->month)
-					->where('year', $this->year);
-				});
+		->groupBy('object_type', 'object_id')
+		->where('type', Statistic::TYPE_SEARCH)
+		->where('object_type', Province::class)
+		->where(function ($q) {
+			$q->where(function ($q) {
+				$q->where('month', '>=', $this->month)
+				->where('year', $this->year - 1);
 			})
-			->orderBy('s_count', 'desc')
-			->limit(5)->get()->pluck('object_id');
+			->orWhere(function ($q) {
+				$q->where('month', '<', $this->month)
+				->where('year', $this->year);
+			});
+		})
+		->orderBy('s_count', 'desc')
+		->limit(5)->get()->pluck('object_id');
 
 		$statistic_data = Statistic::with('object')->where('type', Statistic::TYPE_SEARCH)
-			->where('object_type', Province::class)
-			->whereIn('object_id', $ids)
-			->where(function ($q) {
-				$q->where(function ($q) {
-					$q->where('month', '>=', $this->month)
-					->where('year', $this->year - 1);
-				})
-				->orWhere(function ($q) {
-					$q->where('month', '<', $this->month)
-					->where('year', $this->year);
-				});
+		->where('object_type', Province::class)
+		->whereIn('object_id', $ids)
+		->where(function ($q) {
+			$q->where(function ($q) {
+				$q->where('month', '>=', $this->month)
+				->where('year', $this->year - 1);
 			})
-			->orderBy('year', 'asc')
-			->orderBy('month', 'asc')
-			->orderBy('object_id', 'asc')
-			->get();
+			->orWhere(function ($q) {
+				$q->where('month', '<', $this->month)
+				->where('year', $this->year);
+			});
+		})
+		->orderBy('year', 'asc')
+		->orderBy('month', 'asc')
+		->orderBy('object_id', 'asc')
+		->get();
 
 		$provinces = $statistic_data->pluck('object')->unique('id')->sortBy('id');
 		$province_statistics[0] = ['Months'];
@@ -89,39 +103,39 @@ class DashBoardController extends Controller
 
 
 		$ids = Statistic::selectRaw('object_type, object_id, sum(count) as s_count')
-			->groupBy('object_type', 'object_id')
-			->where('type', Statistic::TYPE_SEARCH)
-			->where('object_type', PropertyCategory::class)
-			->where(function ($q) {
-				$q->where(function ($q) {
-					$q->where('month', '>=', $this->month)
-					->where('year', $this->year - 1);
-				})
-				->orWhere(function ($q) {
-					$q->where('month', '<', $this->month)
-					->where('year', $this->year);
-				});
+		->groupBy('object_type', 'object_id')
+		->where('type', Statistic::TYPE_SEARCH)
+		->where('object_type', PropertyCategory::class)
+		->where(function ($q) {
+			$q->where(function ($q) {
+				$q->where('month', '>=', $this->month)
+				->where('year', $this->year - 1);
 			})
-			->orderBy('s_count', 'desc')
-			->limit(5)->get()->pluck('object_id');
+			->orWhere(function ($q) {
+				$q->where('month', '<', $this->month)
+				->where('year', $this->year);
+			});
+		})
+		->orderBy('s_count', 'desc')
+		->limit(5)->get()->pluck('object_id');
 
 		$statistic_data = Statistic::with('object')->where('type', Statistic::TYPE_SEARCH)
-			->where('object_type', PropertyCategory::class)
-			->whereIn('object_id', $ids)
-			->where(function ($q) {
-				$q->where(function ($q) {
-					$q->where('month', '>=', $this->month)
-					->where('year', $this->year - 1);
-				})
-				->orWhere(function ($q) {
-					$q->where('month', '<', $this->month)
-					->where('year', $this->year);
-				});
+		->where('object_type', PropertyCategory::class)
+		->whereIn('object_id', $ids)
+		->where(function ($q) {
+			$q->where(function ($q) {
+				$q->where('month', '>=', $this->month)
+				->where('year', $this->year - 1);
 			})
-			->orderBy('year', 'asc')
-			->orderBy('month', 'asc')
-			->orderBy('object_id', 'asc')
-			->get();
+			->orWhere(function ($q) {
+				$q->where('month', '<', $this->month)
+				->where('year', $this->year);
+			});
+		})
+		->orderBy('year', 'asc')
+		->orderBy('month', 'asc')
+		->orderBy('object_id', 'asc')
+		->get();
 
 		$property_categories = $statistic_data->pluck('object')->unique('id')->sortBy('id');
 		$property_category_statistics[0] = ['Months'];
@@ -154,6 +168,6 @@ class DashBoardController extends Controller
 			}
 		}
 
-		return view('backend.dashboard.show', compact('province_statistics', 'property_category_statistics'));
+		return view('backend.dashboard.show', compact('user', 'property', 'setCalendar', 'rentContract', 'province_statistics', 'property_category_statistics'));
 	}
 }

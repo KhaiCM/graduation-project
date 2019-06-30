@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function getPost()
     {
-        $posts = Post::paginate(config('pagination.all'));
+        $posts = Post::paginate(config('pagination.new'));
 
         return view('fontend.posts.blog_list', compact('posts'));
     }

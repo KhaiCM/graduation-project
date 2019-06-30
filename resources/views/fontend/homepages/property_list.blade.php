@@ -32,12 +32,6 @@
                                     <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
                                         <i class="fa fa-link"></i>
                                     </a>
-                                    <div class="property-magnify-gallery">
-                                        @foreach ($property->propertyImage as $image)
-                                        <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="overlay-link">
-                                        @break
-                                        @endforeach
-                                    </div>
                                 </div>
                             </div>
                             <div class="detail">
@@ -51,16 +45,7 @@
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>
-                                        <i class="flaticon-bed"></i> {{ $property->district_id }} {{trans('province.bedroom')}}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bath"></i> {{ $property->user_id }} {{ trans('province.bathroom') }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> {{ trans('province.acreage') }}: &nbsp; {{ $property->acreage }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car-repair"></i> {{ rand(1, 2) }} {{ trans('province.garage') }}
+                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> {{ trans('province.acreage') }}: &nbsp; {{ $property->acreage }}&nbsp m2
                                     </li>
                                 </ul>
                             </div>
