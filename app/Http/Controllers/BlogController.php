@@ -35,7 +35,7 @@ class BlogController extends Controller
             $file->move(config('app.blog_image'),$name);
         }
         $bl = new Post;
-        $bl->image = $name;
+        $bl->image = str_random($name);
         $bl->title = Str::title($request->title);
         $bl->describe = $request->describe;
         $bl->slug = Str::slug($request->title);

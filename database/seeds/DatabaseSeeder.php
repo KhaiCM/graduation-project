@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvinceTableSeeder::class);
         $this->call(CategoryPostTableSeeder::class);
         $this->call(PostTableSeeder::class);
-        $this->call(SetCalendarTableSeeder::class);
         $this->call(PropertyCategoryTableSeeder::class);
         $this->call(PropertyTableSeeder::class);
         $this->call(UnitTableSeeder::class);

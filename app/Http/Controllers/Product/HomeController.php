@@ -53,7 +53,7 @@ class HomeController extends Controller
 
         $properties = Property::paginate(config('pagination.home'));
 
-        $posts = Post::take(3)->get();
+        $posts = Post::orderBy('id', 'DESC')->take(3)->get();
 
         $pp = $this->hot->all()->take(config('pagination.hotPro'))->get();
 

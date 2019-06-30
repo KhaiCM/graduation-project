@@ -80,173 +80,6 @@
     <!-- Search area start -->
 </div>
 <!-- banner end -->
-
-<!-- <div class="properties-list-rightside content-area-2">
-    <div class="container">
-        <div class="rmain-title">
-            @if (count($properties) > 0)
-            <div class="col-lg-8 col-md-12">
-                <div class="row">
-                    {{-- start property --}}
-                    @foreach ($pp as $property)
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="property-box">
-                            <div class="property-thumbnail">
-                                <a href="properties-details.html" class="property-img">
-                                    <div class="tag button alt featured">{{ trans('province.highlight') }}</div>
-                                    <div class="price-ratings-box">
-                                        <p class="price">
-                                            {{ $property->price }} {{ $property->unit->name ?? '' }}
-                                        </p>
-                                        <div class="ratings">
-                                            <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    @foreach ($property->propertyImage as $image)
-                                    <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
-                                    @break
-                                    @endforeach
-                                </a>
-                                <div class="property-overlay">
-                                    <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
-                                        <i class="fa fa-link"></i>
-                                    </a>
-                                    <a class="overlay-link property-video" title="Test Title">
-                                        <i class="fa fa-video-camera"></i>
-                                    </a>
-                                    <div class="property-magnify-gallery">
-                                        @foreach ($property->propertyImage as $image)
-                                        <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
-                                        @break
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail">
-                                <h1 class="title">
-                                    <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
-                                </h1>
-                                <div class="location">
-                                    <a href="#">
-                                        <i class="fa fa-map-marker"></i>{{ $property->districts->name ?? '' }}
-                                    </a>
-                                </div>
-                                <ul class="facilities-list clearfix">
-                                    <li>
-                                        <i class="flaticon-bed"></i> {{ $property->district_id }} {{trans('province.bedroom')}}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bath"></i> {{ $property->user_id }} {{ trans('province.bathroom') }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-square-layouting-with-black-square-in-east-area"></i> {{ trans('province.acreage') }}: &nbsp; {{ $property->acreage }}
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-car-repair"></i> {{ rand(1, 2) }} {{ trans('province.garage') }}
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="footer">
-                                <a href="#">
-                                    <i class="fa fa-user"></i> {{ $property->users->name ?? '' }}
-                                </a>
-                                <span>
-                                    <i class="fa fa-calendar-o"></i> {{ $property->created_at->toFormattedDateString() }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    {{-- end property --}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@else
-<h1>{{ trans('province.none') }}</h1>
-@endif
-<div class="send-btn main-title">
-    <a href="{{ route('home.hot') }}"><button class="btn btn-color btn-md btn-message-calendar">{{ trans('message.watchmore') }}</button></a>
-</div> -->
-
-
-<!-- hot properties -->
-<!-- @if (count($pp) > 0)
-<div class="featured-properties content-area-2">
-    <div class="container">
-        <div class="main-title">
-            <h1>{!! __('message.hot_properties')!!}</h1>
-        </div>
-        <div class="row filter-portfolio">
-            <div class="cars">
-                @foreach ($pp as $property)
-                <div class="col-lg-4" data-category="3">
-                    <div class="property-box">
-                        <div class="property-thumbnail">
-                            <a href="#" class="property-img">
-                                <div class="price-ratings-box">
-                                    <p class="price">
-                                        {{ $property->price }} {{ $property->unit->name ?? '' }}
-                                    </p>
-                                    <div class="ratings">
-                                        <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                @foreach ($property->propertyImage as $image)
-                                <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="img-fluid">
-                                @break
-                                @endforeach
-                            </a>
-                            <div class="property-overlay">
-                                <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
-                                    <i class="fa fa-link"></i>
-                                </a>
-                                <div class="property-magnify-gallery">
-                                    @foreach ($property->propertyImage as $image)
-                                    <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="overlay-link">
-                                    @break
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <h1 class="title">
-                                <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
-                            </h1>
-                            <div class="location">
-                                <a href="#">
-                                    <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
-                                </a>
-                            </div>
-                            <ul class="facilities-list clearfix">
-                                {!! $property->describe !!}
-                            </ul>
-                        </div>
-                        <div class="footer">
-                            <a href="{{ route('follow.user',  $property->users->id ?? '') }}">
-                                <i class="fa fa-user"></i> {{ $property->users->name ?? ''}}
-                            </a>
-                            <span>
-                                <i class="fa fa-calendar-o"></i> {{ $property->created_at }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</div>
-@else
-<div class="featured-properties content-area-2">
-    <div class="container">
-        <div class="main-title">
-            <h1>{{ trans('province.none') }}</h1>
-        </div>
-    </div>
-</div>
-@endif -->
 <!-- Featured properties start -->
 @if (count($properties) > 0)
 <div class="featured-properties content-area-2">
@@ -278,12 +111,6 @@
                                 <a href="{{ route('property.view', $property->id) }}" class="overlay-link">
                                     <i class="fa fa-link"></i>
                                 </a>
-                                <div class="property-magnify-gallery">
-                                    @foreach ($property->propertyImage as $image)
-                                    <img src="{{ asset(config('image.image_property')) }}/{{ $image->link }}" alt="{{ $property->name }}" class="overlay-link">
-                                    @break
-                                    @endforeach
-                                </div>
                             </div>
                         </div>
                         <div class="detail">
@@ -295,9 +122,7 @@
                                     <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
                                 </a>
                             </div>
-                            <ul class="facilities-list clearfix">
-                                {!! $property->describe !!}
-                            </ul>
+                            <ul class="flaticon-square-layouting-with-black-square-in-east-area"> Diện tích: {!! $property->acreage!!}&nbsp m2</ul>
                         </div>
                         <div class="footer">
                             <a href="{{ route('follow.user',  $property->users->id ?? '') }}">

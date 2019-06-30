@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Statistic;
 use App\Models\Property;
+use App\Models\Province;
 use App\Models\District;
+use App\Models\PropertyCategory;
 use App\Models\PropertyType;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -26,10 +28,11 @@ class FilterController extends Controller
         $this_month = (int) now()->format('n');
         $this_year = (int) now()->format('Y');
         $query = Property::
-            join('property_types', 'property_types.id', '=', 'properties.property_type_id')
-            ->join('districts', 'districts.id', '=', 'properties.district_id')
-            ->select('properties.id', 'properties.name as property_name', 'properties.user_id', 'properties.created_at', 'address', 'describe', 'image', 'acreage', 'price', 'districts.name', 'property_types.name')
-            ->with('users');
+        join('property_types', 'property_types.id', '=', 'properties.property_type_id')
+        ->join('districts', 'districts.id', '=', 'properties.district_id')
+        ->select('properties.id', 'properties.name as property_name', 'properties.user_id', 'properties.created_at', 'address', 'describe', 'image', 'acreage', 'price', 'unit_id', 'districts.name', 'property_types.name')
+        ->with('users');
+
         if ($request->has('district') && $request->district != 0) {
             $district = District::with([
                 'provinces' => function ($q) {
@@ -53,9 +56,9 @@ class FilterController extends Controller
                 ]);
             } else {
                 $district->searchStatistics()
-                    ->where('month', $this_month)
-                    ->where('year', $this_year)
-                    ->update([
+                ->where('month', $this_month)
+                ->where('year', $this_year)
+                ->update([
                     'count' => DB::raw('count + 1'),
                 ]);
             }
@@ -69,9 +72,9 @@ class FilterController extends Controller
                 ]);
             } else {
                 $district->provinces->searchStatistics()
-                    ->where('month', $this_month)
-                    ->where('year', $this_year)
-                    ->update([
+                ->where('month', $this_month)
+                ->where('year', $this_year)
+                ->update([
                     'count' => DB::raw('count + 1'),
                 ]);
             }
@@ -101,9 +104,9 @@ class FilterController extends Controller
                 ]);
             } else {
                 $property_type->searchStatistics()
-                    ->where('month', $this_month)
-                    ->where('year', $this_year)
-                    ->update([
+                ->where('month', $this_month)
+                ->where('year', $this_year)
+                ->update([
                     'count' => DB::raw('count + 1'),
                 ]);
             }
@@ -117,9 +120,9 @@ class FilterController extends Controller
                 ]);
             } else {
                 $property_type->propertyCategory->searchStatistics()
-                    ->where('month', $this_month)
-                    ->where('year', $this_year)
-                    ->update([
+                ->where('month', $this_month)
+                ->where('year', $this_year)
+                ->update([
                     'count' => DB::raw('count + 1'),
                 ]);
             }
@@ -137,9 +140,22 @@ class FilterController extends Controller
         if ($request->has('form') && $request->form != 2) {
             $query->where('properties.form', $request->get('form'));
         }
-        $filter = $query->paginate(config('app.blog_page'));
+        // dd($query->orderBy('id', 'DESC')->paginate(config('app.blog_page')));
+        $filter = $query->orderBy('id', 'DESC')->paginate(config('app.blog_page'));
 
-        return view('fontend.homepages.filter', compact('filter'));
+        $province = [__('label.search_province')];
+        $province = array_merge($province, Province::all()->pluck('name', 'id')->toArray());
+
+        $district = [__('label.search_district')];
+        $district = array_merge($district, District::all()->pluck('name', 'id')->toArray());
+
+        $propertyCategory = [__('label.search_propertyCategory')];
+        $propertyCategory = array_merge($propertyCategory, PropertyCategory::all()->pluck('name', 'id')->toArray());
+
+        $propertyType = [__('label.search_propertyType')];
+        $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
+
+        return view('fontend.homepages.filter', compact('filter', 'province', 'district', 'propertyCategory', 'propertyType'));
     }
 }
 

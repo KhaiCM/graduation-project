@@ -145,4 +145,6 @@ return [
     'name_blog_cat' => 'Tên thể loại tin tức',
     'blog_cat' => 'Thể loại tin tức',
     'add_blog_cat' => 'Thêm thể loại tin tức',
+    'user' => 'Người dùng',
+    'calendar' => 'Lịch hẹn',
 ];

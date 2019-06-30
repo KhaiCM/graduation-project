@@ -21,7 +21,6 @@
                                         </div>
                                         <div class="p-r">
                                             <h3>{{ $property->price }} {{ $property->unit->name ?? '' }}</h3>
-                                            <p>{{ rand(1, 5) }} <i class="fa fa-star"></i></p>
                                         </div>
                                     </div>
                                 </div>
@@ -60,9 +59,6 @@
                                     <a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="true">{{ trans('province.detail') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="4-tab" data-toggle="tab" href="#4" role="tab" aria-controls="4" aria-selected="true">{{ trans('province.video') }}</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" id="5-tab" data-toggle="tab" href="#5" role="tab" aria-controls="5" aria-selected="true">{{ trans('province.location') }}</a>
                                 </li>
                             </ul>
@@ -70,42 +66,7 @@
                                 <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
                                     <h3 class="heading">{{ trans('province.description') }}</h3> {!! $property->describe !!}
                                 </div>
-                                <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="two-tab">
-                                    <div class="floor-plans mb-60">
-                                        <h3 class="heading">{{ trans('province.floorplan') }}</h3>
-                                        <img src="#" alt="floor-plans" class="img-fluid">
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade " id="three" role="tabpanel" aria-labelledby="three-tab">
-                                    <div class="property-details">
-                                        <h3 class="heading">{{ $property->name }} {{ trans('province.detail') }}</h3>
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-6">
-                                                {{ trans('province.content') }}
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                {{ trans('province.content') }}
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                {{ trans('province.content') }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade " id="4" role="tabpanel" aria-labelledby="4-tab">
-                                    <div class="property-video">
-                                        <h3 class="heading">{{ trans('province.video') }}</h3>
-                                        <iframe src="#"></iframe>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade " id="5" role="tabpanel" aria-labelledby="5-tab">
-                                    <div class="section location">
-                                        <h3 class="heading">{{ trans('province.location') }}</h3>
-                                        <div class="map">
-                                            <div id="contactMap" class="contact-map"></div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         @if (Auth::check())

@@ -206,7 +206,7 @@ class PropertyController extends Controller
     {
         try
         {
-            $properties = Property::with('propertyImage')->where('user_id', $id)->paginate(config('pagination.myProperty'));
+            $properties = Property::orderBy('id','DESC')->with('propertyImage')->where('user_id', $id)->paginate(config('pagination.myProperty'));
 
             return view('fontend.properties.my_property', compact('properties'));
         } catch (ModelNotFoundException $ex) {

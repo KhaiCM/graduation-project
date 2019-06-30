@@ -4,4 +4,5 @@ return [
     'home' => '6',
     'myProperty' => '3',
     'hotPro' => '4',
+    'new' => '6',
 ];

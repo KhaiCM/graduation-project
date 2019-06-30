@@ -148,5 +148,9 @@ return [
     'name_blog_cat' => 'Name blog category',
     'blog_cat' => 'Blog Category',
     'add_blog_cat' => 'Add blog category',
-];
+    //thong ke
+    'statistic' => 'Statistic',
+    'user' => 'User',
+    'calendar' => 'Calendar',
+];  
 
