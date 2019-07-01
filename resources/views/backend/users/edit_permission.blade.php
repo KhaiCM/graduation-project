@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::label('status', trans('label.role')) }}<span class="text-danger">*</span><br>
+                                    {{ Form::label('status', trans('label.role')) }}<span class="text-danger"> *</span><br>
                                     {{ Form::select('id', $role->pluck('name', 'id'), $role, ['class' => 'form-control']) }}<br>
                                 </div>
                                 <div class="form-group">

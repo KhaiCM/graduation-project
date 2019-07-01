@@ -51,7 +51,8 @@ class HomeController extends Controller
         $propertyType = [__('label.search_propertyType')];
         $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
 
-        $properties = Property::paginate(config('pagination.home'));
+        $properties = Property::orderBy('id', 'DESC')->take(6)->get();
+        // dd($properties);
 
         $posts = Post::orderBy('id', 'DESC')->take(3)->get();
 
@@ -74,7 +75,7 @@ class HomeController extends Controller
         $propertyType = [__('label.search_propertyType')];
         $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
 
-        $properties = Property::where('form', '0')->paginate(config('pagination.all'));
+        $properties = Property::where('form', '0')->orderBy('id', 'DESC')->paginate(config('pagination.all'));
 
         return view('fontend.homepages.property_list', compact('properties',  'province', 'district', 'propertyType', 'propertyCategory'));
     }
@@ -93,7 +94,7 @@ class HomeController extends Controller
         $propertyType = [__('label.search_propertyType')];
         $propertyType = array_merge($propertyType, PropertyType::all()->pluck('name', 'id')->toArray());
 
-        $properties = Property::where('form', '1')->paginate(config('pagination.all'));
+        $properties = Property::where('form', '1')->orderBy('id', 'DESC')->paginate(config('pagination.all'));
 
         return view('fontend.homepages.property_list', compact('properties', 'province', 'district', 'propertyType', 'propertyCategory'));
     }

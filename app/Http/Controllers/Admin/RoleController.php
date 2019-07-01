@@ -26,6 +26,7 @@ class RoleController extends Controller
 	{
 		$role = Role::all();
 		$permission = Permission::all();
+		// dd($role);
 		
 		return view('backend.roles.index', compact('permission', 'role'));
 	}
@@ -53,13 +54,22 @@ class RoleController extends Controller
 		return redirect(route('role.index'))->with('message', __('message.add_permission_success'));
 	}
 
-		public function setRole(Request $request, $id)
+	public function setRole(Request $request, $id)
 	{
+		dd($request->all());
 		$user = $this->user->findOrFail($request->id);
 		$role = $request->role_id;
 		$user->role()->sync($role);
 		
-		return redirect(route('user.list'))->with('message', __('message.edit_role_success'));
+		return redirect(route('user.list'))->with('noti', __('message.edit_role_success'));
+	}
+
+	public function getDeleteRole($id)
+	{
+		$bl = Post::findOrFail($id);
+		$bl->delete();
+
+		return view('backend.roles.index')->with('noti', 'success');
 	}
 
 }

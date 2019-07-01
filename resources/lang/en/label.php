@@ -34,7 +34,7 @@ return [
     'bedrooms' => 'Bedrooms',
     'bathrooms' => 'Bathrooms',
     'search' => 'Search',
-    'featured_properties' => 'Featured Properties',
+    'featured_properties' => 'Latest properties',
     'all' => 'All',
     'apartment' => 'Apartment',
     'house' => 'House',
