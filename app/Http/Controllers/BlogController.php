@@ -114,7 +114,7 @@ class BlogController extends Controller
 
     public function getDeleteBlog($id)
     {
-        $bl = Post::find($id);
+        $bl = Post::findOrFail($id);
         $bl->delete();
 
         return redirect('admin/blog/bloglist')->with('noti', 'success');

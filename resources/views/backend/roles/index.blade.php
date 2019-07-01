@@ -43,7 +43,7 @@
             {{ Form::close() }}
         </div>
     </div>
-    <div class="container col-md-8 col-md-offset-2">
+<!--     <div class="container col-md-8 col-md-offset-2">
         <div class="well well bs-component">
             {!! Form::open(['route' => 'permission.create', 'method' => 'POST']) !!}
             <fieldset>
@@ -57,9 +57,9 @@
            </fieldset>
            {{ Form::close() }}
        </div>
-   </div>
+   </div> -->
 </div>
-{!! Form::open(['route' => 'permission.set', 'method' => 'POST']) !!}
+<!-- {!! Form::open(['route' => 'permission.set', 'method' => 'POST']) !!}
     <h2>{{  __('label.select_permission_with_role') }}</h2>
     <div class="form-group">
         {!! Form::label(__('label.role')) !!}
@@ -77,5 +77,5 @@
             {!! Form::submit(__('label.save'), ['class' => 'btn btn-md btn-color', 'name' => 'submit']) !!}
         </div>
     </div>
-{{ Form::close() }}
+{{ Form::close() }} -->
 @endsection

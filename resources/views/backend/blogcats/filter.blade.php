@@ -79,11 +79,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cat as $key => $cb)
+                    @foreach($filter as $key => $cb)
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td class="name">{{ $cb->name }}</td>
-                        <td>{{ $cb->created_at->format('d/m/Y') }}</td>
+                        <td>2</td>
                         <td>
                             <a href="{{ route('editblogcat', $cb->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $cb->id }}"><i class="fa fa-trash-o"></i></button>
@@ -92,7 +92,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $cat->links() }}   
+            {{ $filter->links() }}   
         </div>  
         <!-- end card-body -->                              
 
@@ -116,7 +116,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Xóa người dùng - </p>
+                <p class="modal-title">Xóa loại tin tức - </p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
