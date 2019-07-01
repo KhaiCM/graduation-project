@@ -1,7 +1,7 @@
 <?php
 return [
     'fontend_image' => [
-        'logo' => 'bower_components/lib_bower/assets/img/logos/black-logo.png',
+        'logo' => 'bower_components/lib_bower/assets/img/logos/logo.png',
         'flag_en' => 'upload/flag/flag_en.jpg',
         'flag_vi' => 'upload/flag/flag_vi.png',
         'property7' => 'bower_components/lib_bower/assets/img/property-7.jpg',

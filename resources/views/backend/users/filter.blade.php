@@ -17,13 +17,8 @@
         </div>
     </div>
 </div>
-
-@if (session('noti'))
-<div class="alert alert-success" id="alert">
-    {{ session('noti') }}
-</div>
-@endif
 <div class="row">
+
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">                     
 
         <div class="card mb-3">
@@ -33,32 +28,7 @@
                     @csrf
                     <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary btn-sm" type="submit">Search</button>
-                </form>
-                <div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-hidden="true" id="modal_add_category">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            {!! Form::open(['route' => 'province.create', 'method' => 'post']) !!}            
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{ trans('label.add_blog_cat') }}</h5>
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>             
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            {!! Form::label('name', trans('province.name')) !!}<br>
-                                            {!! Form::text('name', '', ['class' => 'form-control', 'placeholder' => trans('province.name')]) !!}<br>
-                                        </div>
-                                    </div>
-                                </div>             
-                            </div>             
-                            <div class="modal-footer">
-                                {!! Form::submit(trans('message.add'), ['class' => 'btn btn-primary']) !!}
-                            </div>
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>                           
+                </form>                          
             </div>
             <!-- end card-header -->    
 
@@ -78,7 +48,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            @foreach ($user as $key => $item)
+                            @foreach ($filter as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td class="name">
@@ -95,7 +65,7 @@
                         </tbody>
 
                     </table>
-                    {!! $user -> links() !!}
+                    {!! $filter -> links() !!}
                 </div>  
             </div>  
             <!-- end card-body -->                              
@@ -112,7 +82,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Xóa loại tin tức - </p>
+                <p class="modal-title">Xóa người dùng - </p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

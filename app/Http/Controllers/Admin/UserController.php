@@ -7,6 +7,7 @@ use App\Http\Requests\UserPageRequest;
 use App\Repositories\UserPageRepository;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -122,14 +123,33 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bl = Post::find($id);
+        $bl->delete();
+
+        return view('backend.users.list_user', compact('bl'))->with('noti', 'success');
     }
 
     public function editPermission($id)
     {
         $user = $this->user->findOrFail($id);
         $role = Role::all();
+        // dd($role);
         
         return view('backend.users.edit_permission', compact('user', 'role'));
+    }
+
+    public function search(Request $request)
+    {
+        // dd($request->all());
+        $userSearch = ($request->has('search') ? $request->get('search') : false);
+        $query = User::select('id', 'name', 'email', 'created_at');
+        // dd($query);
+        if ($request->has('search')) {
+            $query->where('name', $request->get('search'));
+        }
+        // dd($query);
+        $filter = $query->paginate(config('app.blog_page'));
+
+        return view('backend.users.filter', compact('filter'));
     }
 }

@@ -90,6 +90,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('editblogcat/{id}', 'BlogCatController@getEditBlogCat')->name('editblogcat');
         Route::post('editblogcat/{id}', 'BlogCatController@postEditBlogCat');
         Route::delete('deleteblogcat/{id}', 'BlogCatController@getDeleteBlogCat')->name('deleteblogcat');
+        Route::post('blogcat-filter', 'BlogCatController@search')->name('blogCat.search');
     });
     Route::group(['prefix' => 'blog'], function () {
         Route::get('bloglist', 'BlogController@getList')->name('blog.index');
@@ -115,7 +116,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('set-permission', 'Admin\RoleController@setPermission')->name('permission.set');
         Route::get('list-user', 'Admin\UserController@index')->name('user.list');
         Route::get('edit-user/{id}', 'Admin\UserController@editPermission')->name('user.edit');
+        Route::post('user-filter', 'Admin\UserController@search')->name('user.search');
         Route::post('edit-user/{id}', 'Admin\RoleController@setRole')->name('user.editRole');
+        Route::delete('delete-user/{id}', 'BlogController@destroy')->name('user.delete');
     });
 });
 

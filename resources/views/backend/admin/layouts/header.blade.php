@@ -32,6 +32,11 @@
 						</div>
 
 						<!-- item-->
+						<a href="{{ route('home') }}" class="dropdown-item notify-item">
+							<i class="fa fa-home"></i> <span>{{ trans('province.home') }}</span>
+						</a>
+
+						<!-- item-->
 						<a href="{{ route('user.detail', Auth::user()->id) }}" class="dropdown-item notify-item">
 							<i class="fa fa-user"></i> <span>{{ trans('message.Detail') }}</span>
 						</a>
@@ -45,17 +50,17 @@
 					</div>
 				</li>
 
-		</ul>
+			</ul>
 
-		<ul class="list-inline menu-left mb-0">
-			<li class="float-left">
-				<button class="button-menu-mobile open-left">
-					<i class="fa fa-fw fa-bars"></i>
-				</button>
-			</li>                        
-		</ul>
+			<ul class="list-inline menu-left mb-0">
+				<li class="float-left">
+					<button class="button-menu-mobile open-left">
+						<i class="fa fa-fw fa-bars"></i>
+					</button>
+				</li>                        
+			</ul>
 
-	</nav>
+		</nav>
 
-</div>
+	</div>
 	<!-- End Navigation -->

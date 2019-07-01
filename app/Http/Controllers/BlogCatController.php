@@ -23,7 +23,7 @@ class BlogCatController extends Controller
     {
         $this->validate($request,
             [
-                'name' => 'required|min:3|max:100'
+                'name' => 'required|unique:category_posts|min:3|max:100'
             ],
             [
                 'name.required' => trans('message.cannotblank'),
@@ -58,7 +58,7 @@ class BlogCatController extends Controller
         $cat = CategoryPost::findOrFail($id);
         $this->validate($request,
             [
-                'name' => '|required|min:3|max:100'
+                'name' => '|required|unique:category_posts|min:3|max:100'
             ],
             [   
                 'name.required' => trans('message.cannotblank'),
@@ -78,6 +78,21 @@ class BlogCatController extends Controller
         $cat->delete($id);
 
         return redirect('admin/blogcat/blogcatlist')->with('noti', 'success');
+    }
+
+    public function search(Request $request)
+    {
+        // dd($request->all());
+        $userSearch = ($request->has('search') ? $request->get('search') : false);
+        $query = CategoryPost::select('id', 'name', 'created_at');
+        // dd($query);
+        if ($request->has('search')) {
+            $query->where('name', $request->get('search'));
+        }
+        // dd($query);
+        $filter = $query->paginate(config('app.blog_cat_page'));
+
+        return view('backend.blogcats.filter', compact('filter'));
     }
 }
 
