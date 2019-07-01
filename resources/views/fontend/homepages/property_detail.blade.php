@@ -53,20 +53,50 @@
                                     <a class="nav-link active show" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="false">{{ trans('province.description') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">{{ trans('province.floorplan') }}</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="true">{{ trans('province.detail') }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="5-tab" data-toggle="tab" href="#5" role="tab" aria-controls="5" aria-selected="true">{{ trans('province.location') }}</a>
-                                </li>
+
                             </ul>
                             <div class="tab-content" id="carTabContent">
                                 <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="one-tab">
-                                    <h3 class="heading">{{ trans('province.description') }}</h3> {!! $property->describe !!}
+                                    <h3 class="heading"></h3> {!! $property->describe !!}
                                 </div>
-
+                                <div class="tab-pane fade " id="three" role="tabpanel" aria-labelledby="three-tab">
+                                    <div class="property-details">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6">
+                                                <ul>
+                                                    @if($property->form  == 0)
+                                                    <li>
+                                                        <strong>Hình thức:</strong>Bán
+                                                    </li>
+                                                    @else
+                                                    <li>
+                                                        <strong>Hình thức:</strong>Cho Thuê
+                                                    </li>
+                                                    @endif
+                                                    <li>
+                                                        <strong>Địa chỉ:</strong>{{ $property->address }}, {{ $property->districts->name }}, {{ $property->districts->provinces->name }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <ul>
+                                                    <li>
+                                                        <strong>Diện tích:</strong>{{ $property->acreage }}&nbsp m2
+                                                    </li>
+                                                    <li>
+                                                        <strong>Thể loại tài sản:</strong>{{ $property->propertyType->propertyCategory->name }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         @if (Auth::check())
@@ -104,7 +134,6 @@
                                             <div class="clearfix"></div>
                                             <div class="comment-body">
                                                 <div class="comment-rating">
-                                                    {{ rand(1, 5) }} <i class="fa fa-star"></i>
                                                 </div>
                                                 {{ $comment->content }}
                                             </div>
@@ -160,48 +189,48 @@
                                         {!! Form::open(['route' => 'filter.property', 'method' => 'GET']) !!}
                                         <div class="form-group">
                                            {!! Form::select('province', $province, null, ['class' => 'selectpicker search-fields', 'id' =>  'province']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('district', $district, null, ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('property_category', $propertyCategory, null, ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('property_type', $propertyType, null, ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('acreage', processFilter(config('search.acreage')), null, ['class' => 'selectpicker search-fields']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('price', processFilter(config('search.price')), null, ['class' => 'selectpicker search-fields']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::select('form', processForm(config('search.form')), null, ['class' => 'selectpicker search-fields']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::submit( __('label.search'), ['class' => 'search-button btn-md btn-color', 'name' => 'submit']) !!}
-                                        </div>
-                                        {{ Form::close() }}
+                                       </div>
+                                       <div class="form-group">
+                                        {!! Form::select('district', $district, null, ['class' => 'selectpicker search-fields', 'id' => 'district']) !!}
                                     </div>
+                                    <div class="form-group">
+                                        {!! Form::select('property_category', $propertyCategory, null, ['class' => 'selectpicker search-fields', 'id' => 'property_category']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::select('property_type', $propertyType, null, ['class' => 'selectpicker search-fields', 'id' => 'property_type']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::select('acreage', processFilter(config('search.acreage')), null, ['class' => 'selectpicker search-fields']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::select('price', processFilter(config('search.price')), null, ['class' => 'selectpicker search-fields']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::select('form', processForm(config('search.form')), null, ['class' => 'selectpicker search-fields']) !!}
+                                    </div>
+                                    <div class="form-group">
+                                        {!! Form::submit( __('label.search'), ['class' => 'search-button btn-md btn-color', 'name' => 'submit']) !!}
+                                    </div>
+                                    {{ Form::close() }}
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Social list start -->
-                            <div class="social-list widget clearfix">
-                                <h5 class="sidebar-title">{{ trans('province.follow') }}</h5>
-                                <ul>
-                                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
-                                    <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
+                        <!-- Social list start -->
+                        <div class="social-list widget clearfix">
+                            <h5 class="sidebar-title">{{ trans('province.follow') }}</h5>
+                            <ul>
+                                <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="rss-bg"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Properties details page end -->
-        @endsection
+    </div>
+    <!-- Properties details page end -->
+    @endsection

@@ -82,7 +82,7 @@
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td class="name">
-                                    <a href="{{ route('user.edit', $item->id) }}">{{ $item->name }}</a>
+                                    <a href="{{ route('user.editRole', $item->id) }}">{{ $item->name }}</a>
                                 </td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->created_at->format('d/m/Y') }}</td>

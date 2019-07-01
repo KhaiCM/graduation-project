@@ -34,7 +34,7 @@ return [
     'bedrooms' => 'Phòng ngủ',
     'bathrooms' => 'Phòng tắm',
     'search' => 'Tìm kiếm',
-    'featured_properties' => 'Các thuộc tính',
+    'featured_properties' => 'Tài sản mới nhất',
     'all' => 'Tất cả',
     'apartment' => 'Căn hộ, chung cư',
     'house' => 'Nhà',

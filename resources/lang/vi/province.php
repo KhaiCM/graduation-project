@@ -62,4 +62,6 @@ return [
     'add_property_type' => 'Thêm kiểu tài sản',
     'name_property_type' => 'Tên kiểu tài sản',
     'for_property_category' => 'Thuộc loại tài sản',
+    //role
+    'listRole' => 'Danh sách vai trò',
 ];

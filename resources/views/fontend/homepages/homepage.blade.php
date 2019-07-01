@@ -96,10 +96,9 @@
                             <a href="#" class="property-img">
                                 <div class="price-ratings-box">
                                     <p class="price">
-                                        {{ $property->price }} {{ $property->unit->name ?? '' }}
                                     </p>
                                     <div class="ratings">
-                                        <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i>
+                                        <!-- <strong>{{ rand(1, 5) }} &nbsp </strong><i class="fa fa-star"></i> -->
                                     </div>
                                 </div>
                                 @foreach ($property->propertyImage as $image)
@@ -117,11 +116,12 @@
                             <h1 class="title">
                                 <a href="{{ route('property.view', $property->id) }}">{{ $property->name }}</a>
                             </h1>
-                            <div class="location">
+                            <div class="location"><i class="fal fa-usd-circle"></i>
                                 <a href="#">
                                     <i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>{{ $property->districts->name ?? '' }}
                                 </a>
                             </div>
+                            <ul class="fa fa-usd-circle">$ Giá: {{ $property->price }} {{ $property->unit->name ?? '' }}</ul>
                             <ul class="flaticon-square-layouting-with-black-square-in-east-area"> Diện tích: {!! $property->acreage!!}&nbsp m2</ul>
                         </div>
                         <div class="footer">
@@ -137,7 +137,6 @@
                 @endforeach
             </div>
         </div>
-        {!! $properties->links() !!}
     </div>
 </div>
 @else

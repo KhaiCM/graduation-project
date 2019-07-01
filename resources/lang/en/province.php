@@ -62,4 +62,6 @@ return [
     'add_property_type' => 'Add property type',
     'name_property_type' => 'Name Property Type',
     'for_property_category' => 'For property category',
+    //role
+    'listRole' => 'List Role',
 ];
