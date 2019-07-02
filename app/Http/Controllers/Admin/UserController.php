@@ -131,6 +131,7 @@ class UserController extends Controller
 
     public function editPermission($id)
     {
+        // dd($id);
         $user = $this->user->findOrFail($id);
         $role = Role::all();
         // dd($role);

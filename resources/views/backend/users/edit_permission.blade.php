@@ -18,7 +18,6 @@
     </div>
     <div class="container col-md-6 col-md-offset-3">
         <div class="well well bs-component">
-            {!! Form::open(['route' => ['user.editRole', $user->id], 'method' => 'POST']) !!}
             @foreach ($errors->all() as $error)
             <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
@@ -31,6 +30,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">                     
                     <div class="card mb-3">
                         <div class="card-body">
+                            {!! Form::open(['route' => ['user.editRole', $user->id], 'method' => 'POST']) !!}
                             <fieldset>
                                 <!-- <legend>{{ __('label.edit_user') }}</legend> -->
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     {{ Form::label('status', trans('label.role')) }}<span class="text-danger"> *</span><br>
-                                    {{ Form::select('id', $role->pluck('name', 'id'), $role, ['class' => 'form-control']) }}<br>
+                                    {{ Form::select('role_id', $role->pluck('name', 'id')->reverse(), ($user->role->count() ? $user->role->first()->id : false), ['class' => 'form-control']) }}<br>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-10 col-lg-offset-2">

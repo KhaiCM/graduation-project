@@ -61,7 +61,7 @@ class SetCalenderController extends Controller
     public function getList()
     {
         $sc = SetCalendar::paginate(config('app.contract_page'));
-        
+        dd($sc);
         return view('backend.setcalendars.show', ['sc' => $sc]);
     }
 

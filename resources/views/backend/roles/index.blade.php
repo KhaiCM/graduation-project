@@ -73,13 +73,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            @foreach ($role as $key => $province)
+                            @foreach ($role as $key => $item)
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td class="name">{{ $province->name }}</td>
+                                <td class="name">{{ $item->name }}</td>
                                 <td>
-                                    <a href="{{ route('province.edit', $province->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $province->id }}"><i class="fa fa-trash-o"></i></button>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $item->id }}"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -118,7 +118,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <form action="{{ route('province.destroy', ['id' => ''])}}" method="POST">
+                <form action="{{ route('role.destroy', ['id' => ''])}}" method="POST">
                     @method('DELETE')   
                     @csrf
                     <button class="btn btn-danger" type="submit">Yes</button>

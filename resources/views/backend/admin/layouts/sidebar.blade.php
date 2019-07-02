@@ -41,12 +41,14 @@
                 <li class="submenu">
                     <a href="{{ route('contract.index') }}"><i class="fa fa-fw fa-tv"></i><span>{{ trans('message.contract') }}</span></a>
                 </li>
+                @if (auth()->user()->hasRole('admin'))
                 <li class="submenu">
                     <a href="{{ route('role.index') }}"><i class="fa fa-fw fa-tv"></i><span>{{ trans('label.role') }}</span></a>
                 </li>
                 <li >
                     <a href="{{ route('user.list') }}"><i class="fa fa-fw fa-user"></i><span>{{ trans('label.list_user') }}</span></a>
                 </li>
+                @endif
 
             </ul>
 
