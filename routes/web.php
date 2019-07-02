@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'login.admin'], function () {
     Route::get('detail/{id}', 'Admin\UserController@edit')->name('user.detail');
 
     Route::put('detail/{id}', 'Admin\UserController@update')->name('user.update');
@@ -118,7 +118,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit-user/{id}', 'Admin\UserController@editPermission')->name('user.edit');
         Route::post('user-filter', 'Admin\UserController@search')->name('user.search');
         Route::post('edit-user/{id}', 'Admin\RoleController@setRole')->name('user.editRole');
-        Route::delete('delete-user/{id}', 'BlogController@destroy')->name('user.delete');
+        Route::delete('delete-role/{id}', 'Admin\RoleController@getDeleteRole')->name('role.destroy');
     });
 });
 

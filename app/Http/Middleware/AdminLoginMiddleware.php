@@ -20,7 +20,7 @@ class AdminLoginMiddleware
             return redirect('login');
         } else {
             $user = Auth::user();
-            if ($user->hasRole('admin')) {
+            if ($user->hasAnyRole('admin|employee')) {
                 return $next($request);
             } else {
                 return redirect('/');

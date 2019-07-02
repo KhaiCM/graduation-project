@@ -56,8 +56,7 @@ class RoleController extends Controller
 
 	public function setRole(Request $request, $id)
 	{
-		dd($request->all());
-		$user = $this->user->findOrFail($request->id);
+		$user = $this->user->findOrFail($id);
 		$role = $request->role_id;
 		$user->role()->sync($role);
 		
@@ -66,10 +65,10 @@ class RoleController extends Controller
 
 	public function getDeleteRole($id)
 	{
-		$bl = Post::findOrFail($id);
-		$bl->delete();
-
-		return view('backend.roles.index')->with('noti', 'success');
+		$role = Role::findOrFail($id);
+		$role->delete();
+		// $role = Role::all();
+		return redirect(route('role.index'))->with('noti', 'success');
 	}
 
 }

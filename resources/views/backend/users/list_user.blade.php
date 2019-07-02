@@ -82,7 +82,7 @@
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td class="name">
-                                    <a href="{{ route('user.editRole', $item->id) }}">{{ $item->name }}</a>
+                                    <a href="{{ route('user.edit', $item->id) }}">{{ $item->name }}</a>
                                 </td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->created_at->format('d/m/Y') }}</td>
@@ -112,7 +112,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <p class="modal-title">Xóa loại tin tức - </p>
+                <p class="modal-title">Xóa người dùng - </p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
