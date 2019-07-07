@@ -8,6 +8,8 @@ use App\Models\SetCalendar;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use App\Notifications\CalendarNotification;
+use App\Notifications\CalendarPropertyOwnerNotification;
 
 class SetCalenderController extends Controller
 {
@@ -27,7 +29,7 @@ class SetCalenderController extends Controller
     public function postcreate(Request $request, $id)
     {
 
-        $sc = Property::findOrFail($id);
+        $property = Property::with('users')->findOrFail($id);
 
         $this->validate($request,
             [
@@ -55,13 +57,16 @@ class SetCalenderController extends Controller
 
         $sc->save();
 
+        auth()->user()->notify(new CalendarNotification($sc, $property));
+        $property->users->notify(new CalendarPropertyOwnerNotification($sc, $property));
+
         return redirect('/')->with('noti', 'success');
     }
 
     public function getList()
     {
         $sc = SetCalendar::paginate(config('app.contract_page'));
-        dd($sc);
+        // dd($sc);
         return view('backend.setcalendars.show', ['sc' => $sc]);
     }
 
