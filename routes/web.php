@@ -190,7 +190,10 @@ Route::get('deletecalendars/{id}', 'SetCalenderController@getDelete')->name('del
 Route::get('detailcalendars/{id}', 'SetCalenderController@getDetail')->name('detail.calendars');
 
 //calendar cua toi
-Route::get('mycalendar/{id}', 'SetCalenderController@getMyCalendar')->name('myCalendar.show');
+Route::get('mycalendar', 'SetCalenderController@getMyCalendar')->name('myCalendar.show');
+Route::get('edit-calendar/{id}', 'SetCalenderController@editMyCalendar')->name('myCalendar.edit');
+Route::put('edit-calendar/{id}', 'SetCalenderController@updateMyCalendar')->name('myCalendar.update');
+Route::delete('delete-calendar/{id}', 'SetCalenderController@deleteMyCalendar')->name('myCalendar.destroy');
 
 //post
 Route::get('postlist', 'PostController@showlist');
@@ -199,6 +202,7 @@ Route::get('postlist', 'PostController@showlist');
 Route::get('contract/{id}', 'ContractController@create')->name('createcontracts');
 Route::post('contract/{id}', 'ContractController@postcreate')->name('contracts');
 Route::get('detailcontracts/{id}', 'ContractController@getDetail')->name('detail.contracts');
+Route::get('mycontract', 'ContractController@getmycontract')->name('contract.listContract');
 
 //contact
 Route::get('contacts', 'ContactController@create')->name('createcontacts');

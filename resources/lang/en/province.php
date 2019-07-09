@@ -64,4 +64,7 @@ return [
     'for_property_category' => 'For property category',
     //role
     'listRole' => 'List Role',
+    'property_owner' => 'property owner',
+    'listCalendar' => 'list Calendar',
+    'person_appointment' => 'Persopn Appointment',
 ];

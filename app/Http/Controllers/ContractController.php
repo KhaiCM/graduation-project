@@ -43,4 +43,12 @@ class ContractController extends Controller
         
         return view('backend.contract.detail', ['ct' => $ct]);
     }
+
+        public function getmycontract()
+    {
+        dd(1);
+        $ct = RentContract::findOrFail($id);
+        
+        return view('backend.contract.detail', ['ct' => $ct]);
+    }
 }
