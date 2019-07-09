@@ -147,4 +147,7 @@ return [
     'add_blog_cat' => 'Thêm thể loại tin tức',
     'user' => 'Người dùng',
     'calendar' => 'Lịch hẹn',
+    'cannot' => 'Đây là tài sản của bạn, không thể đặt lịch hẹn',
+    'cannotbeset' => 'Bạn đã đặt lịch hẹn cho tài sản này',
+    'my_contracts' => 'Hợp đồng của tôi',
 ];

@@ -152,5 +152,8 @@ return [
     'statistic' => 'Statistic',
     'user' => 'User',
     'calendar' => 'Calendar',
+    'cannot' => 'This is your property, an appointment cannot be made',
+    'cannotbeset' => 'You have made an appointment for this property',
+    'my_contracts' => 'My Contract',
 ];  
 

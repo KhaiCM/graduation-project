@@ -64,4 +64,7 @@ return [
     'for_property_category' => 'Thuộc loại tài sản',
     //role
     'listRole' => 'Danh sách vai trò',
+    'property_owner' => 'Chủ tài sản',
+    'listCalendar' => 'Danh sách lịch hẹn',
+    'person_appointment' => 'Người đặt lịch hẹn',
 ];

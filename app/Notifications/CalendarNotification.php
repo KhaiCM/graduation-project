@@ -46,9 +46,9 @@ class CalendarNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Bạn vừa đặt một lịch hẹn trong hệ thống, email được gửi để nhắc nhở bạn không quên lịch hẹn')
+                    ->action('truy cập hệ thống', url('/'))
+                    ->line('Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!');
     }
 
     /**

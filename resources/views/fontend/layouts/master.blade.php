@@ -30,55 +30,56 @@
         var count;
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
-        ]) !!}
-    </script>
+            ]) !!}
+        </script>
 
-    @if (!auth()->guest())
+        @if (!auth()->guest())
         <script>
             window.Laravel.userId = {{ auth()->user()->id }}
         </script>
-    @endif
-</head>
-<body id="top">
-    @include('fontend.layouts.header')
+        @endif
+    </head>
+    <body id="top">
+        @include('fontend.layouts.header')
 
-    @yield('content')
+        @yield('content')
 
-    @include('fontend.layouts.footer')
+        @include('fontend.layouts.footer')
 
-    <!-- External JS libraries -->
-    <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
-    <script> CKEDITOR.replace('editor1'); </script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery-2.2.0.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.selectBox.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/rangeslider.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.filterizr.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/wow.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/backstretch.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.countdown.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.scrollUp.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/particles.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/typed.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/dropzone.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.mb.YTPlayer.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet-providers.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet.markercluster.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/maps.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script src="{{ asset('bower_components/lib_bower/assets/js/ie-emulation-modes-warning.js') }}"></script>
-    <!-- Custom JS Script -->
-    <script src="{{ asset('bower_components/lib_bower/assets/js/app.js') }}"></script>
-    <script src="{{ asset('js/ajax.js') }}"></script>
-    <script src="{{ asset('bower_components/pusher-js/dist/web/pusher.min.js') }}"></script>
-    <script>
-        $('#co').append('&nbsp;<b>' + $('#noti').data('count') + '</b>');
-    </script>
-    <script>
-        $(document).ready(function(){
+        <!-- External JS libraries -->
+        <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+        <script> CKEDITOR.replace('editor1'); </script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery-2.2.0.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.selectBox.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/rangeslider.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.filterizr.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/backstretch.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.countdown.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.scrollUp.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/particles.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/typed.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/dropzone.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.mb.YTPlayer.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet-providers.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/leaflet.markercluster.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/maps.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+        <script src="{{ asset('bower_components/lib_bower/assets/js/ie-emulation-modes-warning.js') }}"></script>
+        <!-- Custom JS Script -->
+        <script src="{{ asset('bower_components/lib_bower/assets/js/app.js') }}"></script>
+        <script src="{{ asset('js/ajax.js') }}"></script>
+        <script src="{{ asset('bower_components/pusher-js/dist/web/pusher.min.js') }}"></script>
+        @yield('script')
+        <script>
+            $('#co').append('&nbsp;<b>' + $('#noti').data('count') + '</b>');
+        </script>
+        <script>
+            $(document).ready(function(){
             // Khởi tạo một đối tượng Pusher với app_key
             var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
                 cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
@@ -102,6 +103,11 @@
             $('#noti').data('count', count.length);
             $('#co').html('&nbsp;<b>' + $('#noti').data('count') + '</b>');
         }
+    </script>
+    <script>
+        setTimeout(function(){
+            $('#alert').hide();
+        }, 2000);
     </script>
 </body>
 

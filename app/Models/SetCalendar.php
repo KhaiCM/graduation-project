@@ -23,4 +23,9 @@ class SetCalendar extends Model
     {
         return $this->belongsTo('App\Models\Property', 'properties_id');
     }
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }

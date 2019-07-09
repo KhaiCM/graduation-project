@@ -36,29 +36,29 @@
                         <thead>
                           <tr>
                             <th style="width:50px">{{ trans('province.stt') }}</th>
-                            <th>{{ trans('province.name_property_type') }}</th>
-                            <th>{{ trans('province.name_property_type') }}</th>
-                            <th style="width:180px">{{ trans('province.for_property_category') }}</th>
-                            <th style="width:120px">{{ trans('province.action') }}</th>
+                            <th>{{ trans('province.property_owner') }}</th>
+                            <th>{{ trans('province.person_appointment') }}</th>
+                            <th>{{ trans('message.time') }}</th>
+                            <th style="width:180px">{{ trans('message.task') }}</th>
+                            <!-- <th style="width:120px">{{ trans('province.action') }}</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($sc as $key => $a)
                         <tr>
-                            <td>{{ $a->id }}</td>
-                            <td>{{ $a->property_id }}</td>
-                            <td>{{ $a->date }}</td>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $a->properties->users->name }}</td>
+                            <td class="name">{{ $a->users->name }}</td>
                             <td>{{ $a->time }}</td>
                             <td>
                                 <a href="{{ route('detail.calendars', $a->id) }}"><button class="bntshow">{{ trans('message.detail') }}</button></a>
-<!--                                 <a href="{{ route('detail.calendars', $a->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a> -->
-                                <a href="{{ route('delete.calendars', $a->id) }}" class="btn btn-danger btn-sm" data-placement="top" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <button type="button" class="btn btn-danger show-modal btn-sm" data-toggle="modal" data-target="#m_modal" data-menu-id="{{ $a->id }}"><i class="fa fa-trash-o"></i></button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
+                {!! $sc->links(); !!}
             </div>  
             <!-- end card-body -->                              
 
@@ -68,35 +68,43 @@
     </div>
     <!-- end col -->    
 </div>
-<!-- end row --> 
-
-<div class="container">
-    <div class="high">
-        <a>{{ trans('message.setcalendar') }}</a>
+<!-- end row -->
+<div class="modal fade" id="m_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title">Xóa lịch hẹn xem tài sản của người dùng - <span></span></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có muốn xóa ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <form action="{{ route('delete.calendars', ['id' => ''])}}" method="POST">
+                    @method('DELETE')   
+                    @csrf
+                    <button class="btn btn-danger" type="submit">Yes</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>{{ trans('message.id') }}</th>
-                <th>{{ trans('message.property') }}</th>
-                <th>{{ trans('message.date') }}</th>
-                <th>{{ trans('message.time') }}</th>
-                <th>{{ trans('message.task') }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($sc as $a)
-            <tr>
-                <td>{{ $a->id }}</td>
-                <td>{{ $a->property_id }}</td>
-                <td>{{ $a->date }}</td>
-                <td>{{ $a->time }}</td>
-                <td class="tdshow"><a href="{{ route('detail.calendars', $a->id) }}"><button class="bntshow">{{ trans('message.detail') }}</button></a>
-                    <a href="{{ route('delete.calendars', $a->id) }}"><button class="bntshowdl">{{ trans('message.delete') }}</button></a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {!! $sc->links(); !!}
-    </div>
-    @endsection
+</div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function() {
+        var $baseActionDelete = $('#m_modal').find('form').attr('action');
+        $('.show-modal').click(function() {
+            let $nameOfMenu = $(this).parents('tr').find('.name');
+            $nameOfMenu = $nameOfMenu.text();
+            $menuID = $(this).data('menu-id')
+            $form = $('#m_modal').find('form')
+            $form.attr('action', $baseActionDelete + '/' + $menuID);
+            $('#m_modal').find('p.modal-title > span').text($nameOfMenu);
+        });
+    });
+</script>
+@endsection

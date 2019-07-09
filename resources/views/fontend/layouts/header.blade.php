@@ -111,7 +111,8 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('property.show', Auth::user()->id) }}">{{ __('label.my_property') }}</a></li>
                                 <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('property') }}">{{ __('label.submit_new_property') }}</a></li>
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('myCalendar.show', Auth::user()->id) }}">{{ __('label.my_calendar') }}</a></li>
+                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('myCalendar.show') }}">{{ __('label.my_calendar') }}</a></li>
+                                <li class="dropdown-submenu"><a class="dropdown-item" href="{{ route('contract.listContract') }}">{{ __('label.my_contracts') }}</a></li>
                             </ul>
                         </li>
                         @endif

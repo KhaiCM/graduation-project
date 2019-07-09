@@ -2,7 +2,7 @@
 @section('content')
 @if (session('noti'))
 <div>
-    {{ session('noti') }}
+    <div class="alert alert-success" style="text-align: center; margin-top: 20px;color: red;font-size: 20px;font-weight: 500;">{{ session('noti') }}</div>
     <div>
         @endif
         <!-- Sub banner end -->

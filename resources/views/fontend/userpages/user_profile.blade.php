@@ -14,8 +14,6 @@
                     </div>
                     <!-- Detail -->
                     <div class="detail clearfix">
-                        <a>{{ __('message.amounts') }}</a>
-                        <a>{{ Auth::user()->Wallet->balance ?? '0 Đ' }}</a>
                         <ul>
                             <li>
                                 <a href="{{ route('user_page.edit', Auth::user()->id) }}" class="active">
@@ -40,16 +38,6 @@
                             <li>
                                 <a href="{{ route('user.change_pass', Auth::user()->id) }}">
                                     <i class="flaticon-locked-padlock"></i>{!! __('label.change_password') !!}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('recharge.in', Auth::user()->id) }}">
-                                    <i class="flaticon-locked-padlock"></i>{!! __('message.recharge') !!}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('service.in', Auth::user()->id) }}">
-                                    <i class="flaticon-locked-padlock"></i>{!! __('message.service') !!}
                                 </a>
                             </li>
                             <li>

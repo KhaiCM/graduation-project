@@ -46,9 +46,9 @@ class CalendarPropertyOwnerNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Có một người vừa đặt lịch hẹn xem tài sản của bạn, vui lòng truy cập vào hệ thống để xem')
+                    ->action('Truy cập vào hệ thống', url('/'))
+                    ->line('Cảm ơn bạn đã sử dụng dịch vụ !');
     }
 
     /**

@@ -63,13 +63,13 @@ class User extends Authenticatable
     public function followers()
     {
         return $this->belongsToMany(self::class, 'followers', 'follows_id', 'user_id')
-                    ->withTimestamps();
+        ->withTimestamps();
     }
 
     public function follows()
     {
         return $this->belongsToMany(self::class, 'followers', 'user_id', 'follows_id')
-                    ->withTimestamps();
+        ->withTimestamps();
     }
 
     public function isFollowing($userId)
@@ -84,5 +84,10 @@ class User extends Authenticatable
     public function service()
     {
         return $this->belongsTo('App\Models\Service', 'service_id');
+    }
+
+    public function setcalendars()
+    {
+        return $this->hasMany('App\Models\SetCalendar');
     }
 }
